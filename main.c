@@ -7,7 +7,7 @@ typedef struct    data_s
     void          *mlx_win;
 }                 data_t;
 
-int main(void)
+int main()
 {
     data_t        data;
 

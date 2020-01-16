@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   libft.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 09:54:32 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 22:46:51 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/16 08:24:53 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,6 +24,7 @@ typedef	struct		s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
 size_t				ft_strlen(const char *s);
 int					ft_atoi(const char *str);
 void				ft_putchar_fd(char c, int fd);
@@ -68,5 +69,6 @@ t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)
 (void *));
 t_list				*ft_lstnew(void *content);
+char				*ft_add_char(char *s1, char const s2);
 
 #endif
