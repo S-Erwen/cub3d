@@ -13,6 +13,11 @@
 
 #include "cub3d.h"
 
+
+/*
+**	PAS DU TOUT FINI !!!!
+*/
+
 int		sj_parsing_map(t_cub *cub, char *line)
 {
 	char	*str;
