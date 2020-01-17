@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_itoa_base.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 06:47:41 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 22:52:01 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/17 02:33:08 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,15 +16,12 @@
 int				ft_nb_char(unsigned long long nb, int len)
 {
 	int size;
-	int mod;
 
-	mod = 0;
 	size = 0;
 	if (nb == 0)
 		size = 1;
 	while (nb > 0)
 	{
-		mod = nb % len;
 		nb = nb / len;
 		size++;
 	}

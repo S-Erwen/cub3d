@@ -3,15 +3,15 @@
 /*                                                              /             */
 /*   sj_parsing_map.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:15:51 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/16 08:22:48 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/17 02:15:09 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../include/cub3d.h"
 
 
 /*
@@ -21,25 +21,37 @@
 int		sj_parsing_map(t_cub *cub, char *line)
 {
 	char	*str;
+
+	str = sj_parsing_linemap(line);
+	if (!str)
+		return (-12);
+	if (str && str[0] != '1' && str[ft_strlen(str) != '1'])
+		return (-12);
+	str = ft_add_char(str, '\n');
+	if (!cub->line_map)
+	{
+		if (ft_strchr(str, '0') || ft_strchr(str, '2'))
+			return (-12);
+		cub->line_map = str;
+		free(str);
+	}
+	else
+		cub->line_map =	ft_strjoin_with_free(cub->line_map,	str, 3);
+	return (0);
+}
+
+char	*sj_parsing_linemap(char *line)
+{
+	char	*str;
 	int		count;
 	int		i;
 	int		y;
 
 	i = 0;
 	y = 0;
-	count = 0;
-	while (line[i])
-	{
-		while (line[i] == ' ')
-			i++;
-		if (line[i] == '1' || line[i] == '0' || line[i] == '2')
-			count++;
-		if (line[i] != '1' || line[i] != '0' || line[i] != '2'
-			|| line[i] != ' ')
-			return (-12);
-		i++;
-	}
-	i = 0;
+	count = sj_count_map_line(line);
+	if (count == -12)
+		return (NULL);
 	if (!(str = malloc(sizeof(char) * (count + 1))))
 		return (0);
 	while (line[i])
@@ -55,4 +67,68 @@ int		sj_parsing_map(t_cub *cub, char *line)
 	}
 	str[y] = '\0';
 	return (str);
+}
+
+int		sj_count_map_line(char *line)
+{
+	int		count;
+	int		i;
+
+	i = 0;
+	count = 0;
+	while (line[i])
+	{
+		while (line[i] == ' ')
+			i++;
+		if (line[i] == '1' || line[i] == '0' || line[i] == '2')
+			count++;
+		if (line[i] != '1' || line[i] != '0' || line[i] != '2'
+			|| line[i] != ' ')
+			return (-12);
+		i++;
+	}
+	return (count);
+}
+
+void	sj_clean_line(t_cub *cub)
+{
+	int		i;
+	int		y;
+	char	*str;
+
+	i = sj_count_clean(cub);
+	y = 0;
+	if (!(str = malloc(sizeof(char) * (i + 1))))
+		return ;
+	i = 0;
+	while (cub->line_map[i])
+	{
+		if (cub->line_map[i] == '\n')
+			i++;
+		else
+			str[y++] = cub->line_map[i++];
+	}
+	free(cub->line_map);
+	cub->line_map = ft_strdup(str);
+	free(str);
+}
+
+int		sj_count_clean(t_cub *cub)
+{
+	int		i;
+	int		count;
+
+	i = 0;
+	count = 0;
+	while (cub->line_map[i])
+	{
+		if (cub->line_map[i] == '\n')
+			i++;
+		else
+		{
+			count++;
+			i++;
+		}
+	}
+	return (count);
 }

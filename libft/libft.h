@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   libft.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/10 09:54:32 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/16 08:24:53 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/17 01:03:15 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -70,5 +70,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)
 (void *));
 t_list				*ft_lstnew(void *content);
 char				*ft_add_char(char *s1, char const s2);
+char				*ft_strjoin_with_free(char *s1, char *s2, int fre);
 
 #endif

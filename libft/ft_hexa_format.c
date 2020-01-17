@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_hexa_format.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/13 03:57:41 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 22:48:45 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/17 02:33:26 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -41,7 +41,7 @@ int		ft_hexa_format(t_flags tab, char *nb)
 	if (tab.neg == 0)
 	{
 		ft_write_flags(zero, c, tab.zero, 1);
-		nb < 0 ? write(1, nb + 1, size - 1) : write(1, nb, size);
+		nb == 0 ? write(1, nb + 1, size - 1) : write(1, nb, size);
 	}
 	else
 	{

@@ -3,10 +3,10 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/01/16 08:24:25 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/17 01:55:45 by sanjaro     ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -81,7 +81,13 @@ SRCSLIB	= 	libft/ft_atoi.c					\
 #								      CUB3D									   #
 ################################################################################
 
-SRCS =		main.c
+SRCS =		main.c							\
+			sj_cub.c						\
+			sj_stderr.c						\
+			sj_parsing_r.c					\
+			sj_parsing_path.c				\
+			sj_parsing_map.c				\
+			sj_parsing_floor_and_ceiling.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

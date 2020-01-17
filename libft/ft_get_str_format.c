@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_get_str_format.c                              .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/07 03:34:35 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 22:48:42 by alidy       ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/17 02:31:39 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,11 +81,9 @@ char	*ft_get_str_format(const char *s, int *i, va_list list, t_flags *tab)
 {
 	char	*res;
 	char	*temp;
-	char	*nb;
 	int		save;
 
 	save = *i;
-	nb = 0;
 	res = 0;
 	while (s[*i] != '%' && s[*i] != 'X' && (s[*i] < 'a' || s[*i] > 'z'))
 	{
