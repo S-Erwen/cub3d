@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_parsing.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:07:43 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 02:10:07 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/18 16:42:45 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,8 +31,12 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	if ((fd = open(gv[1], 0x0000)) < 0)
 		return (1);
 	while (get_next_line(fd, &line))
+	{
 		if ((ret = sj_gnl_parse(line, cub)) < 0)
 			return (ret);
+	}
+	if ((ret = sj_gnl_parse(line, cub)) < 0)
+		return (ret);
 	if (cub->pc != 8)
 		return (-11);
 	cub->tab_map = ft_split(cub->line_map, '\n');
@@ -55,7 +59,7 @@ int		sj_gnl_parse(char *line, t_cub *cub)
 	if (ret < 0)
 		return (ret);
 	free(line);
-	if (cub->pc == 8)
+	if (cub->pc > 9)
 		map = sj_parsing_map(cub, line);
 	if (map < 0)
 		return (-12);
@@ -93,7 +97,7 @@ int		sj_parse_letter_p2(char *line, t_cub *cub)
 		return (ret);
 	else if (ret == 1)
 		return (1);
-	if ((ret = sj_parse_s(line, cub)) < 0)
+	if ((ret = sj_parse_sprit(line, cub)) < 0)
 		return (ret);
 	else if (ret == 1)
 		return (1);
@@ -101,9 +105,11 @@ int		sj_parse_letter_p2(char *line, t_cub *cub)
 		return (ret);
 	else if (ret == 1)
 		return (1);
-	if ((ret = sj_parse_s(line, cub)) < 0)
+	if ((ret = sj_parse_c(line, cub)) < 0)
 		return (ret);
 	else if (ret == 1)
+		return (1);
+	if (ft_strchr(line, '1'))
 		return (1);
 	return (0);
 }

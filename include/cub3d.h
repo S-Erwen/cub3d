@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   cub3d.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 02:28:58 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/18 13:14:50 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -118,8 +118,8 @@ int				sj_parse_sprit(char *line, t_cub *cub);
 int				sj_parse_f(char *line, t_cub *cub);
 void			sj_parse_f2(char *line, t_cub *cub);
 
-int				sj_parse_s(char *line, t_cub *cub);
-void			sj_parse_s2(char *line, t_cub *cub);
+int				sj_parse_c(char *line, t_cub *cub);
+void			sj_parse_c2(char *line, t_cub *cub);
 
 int				sj_parsing_map(t_cub *cub, char *line);
 char			*sj_parsing_linemap(char *line);

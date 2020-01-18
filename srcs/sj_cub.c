@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_cub.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 02:43:20 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/18 16:46:03 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@ int     sj_cub(int ac, char **gv)
 {
 	t_cub   cub;
 	int     ret;
-	//int		i = 0; // for print map
+	int		i = 0; // for print map
 
 	sj_cub_init(&cub);
 	if (!sj_stderr_argcub(ac, gv, &cub))
@@ -29,8 +29,9 @@ int     sj_cub(int ac, char **gv)
 		sj_stderr_parcing(ret);
 		exit(EXIT_FAILURE);
 	}
-	//while (cub.tab_map[i])
-		dprintf(1, "%s\n", cub.line_map);
+	dprintf(1, "LINE = {\n%s}\n", cub.line_map);
+	while (cub.tab_map[i])
+		dprintf(1, "TAB = {%s}\n", cub.tab_map[i++]);
 	exit(EXIT_SUCCESS);
 	// Faire la suite
 }
@@ -51,5 +52,6 @@ void    sj_cub_init(t_cub *cub)
 	cub->c_color_g = 0;
 	cub->c_color_b = 0;
 	cub->help = 0;
+	cub->line_map = NULL;
 	cub->tab_map = NULL;
 }

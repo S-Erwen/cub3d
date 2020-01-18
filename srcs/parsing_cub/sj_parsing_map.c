@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_parsing_map.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:15:51 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 02:15:09 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/18 16:39:11 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,7 @@ int		sj_parsing_map(t_cub *cub, char *line)
 	{
 		if (ft_strchr(str, '0') || ft_strchr(str, '2'))
 			return (-12);
-		cub->line_map = str;
+		cub->line_map = ft_strdup(str);
 		free(str);
 	}
 	else
@@ -58,12 +58,12 @@ char	*sj_parsing_linemap(char *line)
 	{
 		while (line[i] == ' ')
 			i++;
-		while (line[i] == '1' || line[i] == '0' || line[i] == '2')
-		{
-			str[y] = line[i];
+		while (line[i] == '1' || line[i] == '0' || line[i] == '2'
+			|| line[i] == 'N' || line[i] == 'W'
+			|| line[i] == 'E' || line[i] == 'S')
+			str[y++] = line[i++];
+		if (line[i])
 			i++;
-		}
-		i++;
 	}
 	str[y] = '\0';
 	return (str);
@@ -80,10 +80,13 @@ int		sj_count_map_line(char *line)
 	{
 		while (line[i] == ' ')
 			i++;
-		if (line[i] == '1' || line[i] == '0' || line[i] == '2')
+		if (line[i] == '1' || line[i] == '0' || line[i] == '2'
+		 	|| line[i] == 'N' || line[i] == 'W'
+			|| line[i] == 'E' || line[i] == 'S')
 			count++;
-		if (line[i] != '1' || line[i] != '0' || line[i] != '2'
-			|| line[i] != ' ')
+		if (line[i] != '1' && line[i] != '0' && line[i] != '2'
+			&& line[i] != ' ' && line[i] != 'N' && line[i] != 'W'
+			&& line[i] != 'E' && line[i] != 'S')
 			return (-12);
 		i++;
 	}

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_parsing_path.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:11:42 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 02:17:46 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/18 14:24:31 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,13 +15,10 @@
 
 int		sj_parse_no(char *line, t_cub *cub)
 {
-	static int	up;
-
-	if (up == 1)
-		return (-10);
-	up = 0;
 	if (ft_strnstr(line, "NO", ft_strlen(line)))
 	{
+		if (cub->path_no)
+			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
 			if (!ft_strchr(line, '/'))
@@ -43,13 +40,10 @@ int		sj_parse_no(char *line, t_cub *cub)
 
 int		sj_parse_so(char *line, t_cub *cub)
 {
-	static int	up;
-
-	if (up == 1)
-		return (-10);
-	up = 0;
 	if (ft_strnstr(line, "SO", ft_strlen(line)))
 	{
+		if (cub->path_so)
+			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
 			if (!ft_strchr(line, '/'))
@@ -71,13 +65,10 @@ int		sj_parse_so(char *line, t_cub *cub)
 
 int		sj_parse_we(char *line, t_cub *cub)
 {
-	static int	up;
-
-	if (up == 1)
-		return (-10);
-	up = 0;
 	if (ft_strnstr(line, "WE", ft_strlen(line)))
 	{
+		if (cub->path_we)
+			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
 			if (!ft_strchr(line, '/'))
@@ -99,13 +90,10 @@ int		sj_parse_we(char *line, t_cub *cub)
 
 int		sj_parse_ea(char *line, t_cub *cub)
 {
-	static int	up;
-
-	if (up == 1)
-		return (-10);
-	up = 0;
 	if (ft_strnstr(line, "EA", ft_strlen(line)))
 	{
+		if (cub->path_ea)
+			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
 			if (!ft_strchr(line, '/'))
@@ -127,13 +115,10 @@ int		sj_parse_ea(char *line, t_cub *cub)
 
 int		sj_parse_sprit(char *line, t_cub *cub)
 {
-	static int	up;
-
-	if (up == 1)
-		return (-10);
-	up = 0;
 	if (ft_strnstr(line, "S", ft_strlen(line)))
 	{
+		if (cub->path_sprit)
+			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
 			if (!ft_strchr(line, '/'))
