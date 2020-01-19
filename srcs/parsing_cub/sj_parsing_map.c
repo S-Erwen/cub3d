@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_parsing_map.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:15:51 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 16:39:11 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 03:43:45 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,7 @@ int		sj_parsing_map(t_cub *cub, char *line)
 	str = sj_parsing_linemap(line);
 	if (!str)
 		return (-12);
-	if (str && str[0] != '1' && str[ft_strlen(str) != '1'])
+	if (str[0] != '1' || str[ft_strlen(str) - 1] != '1')
 		return (-12);
 	str = ft_add_char(str, '\n');
 	if (!cub->line_map)

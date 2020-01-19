@@ -6,7 +6,7 @@
 /*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/19 02:53:52 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 03:39:16 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@ int     sj_cub(int ac, char **gv)
 	sj_cub_init(&cub);
 	if (!sj_stderr_argcub(ac, gv, &cub))
 		exit(EXIT_FAILURE);
-	if ((ret = sj_parse_all(&cub, gv)) > 0)
+	if ((ret = sj_parse_all(&cub, gv)) < 0)
 	{
 		ft_printf(RED);
 		ft_printf("Error\n");

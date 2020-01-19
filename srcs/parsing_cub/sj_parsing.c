@@ -6,7 +6,7 @@
 /*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:07:43 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/19 02:53:48 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 03:53:35 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,7 +25,11 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	int		fd;
 	char	*line;
 	int		ret;
+	int		i;
+	int		y;
 
+	i = 0;
+	y = 0;
 	cub->pc = 1;
 	ret = 0;
 	if ((fd = open(gv[1], 0x0000)) < 0)
@@ -37,10 +41,23 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	}
 	if ((ret = sj_gnl_parse(line, cub)) < 0)
 		return (ret);
-	if (cub->pc != 8)
+	if (cub->pc < 10)
 		return (-11);
 	cub->tab_map = ft_split(cub->line_map, '\n');
 	sj_clean_line(cub);
+	close(fd);
+	// ERROR CHECK
+	while (cub->tab_map[i])
+		i++;
+	while (cub->tab_map[i - 1][y])
+		if (cub->tab_map[i - 1][y++] != '1')
+			return (-12);
+	if ((ft_strlen(cub->tab_map[0]) * i) != ft_strlen(cub->line_map))
+		return (-12);
+	if (!ft_strchr(cub->line_map, 'S') && !ft_strchr(cub->line_map, 'W')
+		&& !ft_strchr(cub->line_map, 'E') && !ft_strchr(cub->line_map, 'N'))
+		return (-12);
+	// ERROR CHECK
 	return (0);
 }
 
@@ -58,11 +75,11 @@ int		sj_gnl_parse(char *line, t_cub *cub)
 		cub->pc++;
 	if (ret < 0)
 		return (ret);
-	free(line);
 	if (cub->pc > 9)
 		map = sj_parsing_map(cub, line);
 	if (map < 0)
 		return (-12);
+	free(line);
 	return (0);
 }
 

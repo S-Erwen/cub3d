@@ -6,7 +6,7 @@
 /*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 05:27:18 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/19 02:53:55 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 03:17:48 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,6 +25,7 @@ int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
 		ft_printf("Error\n__ERROR_ARG__\n");
 		return (0);
 	}
+	dprintf(1, "AV[1] = {%s}\n", gv[1]);
 	if (!ft_strnstr(gv[1], ".cub", ft_strlen(gv[1])))
 	{
 		ft_printf(RED);
