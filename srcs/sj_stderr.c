@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_stderr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 05:27:18 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 12:10:36 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 02:53:55 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
 	return (1);
 }
 
-void	sj_stderr_parcing(int nb)
+void	sj_stderr_parsing(int nb)
 {
 	if (nb == -1)
 		ft_printf("__ERROR__RESOLUTION__\n");

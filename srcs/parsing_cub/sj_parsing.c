@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_parsing.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:07:43 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 16:42:45 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 02:53:48 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -17,7 +17,7 @@
 **	LA LIGNE DANS LINE PUIS SI LA LIGNE CORESPOND A L'ID
 **	HOP DANS LA STRUCTURE MAIS SI LA VALEUR DE RETOUR EST
 **	INFERIEUR A 0 : VOIR SJ_STDERR SI C'EST == 1 JE PC++
-**	PC == NORBRE DE PARCING VALIDER SI != 8 MANQUE DES TRUCS
+**	PC == NORBRE DE PARSING VALIDER SI != 8 MANQUE DES TRUCS
 */
 
 int		sj_parse_all(t_cub *cub, char **gv)

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   cub3d.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 12:13:14 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 02:53:19 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -88,7 +88,7 @@ int				sj_cub(int ac, char **gv);
 */
 
 int				sj_stderr_argcub(int ac, char **gv);
-void			sj_stderr_parcing(int nb);
+void			sj_stderr_parsing(int nb);
 
 /*
 ** ______   ___  ______  _____  _____  _   _  _____

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_cub.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 16:46:03 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/19 02:53:52 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ int     sj_cub(int ac, char **gv)
 	{
 		ft_printf(RED);
 		ft_printf("Error\n");
-		sj_stderr_parcing(ret);
+		sj_stderr_parsing(ret);
 		exit(EXIT_FAILURE);
 	}
 	dprintf(1, "LINE = {\n%s}\n", cub.line_map);
