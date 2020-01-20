@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 01:11:25 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 02:59:45 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 06:14:58 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -31,4 +31,14 @@ int		sj_check_tab(t_cub *cub)
 		&& !ft_strchr(cub->line_map, 'E') && !ft_strchr(cub->line_map, 'N'))
 		return (-12);
 	return (0);
+}
+
+int		sj_space_skip(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
+	return (i);
 }

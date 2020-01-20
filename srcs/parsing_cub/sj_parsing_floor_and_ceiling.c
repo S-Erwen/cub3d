@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:13:44 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 14:16:17 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 06:18:45 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,7 @@
 
 int		sj_parse_f(char *line, t_cub *cub)
 {
-	if (ft_strchr(line, 'F'))
+	if (line[0] == 'F')
 	{
 		sj_parse_f2(line, cub);
 		if (cub->f_color_r < 0 || cub->f_color_r < 0 || cub->f_color_b < 0
@@ -49,7 +49,7 @@ void	sj_parse_f2(char *line, t_cub *cub)
 
 int		sj_parse_c(char *line, t_cub *cub)
 {
-	if (ft_strchr(line, 'C'))
+	if (line[0] == 'C')
 	{
 		sj_parse_c2(line, cub);
 		if (cub->c_color_r < 0 || cub->c_color_r < 0 || cub->c_color_b < 0

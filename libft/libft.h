@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/07 14:37:21 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 02:37:05 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 06:43:43 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -85,5 +85,6 @@ char				*ft_add_char(char *s1, char const s2);
 unsigned int		ft_utoi(const char *nptr);
 char				*ft_add_char(char *s1, char const s2);
 char				*ft_strjoin_with_free(char *s1, char *s2, int fre);
+int					ft_ispace(char *line);
 
 #endif

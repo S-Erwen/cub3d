@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:07:43 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 02:59:33 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 06:46:15 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,8 +37,6 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	}
 	if ((ret = sj_gnl_parse(line, cub)) < 0)
 		return (ret);
-	if (cub->pc < 10)
-		return (-11);
 	cub->tab_map = ft_split(cub->line_map, '\n');
 	sj_clean_line(cub);
 	close(fd);
@@ -110,6 +108,10 @@ int		sj_parse_letter_p2(char *line, t_cub *cub)
 		return (ret);
 	else if (ret == 1)
 		return (1);
+	if (ft_strchr(line, '1') && (cub->pc < 8))
+		return (-11);
+	if (!ft_ispace(line))
+		return (-11);
 	if (ft_strchr(line, '1'))
 		return (1);
 	return (0);

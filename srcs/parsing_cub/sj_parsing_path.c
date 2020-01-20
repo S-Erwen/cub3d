@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:11:42 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 14:24:31 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 06:18:14 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,7 +15,10 @@
 
 int		sj_parse_no(char *line, t_cub *cub)
 {
-	if (ft_strnstr(line, "NO", ft_strlen(line)))
+	int		i;
+
+	i = sj_space_skip(line);
+	if (line[i] == 'N' && line[i + 1] == 'O')
 	{
 		if (cub->path_no)
 			return (-10);
@@ -40,7 +43,10 @@ int		sj_parse_no(char *line, t_cub *cub)
 
 int		sj_parse_so(char *line, t_cub *cub)
 {
-	if (ft_strnstr(line, "SO", ft_strlen(line)))
+	int		i;
+
+	i = sj_space_skip(line);
+	if (line[i] == 'S' && line[i + 1] == 'O')
 	{
 		if (cub->path_so)
 			return (-10);
@@ -65,7 +71,10 @@ int		sj_parse_so(char *line, t_cub *cub)
 
 int		sj_parse_we(char *line, t_cub *cub)
 {
-	if (ft_strnstr(line, "WE", ft_strlen(line)))
+	int		i;
+
+	i = sj_space_skip(line);
+	if (line[i] == 'W' && line[i + 1] == 'E')
 	{
 		if (cub->path_we)
 			return (-10);
@@ -90,7 +99,10 @@ int		sj_parse_we(char *line, t_cub *cub)
 
 int		sj_parse_ea(char *line, t_cub *cub)
 {
-	if (ft_strnstr(line, "EA", ft_strlen(line)))
+	int		i;
+
+	i = sj_space_skip(line);
+	if (line[i] == 'E' && line[i + 1] == 'A')
 	{
 		if (cub->path_ea)
 			return (-10);
@@ -115,7 +127,10 @@ int		sj_parse_ea(char *line, t_cub *cub)
 
 int		sj_parse_sprit(char *line, t_cub *cub)
 {
-	if (ft_strnstr(line, "S", ft_strlen(line)))
+	int		i;
+
+	i = sj_space_skip(line);
+	if (line[i] == 'S')
 	{
 		if (cub->path_sprit)
 			return (-10);

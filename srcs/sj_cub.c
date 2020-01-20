@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 04:13:39 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 04:53:35 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,6 +16,7 @@
 int		sj_cub(int ac, char **gv)
 {
 	t_cub	cub;
+	t_mlx	mlx;
 	int		ret;
 	int		i = 0; // for print map
 
@@ -32,10 +33,8 @@ int		sj_cub(int ac, char **gv)
 	dprintf(1, "LINE = {\n%s}\n", cub.line_map);
 	while (cub.tab_map[i])
 		dprintf(1, "TAB = {%s}\n", cub.tab_map[i++]);
-	while (i)
-		free(cub.tab_map[--i]);
-	free(cub.line_map);
-	free(cub.tab_map);
+	sj_cub_free(&cub);
+	sj_creat_new_windows(&mlx, &cub);
 	exit(EXIT_SUCCESS);
 	// Faire la suite
 }
@@ -58,4 +57,17 @@ void	sj_cub_init(t_cub *cub)
 	cub->help = 0;
 	cub->line_map = NULL;
 	cub->tab_map = NULL;
+}
+
+void	sj_cub_free(t_cub *cub)
+{
+	int		i;
+
+	i = 0;
+	while (cub->tab_map[i])
+		i++;
+	while (i)
+		free(cub->tab_map[--i]);
+	free(cub->line_map);
+	free(cub->tab_map);
 }

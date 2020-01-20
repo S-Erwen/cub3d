@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/01/20 01:21:40 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/20 06:48:24 by esidelar    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -22,73 +22,89 @@ CFLAGS 	= 	-Wall -Wextra -Werror
 #								     LIBFT								   	   #
 ################################################################################
 
-SRCSLIB	= 	libft/ft_atoi.c					\
-			libft/ft_bzero.c				\
-			libft/ft_isalnum.c				\
-			libft/ft_isalpha.c				\
-			libft/ft_isascii.c				\
-			libft/ft_isdigit.c				\
-			libft/ft_isprint.c				\
-			libft/ft_memccpy.c				\
-			libft/ft_memchr.c				\
-			libft/ft_memcmp.c				\
-			libft/ft_memcpy.c				\
-			libft/ft_memmove.c 				\
-			libft/ft_memset.c				\
-			libft/ft_strchr.c				\
-			libft/ft_strdup.c				\
-			libft/ft_strjoin.c				\
-			libft/ft_strlcat.c				\
-			libft/ft_strlcpy.c				\
-			libft/ft_strlen.c				\
-			libft/ft_strncmp.c				\
-			libft/ft_strnstr.c				\
-			libft/ft_strrchr.c				\
-			libft/ft_strtrim.c				\
-			libft/ft_substr.c 				\
-			libft/ft_tolower.c				\
-			libft/ft_toupper.c				\
-			libft/ft_calloc.c 				\
-			libft/ft_itoa.c 				\
-			libft/ft_putchar_fd.c 			\
-			libft/ft_putendl_fd.c 			\
-			libft/ft_putnbr_fd.c  			\
-			libft/ft_putstr_fd.c  			\
-			libft/ft_split.c				\
-			libft/ft_strmapi.c				\
-			libft/ft_lstadd_front_bonus.c 	\
-			libft/ft_lstclear_bonus.c		\
-			libft/ft_lstdelone_bonus.c 		\
-			libft/ft_lstiter_bonus.c		\
-			libft/ft_lstlast_bonus.c		\
-			libft/ft_lstmap_bonus.c			\
-			libft/ft_lstnew_bonus.c			\
-			libft/ft_lstsize_bonus.c		\
-			libft/ft_lstadd_back_bonus.c	\
-			libft/ft_get_str_format.c 		\
-			libft/ft_hexa_format.c			\
-			libft/ft_int_format.c			\
-			libft/ft_itoa_base.c			\
-			libft/ft_parsing_flags.c		\
-			libft/ft_printf.c				\
-			libft/ft_str_format.c 			\
-			libft/ft_un_format.c			\
-			libft/get_next_line.c 			\
-			libft/get_next_line_utils.c		\
-			libft/ft_add_char.c
+SRCSLIB	= 	libft/ft_printf.c \
+			libft/srcs/sj_parce.c \
+			libft/srcs/sj_pourcent.c \
+			libft/srcs/sj_conversion.c \
+			libft/srcs/sj_parce_main.c \
+			libft/srcs/sj_parce_s_point_fin.c \
+			libft/srcs/sj_parce_zero_mp.c \
+			libft/srcs/sj_not_flag.c \
+			libft/srcs/sj_zero.c \
+			libft/srcs/sj_reset_char.c \
+			libft/srcs/sj_minfors.c \
+			libft/srcs/sj_minus.c \
+			libft/srcs/sj_to_pf.c \
+			libft/srcs/sj_part_two.c \
+			libft/srcs/sj_part_three.c \
+			libft/srcs/sj_printf_norm.c \
+			libft/ft_memset.c \
+			libft/ft_bzero.c \
+			libft/ft_memcpy.c \
+			libft/ft_memccpy.c \
+			libft/ft_memmove.c \
+			libft/ft_memchr.c \
+			libft/ft_memcmp.c \
+			libft/ft_strlen.c \
+			libft/ft_isalpha.c \
+			libft/ft_isdigit.c \
+			libft/ft_isalnum.c \
+			libft/ft_isascii.c \
+			libft/ft_isprint.c \
+			libft/ft_toupper.c \
+			libft/ft_tolower.c \
+			libft/ft_strchr.c \
+			libft/ft_strrchr.c \
+			libft/ft_strncmp.c \
+			libft/ft_strlcpy.c \
+			libft/ft_strlcat.c \
+			libft/ft_strnstr.c \
+			libft/ft_atoi.c \
+			libft/ft_calloc.c \
+			libft/ft_strdup.c \
+			libft/ft_substr.c \
+			libft/ft_strjoin.c \
+			libft/ft_strtrim.c \
+			libft/ft_split.c \
+			libft/ft_itoa.c \
+			libft/ft_strmapi.c \
+			libft/ft_putchar_fd.c \
+			libft/ft_putstr_fd.c \
+			libft/ft_putendl_fd.c \
+			libft/ft_putnbr_fd.c \
+			libft/ft_putnbr_base.c \
+			libft/ft_putchar.c \
+			libft/ft_putstr.c \
+			libft/ft_itoa_base.c \
+			libft/ft_add_char.c \
+			libft/ft_utoa_base.c \
+			libft/ft_ltoa.c \
+			libft/ft_strilen.c \
+			libft/ft_neg_atoi.c \
+			libft/ft_strllen.c \
+			libft/ft_lltoa_base.c \
+			libft/ft_douilled_putstr.c \
+			libft/ft_utoi.c \
+			libft/ft_strjoin_with_free.c \
+			libft/get_next_line.c \
+			libft/get_next_line_utils.c \
+			libft/ft_ispace.c
+
 
 ################################################################################
 #								      CUB3D									   #
 ################################################################################
 
-SRCS =		main.c									\
-			srcs/sj_cub.c							\
-			srcs/sj_stderr.c						\
-			srcs/sj_parsing_r.c						\
-			srcs/sj_parsing_path.c					\
-			srcs/sj_parsing_map.c					\
-			srcs/sj_parsing_floor_and_ceiling.c		\
-			srcs/sj_check_tab.c
+SRCS =		main.c \
+			srcs/sj_cub.c \
+			srcs/sj_stderr.c \
+			srcs/parsing_cub/sj_parsing.c \
+			srcs/parsing_cub/sj_parsing_r.c \
+			srcs/parsing_cub/sj_parsing_path.c \
+			srcs/parsing_cub/sj_parsing_map.c \
+			srcs/parsing_cub/sj_parsing_floor_and_ceiling.c \
+			srcs/parsing_cub/sj_check_tab.c \
+			srcs/sj_mlx/sj_windows.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

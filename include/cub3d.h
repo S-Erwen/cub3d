@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 02:27:05 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 06:15:18 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,6 +18,7 @@
 # include "../libft/libftprintf.h"
 # include "../libft/get_next_line.h"
 # include <fcntl.h>
+# include "../minilibx/mlx.h"
 
 /*
 **  _____  _____  _      _____ ______
@@ -42,13 +43,21 @@
 # define BOLDCYAN "\033[1;36m"
 # define RESET "\033[0m"
 
+# define OXRED 0xFF0000
+# define OXGREEN 0x0CFF00
+# define OXYELLOW 0xFFF900
+# define OXBLUE 0x0012FF
+# define OXMAGENTA 0x8D00FF
+# define OXCYAN 0x00FFF3
+# define OXRESET 0xFFFFFF
+
 /*
-**  _____  _____ ______  _   _  _____  _____
-** /  ___||_   _|| ___ \| | | |/  __ \|_   _|
-** \ `--.   | |  | |_/ /| | | || /  \/  | |
-**  `--. \  | |  |    / | | | || |      | |
-** /\__/ /  | |  | |\ \ | |_| || \__/\  | |
-** \____/   \_/  \_| \_| \___/  \____/  \_/
+**  _____ ___________ _   _ _____ _____ _____
+** /  ___|_   _| ___ \ | | /  __ \_   _/  ___|
+** \ `--.  | | | |_/ / | | | /  \/ | | \ `--.
+**  `--. \ | | |    /| | | | |     | |  `--. \
+** /\__/ / | | | |\ \| |_| | \__/\ | | /\__/ /
+** \____/  \_/ \_| \_|\___/ \____/ \_/ \____/
 */
 
 typedef struct	s_cub
@@ -72,6 +81,12 @@ typedef struct	s_cub
 	int			pc;
 }				t_cub;
 
+typedef struct	s_mlx
+{
+	void		*mlx;
+	void		*windows;
+}				t_mlx;
+
 /*
 **  _____  _   _ ______
 ** /  __ \| | | || ___ \
@@ -83,6 +98,7 @@ typedef struct	s_cub
 
 int				sj_cub(int ac, char **gv);
 void    		sj_cub_init(t_cub *cub);
+void			sj_cub_free(t_cub *cub);
 
 /*
 **  _____  _____ ______  _____ ______ ______
@@ -131,5 +147,18 @@ void			sj_clean_line(t_cub *cub);
 int				sj_count_clean(t_cub *cub);
 
 int				sj_check_tab(t_cub *cub);
+int				sj_space_skip(char *str);
+
+/*
+** ___  ___ _     __   __
+** |  \/  || |    \ \ / /
+** | .  . || |     \ V /
+** | |\/| || |     /   \
+** | |  | || |____/ /^\ \
+** \_|  |_/\_____/\/   \/
+*/
+
+void			sj_creat_new_windows(t_mlx *mlx, t_cub *cub);
+
 
 #endif

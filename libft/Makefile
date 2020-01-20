@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/07 14:37:49 by esidelar     #+#   ##    ##    #+#        #
-#    Updated: 2019/11/13 22:13:28 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/20 06:43:57 by esidelar    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -46,7 +46,8 @@ SRCS 	= 	ft_memset.c \
 		  	ft_putchar_fd.c \
 		  	ft_putstr_fd.c \
 		  	ft_putendl_fd.c \
-		  	ft_putnbr_fd.c
+		  	ft_putnbr_fd.c \
+			ft_ispace.c
 
 BONUS	=	ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \

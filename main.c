@@ -1,6 +1,5 @@
 #include "./libft/libft.h"
 #include "./include/cub3d.h"
-#include "minilibx/mlx.h"
 
 // typedef struct    data_s
 // {

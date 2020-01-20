@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:10:54 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/18 14:24:03 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 06:18:36 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,7 @@ int		sj_parse_r(char *line, t_cub *cub)
 	int			i;
 
 	i = 0;
-	if (ft_strchr(line, 'R'))
+	if (line[0] == 'R')
 	{
 		if (cub->res_x || cub->res_y)
 			return (-10);
