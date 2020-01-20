@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/12/08 04:59:23 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 02:35:37 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 04:06:06 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,5 +29,6 @@ char	*ft_add_char(char *s1, char const s2)
 	}
 	str[i] = s2;
 	str[++i] = '\0';
+	free(s1);
 	return (str);
 }

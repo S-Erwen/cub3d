@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2019/10/08 23:16:28 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/17 20:23:27 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 04:09:32 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -113,8 +113,6 @@ char			**ft_split(char const *s, char c)
 {
 	size_t		len;
 	size_t		i;
-	size_t		y;
-	size_t		u;
 	char		**strs;
 
 	i = 0;
@@ -127,9 +125,7 @@ char			**ft_split(char const *s, char c)
 		return (strs = mal_char(len, s, c, 1));
 	if (!(strs = mal_char(len, s, c, 0)))
 		return (NULL);
-	y = 0;
-	u = 0;
-	if (!(strs[u] = (char *)malloc(sizeof(char) * (u_detect(s, c, 0) + 1))))
+	if (!(strs[0] = (char *)malloc(sizeof(char) * (u_detect(s, c, 0) + 1))))
 		return (0);
 	strs = ft_spt_part_two(c, strs, i, s);
 	return (strs);

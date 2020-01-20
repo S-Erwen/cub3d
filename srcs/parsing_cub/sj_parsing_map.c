@@ -6,13 +6,12 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:15:51 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 02:59:19 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 04:36:23 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
 
 /*
 **	PAS DU TOUT FINI !!!!
@@ -26,7 +25,10 @@ int		sj_parsing_map(t_cub *cub, char *line)
 	if (!str)
 		return (-12);
 	if (str[0] != '1' || str[ft_strlen(str) - 1] != '1')
+	{
+		free(str);
 		return (-12);
+	}
 	str = ft_add_char(str, '\n');
 	if (!cub->line_map)
 	{
@@ -36,7 +38,7 @@ int		sj_parsing_map(t_cub *cub, char *line)
 		free(str);
 	}
 	else
-		cub->line_map =	ft_strjoin_with_free(cub->line_map,	str, 3);
+		cub->line_map = ft_strjoin_with_free(cub->line_map, str, 3);
 	return (0);
 }
 
@@ -81,7 +83,7 @@ int		sj_count_map_line(char *line)
 		while (line[i] == ' ')
 			i++;
 		if (line[i] == '1' || line[i] == '0' || line[i] == '2'
-		 	|| line[i] == 'N' || line[i] == 'W'
+			|| line[i] == 'N' || line[i] == 'W'
 			|| line[i] == 'E' || line[i] == 'S')
 			count++;
 		if (line[i] != '1' && line[i] != '0' && line[i] != '2'
