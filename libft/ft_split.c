@@ -3,101 +3,134 @@
 /*                                                              /             */
 /*   ft_split.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/10 13:21:43 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/11 14:23:26 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 23:16:28 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/17 20:23:27 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	nb_words(char const *s, char c)
+static size_t	strs_char_len(char const *s, char c)
 {
-	int i;
-	int res;
-	int ok;
+	size_t		i;
+	size_t		len;
 
 	i = 0;
-	res = 0;
-	ok = 0;
-	while (s[i] == c && s[i])
+	len = 0;
+	while (s[i])
+	{
+		while (s[i] == c)
+			i++;
+		if (s[i] == '\0')
+			return (len);
+		len++;
+		i++;
+	}
+	return (len);
+}
+
+static size_t	u_detect(char const *s, char c, int u)
+{
+	size_t		i;
+	size_t		len;
+
+	i = 0;
+	len = 0;
+	while (s[i] == c)
 		i++;
 	while (s[i])
 	{
-		if (s[i] != c)
-			ok = 1;
-		if (s[i] == c)
+		while (s[i] == c)
 		{
-			while (s[i] == c)
-				i++;
-			if (s[i])
-				res++;
-		}
-		else
+			if (s[i] == c && s[i + 1] != c)
+				u--;
 			i++;
-	}
-	return (res + ok);
-}
-
-static int	complete_tab(char **tab, char const *s, int nb_w, char c)
-{
-	int i;
-	int j;
-	int y;
-
-	i = -1;
-	j = 0;
-	y = 0;
-	while (s[j] == c && s[j])
-		j++;
-	while (++i < nb_w)
-	{
-		while (s[j + y] != c && s[j + y])
-			y++;
-		if ((tab[i] = malloc(sizeof(char) * y + 1)) == NULL)
-			return (0);
-		y = 0;
-		while (s[j] != c && s[j])
-			tab[i][y++] = s[j++];
-		tab[i][y] = 0;
-		while (s[j] == c && s[j])
-			j++;
-		y = 0;
-	}
-	return (1);
-}
-
-static char	**clear_tab(char **tab, int nb_w)
-{
-	int i;
-
-	i = 0;
-	while (i < nb_w && tab[i])
-	{
-		free(tab[i]);
+		}
+		while (u == 0 && s[i])
+		{
+			len++;
+			i++;
+			if (s[i] == c)
+				return (len);
+		}
 		i++;
 	}
-	free(tab);
-	return (tab);
+	return (len);
 }
 
-char		**ft_split(char const *s, char c)
+static char		**mal_char(int len, const char *s, int c, int error)
 {
-	char	**tab;
-	int		nb_w;
+	char		**strs;
 
-	if (s)
+	len = strs_char_len(s, c);
+	if (error)
 	{
-		nb_w = nb_words(s, c);
-		if ((tab = malloc(sizeof(char *) * (nb_w + 1))) == NULL)
-			return (0);
-		tab[nb_w] = 0;
-		if (complete_tab(tab, s, nb_w, c) == 0)
-			return (clear_tab(tab, nb_w));
+		if (!(strs = (char **)malloc(sizeof(char *) * 1)))
+			return (NULL);
+		strs[0] = 0;
 	}
 	else
-		tab = 0;
-	return (tab);
+	{
+		if (!(strs = (char **)malloc(sizeof(char *) * (len + 1))))
+			return (NULL);
+	}
+	return (strs);
+}
+
+static char		**ft_spt_part_two(char c, char **strs, int i, const char *s)
+{
+	size_t		y;
+	size_t		u;
+	size_t		len;
+
+	len = strs_char_len(s, c);
+	u = 0;
+	y = 0;
+	while (len > 0)
+	{
+		if (s[i] == c && s[i])
+		{
+			strs[u][y] = '\0';
+			u++;
+			y = 0;
+			if (!(strs[u] = malloc(sizeof(char) * (u_detect(s, c, u) + 1))))
+				return (0);
+			while (s[i] == c && s[i])
+				i++;
+		}
+		strs[u][y++] = s[i++];
+		len--;
+	}
+	strs[u][y] = '\0';
+	strs[++u] = NULL;
+	return (strs);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	size_t		len;
+	size_t		i;
+	size_t		y;
+	size_t		u;
+	char		**strs;
+
+	i = 0;
+	if (!s)
+		return (NULL);
+	while (s[i] == c && s[i])
+		i++;
+	len = strs_char_len(s, c);
+	if (!len || !s[i])
+		return (strs = mal_char(len, s, c, 1));
+	if (!(strs = mal_char(len, s, c, 0)))
+		return (NULL);
+	y = 0;
+	u = 0;
+	if (!(strs[u] = (char *)malloc(sizeof(char) * (u_detect(s, c, 0) + 1))))
+		return (0);
+	strs = ft_spt_part_two(c, strs, i, s);
+	return (strs);
 }

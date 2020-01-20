@@ -3,29 +3,33 @@
 /*                                                              /             */
 /*   ft_putnbr_fd.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/12 11:05:51 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/13 14:35:20 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 19:34:36 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/16 23:25:15 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void			ft_putnbr_fd(int n, int fd)
 {
-	long	number;
-	int		mod;
-
-	number = n;
-	if (number < 0)
+	if (n >= 0 && n <= 9)
+		ft_putchar_fd(n + '0', fd);
+	else if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n < 0)
 	{
-		write(fd, "-", 1);
-		number *= -1;
+		n = -n;
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(n, fd);
 	}
-	if (number > 9)
-		ft_putnbr_fd(number / 10, fd);
-	mod = number % 10 + 48;
-	write(fd, &mod, 1);
+	else if (n > 0)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n, fd);
 }

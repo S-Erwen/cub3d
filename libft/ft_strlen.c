@@ -3,25 +3,22 @@
 /*                                                              /             */
 /*   ft_strlen.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/07 13:54:53 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/17 22:42:19 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 11:38:45 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/10 22:03:15 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t		i;
 
 	i = 0;
-	if (s)
-	{
-		while (s[i])
-			i++;
-	}
+	while (s[i])
+		i++;
 	return (i);
 }

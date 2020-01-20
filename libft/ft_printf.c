@@ -3,99 +3,92 @@
 /*                                                              /             */
 /*   ft_printf.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/06 00:53:29 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 22:52:23 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/18 01:32:23 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2020/01/20 02:27:25 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libftprintf.h"
 
-int		ft_complete_pointer(t_flags tab, va_list lst)
+void	sj_initialise_pt2(t_print *t)
 {
-	char	*temp;
-	int		res;
-
-	temp = ft_ullitoa_base((intptr_t)va_arg(lst, void *), "0123456789abcdef");
-	if (tab.point == 1 && tab.precision <= 0 && ft_memcmp("0", temp, 1) == 0)
-	{
-		free(temp);
-		temp = ft_strdup("");
-	}
-	temp = ft_fstrjoin(ft_strdup("0x"), temp);
-	res = ft_hexa_format(tab, temp);
-	return (res);
+	t->minus = 0;
+	t->zero = 0;
+	t->point = 0;
+	t->star = 0;
+	t->star_two = 0;
+	t->x_parce.nb = 0;
+	t->x_parce.i = 0;
+	t->x_parce.temp = 0;
 }
 
-int		ft_complete_str(t_flags tab, va_list lst)
+void	sj_initialise(t_print *t)
 {
-	int		res;
-	char	*temp;
-
-	temp = 0;
-	if (tab.c == 'd' || tab.c == 'i')
-		res = ft_int_format(tab, va_arg(lst, int));
-	else if (tab.c == 'c')
-		res = ft_char_format(tab, (char)va_arg(lst, int));
-	else if (tab.c == 'u')
-		res = ft_un_format(tab, va_arg(lst, unsigned int));
-	else if (tab.c == 'p')
-		res = ft_complete_pointer(tab, lst);
-	else if (tab.c == 'x' || tab.c == 'X')
-	{
-		temp = ft_itoa_base(va_arg(lst, int), "0123456789abcdef");
-		if (tab.c == 'X')
-			ft_strtoupper(&temp);
-		res = ft_hexa_format(tab, temp);
-	}
-	else if (tab.c == 's')
-		res = ft_str_format(tab, va_arg(lst, char *));
-	else
-		res = ft_char_format(tab, '%');
-	return (res);
+	if (t->x_parce.reset == 1)
+		free(t->x_parce.gest);
+	if (t->flags)
+		free(t->flags);
+	if (t->precision)
+		free(t->precision);
+	if (t->pf)
+		free(t->pf);
+	if (t->gestion)
+		free(t->gestion);
+	if (t->x_write.str)
+		free(t->x_write.str);
+	t->flags = NULL;
+	t->precision = NULL;
+	t->pf = NULL;
+	t->gestion = NULL;
+	t->x_write.str = NULL;
+	t->x_parce.reset = 0;
+	sj_initialise_pt2(t);
 }
 
-int		ft_printf_format(const char *str, int *i, va_list lst)
+void	sj_set(t_print *t)
 {
-	char	*temp;
-	int		res;
-	t_flags	tab;
-
-	tab = ft_init_struct();
-	temp = ft_get_str_format(str, i, lst, &tab);
-	ft_parsing_flags(&tab, temp);
-	res = ft_complete_str(tab, lst);
-	free(temp);
-	return (res);
+	t->flags = NULL;
+	t->precision = NULL;
+	t->pf = NULL;
+	t->gestion = NULL;
+	t->x_write.str = NULL;
+	t->x_parce.reset = 0;
 }
 
-int		ft_printf(const char *str, ...)
+void	sj_initialize_in_printf(t_print *t)
 {
+	t->back_slash = 0;
+	t->cheat = 0;
+	t->i = 0;
+	t->x_write.finish = NULL;
+}
+
+int		ft_printf(const char *s, ...)
+{
+	t_print	t;
 	int		i;
-	int		res;
-	va_list	list;
 
-	i = 0;
-	res = 0;
-	va_start(list, str);
-	if (!str)
-		return (-1);
-	while (str[i])
+	sj_set(&t);
+	sj_initialise(&t);
+	sj_initialize_in_printf(&t);
+	if (!sj_parsing_percent(s))
+		return (ft_putstr((char *)s));
+	va_start(t.list, s);
+	while (s[t.i])
 	{
-		if (str[i] == '%')
-		{
-			i++;
-			res += ft_printf_format(str, &i, list);
-		}
-		else
-		{
-			write(1, &str[i], 1);
-			res++;
-		}
-		i++;
+		while (s[t.i] == '%' && s[t.i + 1] == '%' && s[t.i])
+			sj_main_printf(&t, 1, s);
+		if (s[t.i] == '%' && s[t.i + 1])
+			sj_main_printf(&t, 0, s);
+		if (s[t.i] != '%' && s[t.i])
+			t.x_write.finish = sj_free_add(t.x_write.finish, s[t.i++]);
+		sj_initialise(&t);
 	}
-	va_end(list);
-	return (res);
+	va_end(t.list);
+	i = ft_putstr(t.x_write.finish) + t.cheat;
+	free(t.x_write.finish);
+	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_lstmap_bonus.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/12 12:32:48 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/18 16:11:18 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/24 13:47:45 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/16 23:59:59 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,20 +15,27 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list		*liste;
-	t_list		*maillon;
+	t_list	*elem;
+	t_list	*dock;
 
-	liste = NULL;
-	maillon = NULL;
-	while (lst != 0)
+	if (!f || !del)
+		return (NULL);
+	dock = NULL;
+	while (lst)
 	{
-		if ((maillon = ft_lstnew((*f)(lst->content))) == NULL)
+		if (!(elem = ft_lstnew((*f)(lst->content))))
 		{
-			ft_lstclear(&liste, (*del));
-			return (liste);
+			ft_lstclear(&dock, del);
+			return (NULL);
 		}
-		ft_lstadd_back(&liste, maillon);
+		if (elem)
+		{
+			if (!dock)
+				dock = elem;
+			else
+				ft_lstlast(dock)->next = elem;
+		}
 		lst = lst->next;
 	}
-	return (liste);
+	return (dock);
 }

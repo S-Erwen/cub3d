@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_lstdelone_bonus.c                             .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/12 11:57:00 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/15 14:44:58 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/14 06:08:00 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/13 22:10:35 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	(*del)(lst->content);
-	free(lst);
+	if (lst)
+	{
+		(*del)(lst->content);
+		free(lst);
+	}
 }

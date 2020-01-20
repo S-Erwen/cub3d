@@ -3,104 +3,48 @@
 /*                                                              /             */
 /*   ft_itoa_base.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/12/07 06:47:41 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 02:33:08 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Created: 2019/12/03 02:42:38 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/23 03:44:15 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int				ft_nb_char(unsigned long long nb, int len)
+static int		lenerint(int n, char *base)
 {
-	int size;
+	long long	len;
 
-	size = 0;
-	if (nb == 0)
-		size = 1;
-	while (nb > 0)
+	len = 0;
+	if (n >= 0 && n <= 9)
+		return (1);
+	else if (n == -2147483648)
+		return (11);
+	while (n)
 	{
-		nb = nb / len;
-		size++;
+		n /= ft_strlen(base);
+		len++;
 	}
-	return (size);
+	return (len);
 }
 
-char			*ft_itoa_base(int nb, char *base)
+char			*ft_itoa_base(long int n, char *base)
 {
-	int				len;
-	int				mod;
-	char			*res;
-	int				size;
-	unsigned int	temp;
+	char				*str;
+	unsigned long int	tp;
+	int					len;
 
-	len = ft_strlen(base);
-	temp = nb;
-	size = ft_nb_char(temp, len);
-	if (!(res = ft_calloc((size + 1), sizeof(char))))
-		return (0);
-	while (temp > 0)
+	tp = (unsigned long int)n;
+	len = lenerint(tp, base);
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	str[len] = '\0';
+	while (len--)
 	{
-		mod = temp % len;
-		temp = temp / len;
-		res[size - 1] = base[mod];
-		size--;
+		str[len] = base[tp % ft_strlen(base)];
+		tp /= ft_strlen(base);
 	}
-	return (res);
-}
-
-char			*ft_ullitoa_base(unsigned long long nb, char *base)
-{
-	int				len;
-	int				mod;
-	char			*res;
-	int				size;
-
-	len = ft_strlen(base);
-	size = ft_nb_char(nb, len);
-	if (!(res = ft_calloc((size + 1), sizeof(char))))
-		return (0);
-	if (nb == 0)
-	{
-		free(res);
-		res = ft_strdup("0");
-	}
-	while (nb > 0)
-	{
-		mod = nb % len;
-		nb = nb / len;
-		res[size - 1] = base[mod];
-		size--;
-	}
-	return (res);
-}
-
-void			ft_strtoupper(char **str)
-{
-	int i;
-
-	i = 0;
-	while ((*str)[i])
-	{
-		if ((*str)[i] >= 'a' && (*str)[i] <= 'z')
-			(*str)[i] = (*str)[i] - 32;
-		i++;
-	}
-}
-
-unsigned int	ft_longlen(unsigned int nb)
-{
-	int		res;
-
-	res = 0;
-	if (nb == 0)
-		res = 1;
-	while (nb > 0)
-	{
-		nb = nb / 10;
-		res++;
-	}
-	return (res);
+	return (str);
 }

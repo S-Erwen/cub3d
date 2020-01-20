@@ -3,81 +3,79 @@
 /*                                                              /             */
 /*   ft_strtrim.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/09 11:03:38 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/07 17:38:12 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/08 22:08:22 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/17 20:22:44 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static int	nb_start(char const *s, char const *set)
+static int	check_c(const char *set, char c)
 {
-	int i;
-	int j;
+	int		i;
 
 	i = 0;
-	j = 0;
-	while (set[j])
+	while (set[i])
 	{
-		if (s[i] == set[j] && s[i])
-		{
-			i++;
-			j = 0;
-		}
-		else
-			j++;
+		if (set[i] == c)
+			return (1);
+		i++;
 	}
-	return (i);
+	return (0);
 }
 
-static int	nb_end(char const *s, char const *set, int size)
+static int	last_lened(int last, const char *s1, const char *set, int first)
 {
-	int j;
-	int i;
+	while (s1[last])
+		last++;
+	last--;
+	while (check_c(set, s1[first]))
+		first++;
+	while (check_c(set, s1[last]))
+		last--;
+	return (last);
+}
 
-	j = 0;
-	i = size - 1;
-	while (set[j])
-	{
-		if (i > 0 && s[i] == set[j])
-		{
-			i--;
-			j = 0;
-		}
-		else
-			j++;
-	}
-	return (size - i - 1);
+int			first_lened(int last, const char *s1, const char *set, int first)
+{
+	while (s1[last])
+		last++;
+	last--;
+	while (check_c(set, s1[first]))
+		first++;
+	while (check_c(set, s1[last]))
+		last--;
+	return (first);
 }
 
 char		*ft_strtrim(char const *s1, char const *set)
 {
-	int		s_total;
-	int		start;
-	int		end;
-	char	*str;
-	int		i;
+	size_t		first;
+	size_t		last;
+	size_t		i;
+	char		*str;
 
-	i = -1;
-	str = 0;
-	if (s1)
+	first = 0;
+	last = 0;
+	i = 0;
+	if (!s1 || !set)
+		return (NULL);
+	last = last_lened(last, s1, set, first);
+	first = first_lened(last, s1, set, first);
+	if (first == ft_strlen(s1))
 	{
-		if (!set)
-			return (str = ft_strdup(s1));
-		s_total = ft_strlen(s1);
-		start = nb_start(s1, set);
-		end = nb_end(s1, set, s_total);
-		if (s_total - start - end <= 0)
-			return (ft_strdup(""));
-		if (!(str = malloc((s_total - start - end + 1) * sizeof(char))))
-			return (0);
-		while (start + ++i < s_total - end)
-			str[i] = s1[start + i];
-		str[i] = 0;
+		if (!(str = (char *)malloc(sizeof(char) * 0)))
+			return (NULL);
+		str[0] = '\0';
+		return (str);
 	}
+	if (!(str = (char *)malloc(sizeof(char) * ((last - first) + 2))))
+		return (NULL);
+	while (first <= last)
+		str[i++] = s1[first++];
+	str[i] = '\0';
 	return (str);
 }

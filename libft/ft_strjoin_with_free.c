@@ -3,17 +3,30 @@
 /*                                                              /             */
 /*   ft_strjoin_with_free.c                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/01/17 01:02:29 by sanjaro      #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/17 01:02:54 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Created: 2020/01/20 02:34:20 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2020/01/20 02:39:23 by esidelar    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_strjoin.c                                     .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2019/10/08 21:59:19 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2020/01/01 09:20:24 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	sj_free_s1_or_s2(char *s1, char *s2, int fre)
+void			sj_free_s1_or_s2_free(char *s1, char *s2, int fre)
 {
 	if (fre == 1)
 	{
@@ -25,9 +38,16 @@ void	sj_free_s1_or_s2(char *s1, char *s2, int fre)
 		free(s2);
 		s2 = NULL;
 	}
+	if (fre == 3)
+	{
+		free(s1);
+		s1 = NULL;
+		free(s2);
+		s2 = NULL;
+	}
 }
 
-char	*ft_strjoin_with_free(char *s1, char *s2, int fre)
+char			*ft_strjoin_with_free(char *s1, char *s2, int fre)
 {
 	unsigned int	i;
 	unsigned int	y;
@@ -49,6 +69,6 @@ char	*ft_strjoin_with_free(char *s1, char *s2, int fre)
 	while (s2[y])
 		str[i++] = s2[y++];
 	str[i] = '\0';
-	sj_free_s1_or_s2(s1, s2, fre);
+	sj_free_s1_or_s2_free(s1, s2, fre);
 	return (str);
 }

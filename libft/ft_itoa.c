@@ -3,54 +3,46 @@
 /*                                                              /             */
 /*   ft_itoa.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/10 15:10:07 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/29 16:24:32 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/09 18:28:44 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/12/23 03:43:35 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		nb_char(long n)
+static unsigned int	ft_getlen(unsigned int n)
 {
-	int res;
+	unsigned int	len;
 
-	res = 0;
-	if (n == 0)
-		res++;
-	while (n > 0)
-	{
-		res++;
-		n = n / 10;
-	}
-	return (res);
+	len = 1;
+	while (n /= 10)
+		len++;
+	return (len);
 }
 
-char			*ft_itoa(int n)
+char				*ft_itoa(int n)
 {
-	int		nb_c;
-	int		i;
-	char	*str;
-	long	temp;
+	char			*res;
+	int				i;
+	char			sing;
+	unsigned int	unb;
 
-	temp = n;
-	temp = temp > 0 ? temp : (temp * -1);
-	nb_c = n >= 0 ? 0 : 1;
-	nb_c += nb_char(temp);
-	i = nb_c - 1;
-	if ((str = malloc(sizeof(char) * (nb_c + 1))) == NULL)
-		return (0);
-	str[nb_c] = 0;
-	while (i >= 0)
+	sing = n < 0;
+	unb = (sing ? -n : n);
+	i = ft_getlen(unb) + sing;
+	if (!(res = malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	res[i] = 0;
+	res[0] = '-';
+	if (unb == 0)
+		res[0] = '0';
+	while (unb)
 	{
-		if (n < 0 && i == 0)
-			str[i] = '-';
-		else
-			str[i] = (temp % 10 + 48);
-		temp = temp / 10;
-		i--;
+		res[--i] = unb % 10 + '0';
+		unb /= 10;
 	}
-	return (str);
+	return (res);
 }

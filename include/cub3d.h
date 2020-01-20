@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   cub3d.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/19 02:53:44 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 02:27:05 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,9 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
+# include "../libft/libftprintf.h"
+# include "../libft/get_next_line.h"
+# include <fcntl.h>
 
 /*
 **  _____  _____  _      _____ ______
@@ -126,5 +129,7 @@ char			*sj_parsing_linemap(char *line);
 int				sj_count_map_line(char *line);
 void			sj_clean_line(t_cub *cub);
 int				sj_count_clean(t_cub *cub);
+
+int				sj_check_tab(t_cub *cub);
 
 #endif

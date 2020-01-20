@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   ft_lstadd_back_bonus.c                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/12 11:51:57 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/10/16 18:02:30 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/14 05:58:17 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/10/17 20:24:01 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,14 +15,11 @@
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	t_list	*maillon;
-
-	maillon = ft_lstlast(*alst);
-	if (maillon == 0)
+	if (new != NULL)
 	{
-		new->next = NULL;
-		*alst = new;
+		if (*alst == NULL)
+			*alst = new;
+		else
+			ft_lstlast(*alst)->next = new;
 	}
-	else
-		maillon->next = new;
 }

@@ -3,94 +3,108 @@
 /*                                                              /             */
 /*   get_next_line_utils.c                            .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/21 16:14:42 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/14 22:40:41 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/12 22:12:02 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2020/01/20 02:23:41 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_gnl	*recup_maillon(int fd, t_gnl **liste)
+size_t	ft_strlen_gnl(const char *s)
 {
-	t_gnl	*maillon;
-	t_gnl	*tmp;
+	size_t		i;
 
-	maillon = *liste;
-	if (maillon)
-		while (maillon)
-		{
-			tmp = maillon->next;
-			if (fd == maillon->fd)
-				return (maillon);
-			maillon = tmp;
-		}
-	maillon = ft_listnew(fd, liste);
-	return (maillon);
-}
-
-t_gnl	*ft_listnew(int fd, t_gnl **liste)
-{
-	t_gnl	*maillon;
-
-	if (!(maillon = malloc(sizeof(t_gnl))))
+	if (!s)
 		return (0);
-	maillon->fd = fd;
-	maillon->content = 0;
-	maillon->next = *liste;
-	*liste = maillon;
-	return (maillon);
-}
-
-int		rm_lst(int fd, t_gnl **lst)
-{
-	t_gnl	*maillon;
-	t_gnl	*temp;
-
-	maillon = *lst;
-	temp = 0;
-	if (maillon->fd == fd)
-	{
-		*lst = maillon->next;
-		free(maillon->content);
-		free(maillon);
-		return (0);
-	}
-	while ((maillon->next)->fd != fd)
-		maillon = (*lst)->next;
-	temp = maillon->next;
-	maillon->next = (maillon->next)->next;
-	free(temp->content);
-	free(temp);
-	return (0);
-}
-
-int		ft_strchr_m(char *s, int c)
-{
-	int i;
-
 	i = 0;
-	if (s)
-		while (s[i])
-		{
-			if (s[i] == c)
-				return (1);
-			i++;
-		}
-	return (0);
-}
-
-int		ft_strlen_m(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (s)
-	{
-		while (s[i])
-			i++;
-	}
+	while (s[i])
+		i++;
 	return (i);
+}
+
+char	*ft_strdup_gnl(const char *s)
+{
+	int		i;
+	char	*str;
+
+	if (!(str = malloc(sizeof(char) * (ft_strlen_gnl(s) + 1))))
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_strjoin_gnl(char *s1, char *s2)
+{
+	size_t	count;
+	size_t	s1_size;
+	char	*tab;
+
+	count = -1;
+	s1_size = ft_strlen_gnl(s1);
+	if (!(tab = (char *)malloc((s1_size + ft_strlen_gnl(s2) + 1)
+		* sizeof(char))))
+		return (NULL);
+	if (s1)
+		while (s1[++count])
+			tab[count] = s1[count];
+	count = -1;
+	if (s2)
+		while (s2[++count])
+			tab[s1_size + count] = s2[count];
+	tab[s1_size + count] = '\0';
+	return (tab);
+}
+
+char	*ft_strchr_gnl(char *s, int c)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	if (c == '\0')
+		return ((char *)s + i);
+	return (0);
+}
+
+char	*ft_substr_gnl(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	i = ft_strlen_gnl(s);
+	if (start > i)
+	{
+		if (!(str = (char *)malloc(sizeof(char) * 1)))
+			return (NULL);
+		str[0] = '\0';
+		return (str);
+	}
+	if (i < len)
+	{
+		if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+			return (NULL);
+	}
+	else if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	while (s[start] && len > i)
+		str[i++] = s[start++];
+	str[i] = '\0';
+	return (str);
 }

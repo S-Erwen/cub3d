@@ -3,31 +3,31 @@
 /*                                                              /             */
 /*   ft_memcpy.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: alidy <alidy@student.le-101.fr>            +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/08 15:25:31 by alidy        #+#   ##    ##    #+#       */
-/*   Updated: 2019/11/04 14:35:22 by alidy       ###    #+. /#+    ###.fr     */
+/*   Created: 2019/10/07 15:14:28 by esidelar     #+#   ##    ##    #+#       */
+/*   Updated: 2019/11/16 23:00:45 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	char		*dest;
-	const char	*source;
+	unsigned char		*dust;
+	unsigned char		*mirage;
+	size_t				i;
 
-	dest = dst;
-	source = src;
+	if ((dest == src || !n) && (!dest && !src))
+		return (NULL);
 	i = 0;
-	if (!dst && !src)
-		return (0);
-	while (i < n)
+	dust = (unsigned char *)dest;
+	mirage = (unsigned char *)src;
+	while (n > i)
 	{
-		dest[i] = source[i];
+		dust[i] = mirage[i];
 		i++;
 	}
-	return ((void *)dest);
+	return (dest);
 }

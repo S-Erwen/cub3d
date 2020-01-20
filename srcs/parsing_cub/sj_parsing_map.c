@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_parsing_map.c                                 .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:15:51 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/19 03:43:45 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/20 02:59:19 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -111,6 +111,7 @@ void	sj_clean_line(t_cub *cub)
 		else
 			str[y++] = cub->line_map[i++];
 	}
+	str[y] = '\0';
 	free(cub->line_map);
 	cub->line_map = ft_strdup(str);
 	free(str);
