@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 06:15:18 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/21 21:39:22 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -148,6 +148,7 @@ int				sj_count_clean(t_cub *cub);
 
 int				sj_check_tab(t_cub *cub);
 int				sj_space_skip(char *str);
+int				sj_first_line(char *str);
 
 /*
 ** ___  ___ _     __   __

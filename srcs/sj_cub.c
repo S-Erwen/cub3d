@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 04:53:35 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/21 22:07:14 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,6 +57,7 @@ void	sj_cub_init(t_cub *cub)
 	cub->help = 0;
 	cub->line_map = NULL;
 	cub->tab_map = NULL;
+	cub->pc = 0;
 }
 
 void	sj_cub_free(t_cub *cub)
