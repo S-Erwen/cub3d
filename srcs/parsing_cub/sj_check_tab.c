@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 01:11:25 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 06:14:58 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 00:11:34 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,6 +30,33 @@ int		sj_check_tab(t_cub *cub)
 	if (!ft_strchr(cub->line_map, 'S') && !ft_strchr(cub->line_map, 'W')
 		&& !ft_strchr(cub->line_map, 'E') && !ft_strchr(cub->line_map, 'N'))
 		return (-12);
+	return (sj_ckeck_double_local(cub));
+}
+
+int		sj_ckeck_double_local(t_cub *cub)
+{
+	if (ft_strchr(cub->line_map, 'S'))
+	{
+		if (ft_strchr(cub->line_map, 'E') || ft_strchr(cub->line_map, 'W')
+			|| ft_strchr(cub->line_map, 'N')
+			|| ft_strchr(ft_strchr(cub->line_map, 'S') + 1, 'S'))
+			return (-12);
+	}
+	if (ft_strchr(cub->line_map, 'E'))
+		if (ft_strchr(cub->line_map, 'S') || ft_strchr(cub->line_map, 'W')
+			|| ft_strchr(cub->line_map, 'N')
+			|| ft_strchr(ft_strchr(cub->line_map, 'E') + 1, 'E'))
+			return (-12);
+	if (ft_strchr(cub->line_map, 'W'))
+		if (ft_strchr(cub->line_map, 'E') || ft_strchr(cub->line_map, 'S')
+			|| ft_strchr(cub->line_map, 'N')
+			|| ft_strchr(ft_strchr(cub->line_map, 'W') + 1, 'W'))
+			return (-12);
+	if (ft_strchr(cub->line_map, 'N'))
+		if (ft_strchr(cub->line_map, 'E') || ft_strchr(cub->line_map, 'W')
+			|| ft_strchr(cub->line_map, 'S')
+			|| ft_strchr(ft_strchr(cub->line_map, 'N') + 1, 'N'))
+			return (-12);
 	return (0);
 }
 

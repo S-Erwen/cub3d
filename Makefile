@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/01/20 06:48:24 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/21 23:37:31 by esidelar    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -134,11 +134,11 @@ all		: 	$(NAME)
 			@echo "\033[1;33m         \/____/                  ~~                       ~~              \033[1;34m         \/____/                  ~~              "
 			@echo "\033[0m"
 
-$(NAME)	:	$(OBJSLIB)
+$(NAME)	:	$(OBJSLIB) $(OBJS)
 		@echo "\033[1;33m"
 		ar rcs $(NAMELIB) $(OBJSLIB)
 		@echo "\033[0;34m"
-		gcc $(CFLAGS) -g libft.a minilibx/libmlx.a $(SRCS) -framework OpenGL -framework Appkit
+		gcc $(CFLAGS) -g libft.a minilibx/libmlx.a $(OBJS) -o $(NAME) -framework OpenGL -framework Appkit
 		@echo "\033[0m"
 
 %.o: %.c $(HEADERS)

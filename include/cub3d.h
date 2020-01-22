@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/21 21:39:22 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/22 06:05:07 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -52,6 +52,25 @@
 # define OXRESET 0xFFFFFF
 
 /*
+**  _   __ _______   _______
+** | | / /|  ___\ \ / /  ___|
+** | |/ / | |__  \ V /\ `--.
+** |    \ |  __|  \ /  `--. \
+** | |\  \| |___  | | /\__/ /
+** \_| \_/\____/  \_/ \____/
+*/
+
+# define L_LEFT 0
+# define L_DOWN 1
+# define L_RIGHT 2
+# define L_UP 13
+# define R_LEFT 123
+# define R_RIGHT 124
+# define R_DOWN 125
+# define R_UP 126
+# define ESCAPE 53
+
+/*
 **  _____ ___________ _   _ _____ _____ _____
 ** /  ___|_   _| ___ \ | | /  __ \_   _/  ___|
 ** \ `--.  | | | |_/ / | | | /  \/ | | \ `--.
@@ -81,11 +100,25 @@ typedef struct	s_cub
 	int			pc;
 }				t_cub;
 
+typedef struct	s_key
+{
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			l_right;
+	int			l_left;
+}				t_key;
+
 typedef struct	s_mlx
 {
 	void		*mlx;
 	void		*windows;
+	int			x;
+	int			y;
+	t_key		*key;
 }				t_mlx;
+
 
 /*
 **  _____  _   _ ______
@@ -97,7 +130,7 @@ typedef struct	s_mlx
 */
 
 int				sj_cub(int ac, char **gv);
-void    		sj_cub_init(t_cub *cub);
+void			sj_cub_init(t_cub *cub);
 void			sj_cub_free(t_cub *cub);
 
 /*
@@ -147,6 +180,7 @@ void			sj_clean_line(t_cub *cub);
 int				sj_count_clean(t_cub *cub);
 
 int				sj_check_tab(t_cub *cub);
+int				sj_ckeck_double_local(t_cub *cub);
 int				sj_space_skip(char *str);
 int				sj_first_line(char *str);
 
@@ -160,6 +194,5 @@ int				sj_first_line(char *str);
 */
 
 void			sj_creat_new_windows(t_mlx *mlx, t_cub *cub);
-
 
 #endif
