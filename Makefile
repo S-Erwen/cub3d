@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/01/21 23:37:31 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/01/24 04:42:58 by esidelar    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -138,7 +138,8 @@ $(NAME)	:	$(OBJSLIB) $(OBJS)
 		@echo "\033[1;33m"
 		ar rcs $(NAMELIB) $(OBJSLIB)
 		@echo "\033[0;34m"
-		gcc $(CFLAGS) -g libft.a minilibx/libmlx.a $(OBJS) -o $(NAME) -framework OpenGL -framework Appkit
+		make -C mlx re
+		gcc $(CFLAGS) -g -lm libft.a mlx/libmlx.a $(OBJS) -o $(NAME) -framework OpenGL -framework Appkit
 		@echo "\033[0m"
 
 %.o: %.c $(HEADERS)

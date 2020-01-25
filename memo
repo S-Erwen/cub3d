@@ -5,6 +5,7 @@ gcc -framework OpenGL -framework AppKit main.c libft/libft.a minilibx/libmlx.a
                         #Tuto mlx
 
 https://qst0.github.io/ft_libgfx/#minilibx
+https://github.com/VBrazhnik/FdF/wiki
 
                         #Calculateur int color
 

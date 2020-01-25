@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/22 06:05:07 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/24 04:41:32 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,7 +18,8 @@
 # include "../libft/libftprintf.h"
 # include "../libft/get_next_line.h"
 # include <fcntl.h>
-# include "../minilibx/mlx.h"
+# include <math.h>
+# include "../mlx/mlx.h"
 
 /*
 **  _____  _____  _      _____ ______
@@ -83,6 +84,11 @@ typedef struct	s_cub
 {
 	int			res_x;
 	int			res_y;
+	double		dbl_pos_x;
+	double		dbl_pos_y;
+	int			init_pos_x;
+	int			init_pos_y;
+	char		pos;
 	char		*path_no;
 	char		*path_so;
 	char		*path_we;
@@ -116,7 +122,7 @@ typedef struct	s_mlx
 	void		*windows;
 	int			x;
 	int			y;
-	t_key		*key;
+	t_key		key;
 }				t_mlx;
 
 
@@ -132,6 +138,7 @@ typedef struct	s_mlx
 int				sj_cub(int ac, char **gv);
 void			sj_cub_init(t_cub *cub);
 void			sj_cub_free(t_cub *cub);
+void			sj_init_player(t_cub *cub);
 
 /*
 **  _____  _____ ______  _____ ______ ______
@@ -181,6 +188,7 @@ int				sj_count_clean(t_cub *cub);
 
 int				sj_check_tab(t_cub *cub);
 int				sj_ckeck_double_local(t_cub *cub);
+int				sj_ckeck_double_local_tho(t_cub *cub);
 int				sj_space_skip(char *str);
 int				sj_first_line(char *str);
 
