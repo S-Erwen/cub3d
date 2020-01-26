@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 04:41:32 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/26 10:40:16 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,11 @@
 # include "../libft/get_next_line.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 # include "../mlx/mlx.h"
+
+
+# define HEIGHT 500
 
 /*
 **  _____  _____  _      _____ ______
@@ -80,12 +84,62 @@
 ** \____/  \_/ \_| \_|\___/ \____/ \_/ \____/
 */
 
+typedef struct	s_key
+{
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			l_right;
+	int			l_left;
+}				t_key;
+
+typedef struct	s_recast
+{
+	float		dir_x;
+	float		dir_y;
+	float		cam_plane_x;
+	float		cam_plane_y;
+	float		cameraX;
+	float		raydir_x;
+	float		raydir_y;
+	float		pos_x;
+	float		pos_y;
+	float		time;
+	float		oldtime;
+	int			mapx;
+	int			mapy;
+	float		sidedistx;
+	float		sidedisty;
+	float		deltadistx;
+	float		deltadisty;
+	float		perpwalldist;
+	float		size_max_x;
+	float		x;
+	int			stepX;
+	int			stepY;
+	int			hit;
+	int			side;
+	int			lineheight;
+	int			drawstart;
+	int			drawend;
+	int			color;
+	float		frametime;
+	char		*str;
+	float		move_speed;
+	float		rotation_speed;
+	int			one;
+	int			tho;
+	float		old_dir_x;
+	float		oldcam_plane_x;
+}				t_recast;
+
 typedef struct	s_cub
 {
 	int			res_x;
 	int			res_y;
-	double		dbl_pos_x;
-	double		dbl_pos_y;
+	float		dbl_pos_x;
+	float		dbl_pos_y;
 	int			init_pos_x;
 	int			init_pos_y;
 	char		pos;
@@ -104,27 +158,13 @@ typedef struct	s_cub
 	char		*line_map;
 	char		**tab_map;
 	int			pc;
-}				t_cub;
-
-typedef struct	s_key
-{
-	int			up;
-	int			down;
-	int			left;
-	int			right;
-	int			l_right;
-	int			l_left;
-}				t_key;
-
-typedef struct	s_mlx
-{
 	void		*mlx;
 	void		*windows;
 	int			x;
 	int			y;
 	t_key		key;
-}				t_mlx;
-
+	t_recast	cast;
+}				t_cub;
 
 /*
 **  _____  _   _ ______
@@ -201,6 +241,6 @@ int				sj_first_line(char *str);
 ** \_|  |_/\_____/\/   \/
 */
 
-void			sj_creat_new_windows(t_mlx *mlx, t_cub *cub);
+void			sj_creat_new_windows(t_cub *cub);
 
 #endif

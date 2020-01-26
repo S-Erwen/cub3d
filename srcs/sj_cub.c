@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/24 04:42:05 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/01/26 10:38:22 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,7 +16,6 @@
 int		sj_cub(int ac, char **gv)
 {
 	t_cub	cub;
-	t_mlx	mlx;
 	int		ret;
 	int		i = 0; // for print map
 
@@ -33,11 +32,11 @@ int		sj_cub(int ac, char **gv)
 	dprintf(1, "LINE = {\n%s}\n", cub.line_map);
 	while (cub.tab_map[i])
 	{
-		dprintf(1, "MAP - X%d \t= {%s}\n", i, cub.tab_map[i]);
+		dprintf(1, "MAP - Y%d \t= {%s}\n", i, cub.tab_map[i]);
 		i++;
 	}
 	sj_init_player(&cub);
-	sj_creat_new_windows(&mlx, &cub);
+	sj_creat_new_windows(&cub);
 	sj_cub_free(&cub);
 	exit(EXIT_SUCCESS);
 	// Faire la suite
