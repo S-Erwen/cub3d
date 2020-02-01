@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 12:19:31 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 01:49:58 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -55,6 +55,8 @@
 # define OXMAGENTA 0x8D00FF
 # define OXCYAN 0x00FFF3
 # define OXRESET 0xFFFFFF
+# define OXSKY 0x008AFF
+# define OXGROUND 0x95531D
 
 /*
 **  _   __ _______   _______
@@ -249,7 +251,7 @@ int				sj_first_line(char *str);
 void			sj_creat_new_windows(t_cub *cub);
 int				sj_close();
 float			sj_abs(float nb);
-void			sj_dda(t_cub *cub);
+int				sj_dda(t_cub *cub);
 int				sj_key_press(int key, t_cub *cub);
 int				sj_key_release(int key, t_cub *cub);
 int				sj_move(t_cub *cub);
@@ -266,5 +268,8 @@ void			sj_draw_start_end(t_cub *cub);
 void			sj_time(t_cub *cub);
 
 void			sj_init_cast(t_cub *cub);
+
+int				sj_color(int r, int g, int b);
+
 
 #endif

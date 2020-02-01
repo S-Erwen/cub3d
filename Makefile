@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/01/30 12:20:34 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/01 01:50:28 by esidelar    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -107,7 +107,8 @@ SRCS =		main.c \
 			srcs/sj_mlx/sj_windows.c \
 			srcs/sj_mlx/sj_move.c \
 			srcs/sj_mlx/sj_init_all_x_y.c \
-			srcs/sj_mlx/sj_init_cast.c
+			srcs/sj_mlx/sj_init_cast.c \
+			srcs/sj_mlx/sj_color.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 04:44:53 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 12:21:09 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 02:39:39 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -25,8 +25,11 @@ float	sj_abs(float nb)
 	return (nb);
 }
 
-void	sj_dda(t_cub *cub)
+int		sj_dda(t_cub *cub)
 {
+	int i;
+
+	cub->cast.x = 0;
 	while (cub->cast.x <= cub->cast.size_max_x)
 	{
 		sj_init_start_dda(cub);
@@ -35,18 +38,27 @@ void	sj_dda(t_cub *cub)
 		/* DDA FINISH */
 
 		sj_draw_start_end(cub);
+		i = 0;
+		while (i < cub->cast.drawstart)
+		{
+			cub->img_data[i * cub->res_x + (int)cub->cast.x] = sj_color(cub->f_color_r, cub->f_color_g, cub->f_color_b);
+			i++;
+		}
 		while (cub->cast.drawstart < cub->cast.drawend)
 			cub->img_data[cub->cast.drawstart++ * cub->res_x + (int)cub->cast.x] = cub->cast.color;
-		// mlx_pixel_put(cub->mlx, cub->windows, cub->cast.x, cub->cast.drawstart++, cub->cast.color);
+		i = cub->cast.drawend;
+		while (i < cub->res_y - 1)
+		{
+			cub->img_data[i * cub->res_x + (int)cub->cast.x] = sj_color(cub->c_color_r, cub->c_color_g, cub->c_color_b);
+			i++;
+		}
 		cub->cast.x++;
 	}
 	sj_time(cub);
-	mlx_hook(cub->windows, 2, 0, sj_key_press, cub);
-	mlx_hook(cub->windows, 3, 0, sj_key_release, cub);
-	mlx_hook(cub->windows, 17, 0, sj_close, cub);
-	mlx_loop_hook(cub->mlx, sj_move, cub);
+	sj_move(cub);
+	mlx_clear_window(cub->mlx, cub->windows);
 	mlx_put_image_to_window(cub->mlx, cub->windows, cub->img_ptr, 0, 0);
-	mlx_loop(cub->mlx);
+	return (1);
 }
 
 int		sj_move(t_cub *cub)
@@ -104,13 +116,14 @@ void	sj_creat_new_windows(t_cub *cub)
 	cub->key.down = 0;
 	cub->key.up = 0;
 	cub->mlx = mlx_init();
+	sj_init_cast(cub);
 	cub->windows = mlx_new_window(cub->mlx, cub->res_x, cub->res_y, "Cub3D");
 	mlx_do_key_autorepeaton(cub->mlx);
-	sj_init_cast(cub);
-	while (1)
-	{
-		sj_dda(cub);
-	}
+	mlx_loop_hook(cub->mlx, sj_dda, cub);
+	mlx_hook(cub->windows, 2, 0, sj_key_press, cub);
+	mlx_hook(cub->windows, 3, 0, sj_key_release, cub);
+	mlx_hook(cub->windows, 17, 0, sj_close, cub);
+	mlx_loop(cub->mlx);
 }
 
 	// while (i < cub->res_x / 2 + cub->res_x / 2 / 2)

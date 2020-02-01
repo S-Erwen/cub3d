@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 11:57:08 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/30 12:13:51 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/01 01:40:00 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -81,8 +81,8 @@ void	sj_draw_start_end(t_cub *cub)
 	if (cub->cast.drawstart < 0)
 		cub->cast.drawstart = 0;
 	cub->cast.drawend = cub->cast.lineheight / 2 + HEIGHT / 2;
-	if (cub->cast.drawend >= HEIGHT)
-		cub->cast.drawend = HEIGHT - 1;
+	if (cub->cast.drawend >= cub->res_y)
+		cub->cast.drawend = cub->res_y - 1;
 	cub->cast.color = OXRED;
 	if (cub->cast.side == 1)
 		cub->cast.color = OXBLUE;
@@ -90,10 +90,6 @@ void	sj_draw_start_end(t_cub *cub)
 
 void	sj_time(t_cub *cub)
 {
-	cub->cast.oldtime = cub->cast.time;
-	cub->cast.time = 60;
-	cub->cast.frametime = (cub->cast.time - cub->cast.oldtime) / 1000.0;
-	mlx_string_put(cub->mlx, cub->windows, cub->res_x / 2, cub->res_y, OXRESET, ft_itoa(cub->cast.frametime));
-	cub->cast.move_speed = cub->cast.frametime * 5.0;
-	cub->cast.rotation_speed = cub->cast.frametime * 3.0;
+	cub->cast.move_speed = 0.06;
+	cub->cast.rotation_speed = 0.06;
 }
