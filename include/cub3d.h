@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   cub3d.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 01:49:58 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 04:31:30 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -130,8 +130,6 @@ typedef struct	s_recast
 	char		*str;
 	float		move_speed;
 	float		rotation_speed;
-	int			one;
-	int			tho;
 	float		old_dir_x;
 	float		oldcam_plane_x;
 }				t_recast;

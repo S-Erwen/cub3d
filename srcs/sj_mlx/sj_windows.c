@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_windows.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 04:44:53 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 02:39:39 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 04:39:28 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,7 +30,7 @@ int		sj_dda(t_cub *cub)
 	int i;
 
 	cub->cast.x = 0;
-	while (cub->cast.x <= cub->cast.size_max_x)
+	while (cub->cast.x < cub->cast.size_max_x)
 	{
 		sj_init_start_dda(cub);
 		sj_raydir_step(cub);
@@ -81,9 +81,9 @@ int		sj_key_press(int key, t_cub *cub)
 	dprintf(1, RESET);
 	if (key == L_DOWN)
 		cub->key.down = 1;
-	if (key == L_RIGHT)
+	if (key == R_RIGHT)
 		cub->key.right = 1;
-	if (key == L_LEFT)
+	if (key == R_LEFT)
 		cub->key.left = 1;
 	if (key == L_UP)
 		cub->key.up = 1;

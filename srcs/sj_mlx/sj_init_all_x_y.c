@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_init_all_x_y.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 11:57:08 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 01:40:00 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 04:25:36 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,11 +15,11 @@
 
 void	sj_init_start_dda(t_cub *cub)
 {
-	cub->cast.cameraX = 2 * cub->cast.x / cub->cast.size_max_x - 1;
+	cub->cast.cameraX = 2 * cub->cast.x / (double)cub->cast.size_max_x - 1;
 	cub->cast.raydir_x = cub->cast.dir_x + cub->cast.cam_plane_x * cub->cast.cameraX;
 	cub->cast.raydir_y = cub->cast.dir_y + cub->cast.cam_plane_y * cub->cast.cameraX;
-	cub->cast.mapx = cub->cast.pos_x;
-	cub->cast.mapy = cub->cast.pos_y;
+	cub->cast.mapx = (int)cub->cast.pos_x;
+	cub->cast.mapy = (int)cub->cast.pos_y;
 	cub->cast.deltadistx = sj_abs(1 / cub->cast.raydir_x);
 	cub->cast.deltadisty = sj_abs(1 / cub->cast.raydir_y);
 	cub->cast.hit = 0;
@@ -65,14 +65,26 @@ void	sj_hit_dist(t_cub *cub)
 			cub->cast.mapy += cub->cast.stepY;
 			cub->cast.side = 1;
 		}
-		if (cub->tab_map[cub->cast.mapy][cub->cast.mapx] > '0')
+		if (cub->tab_map[cub->cast.mapy][cub->cast.mapx] == '1')
+		{
 			cub->cast.hit = 1;
+			if (cub->cast.side == 0)
+			{
+				if (cub->cast.mapx < cub->cast.pos_x)
+					cub->cast.side = 1;
+			}
+			else
+			{
+				if (cub->cast.mapy < cub->cast.pos_y)
+					cub->cast.side = 3;
+			}
+		}
 	}
 }
 
 void	sj_draw_start_end(t_cub *cub)
 {
-	if (cub->cast.side == 0)
+	if (cub->cast.side == 0 || cub->cast.side == 1)
 		cub->cast.perpwalldist = (cub->cast.mapx - cub->cast.pos_x + (1 - cub->cast.stepX) / 2) / cub->cast.raydir_x;
 	else
 		cub->cast.perpwalldist = (cub->cast.mapy - cub->cast.pos_y + (1 - cub->cast.stepY) / 2) / cub->cast.raydir_y;
@@ -86,6 +98,10 @@ void	sj_draw_start_end(t_cub *cub)
 	cub->cast.color = OXRED;
 	if (cub->cast.side == 1)
 		cub->cast.color = OXBLUE;
+	if (cub->cast.side == 2)
+		cub->cast.color = OXYELLOW;
+	if (cub->cast.side == 3)
+		cub->cast.color = OXMAGENTA;
 }
 
 void	sj_time(t_cub *cub)
