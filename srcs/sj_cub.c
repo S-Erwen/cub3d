@@ -42,7 +42,7 @@ int		sj_cub(int ac, char **gv)
 	// Faire la suite
 }
 
-void	sj_init_player(t_cub *cub)
+void	 sj_init_player(t_cub *cub)
 {
 	cub->dbl_pos_x = (int)ft_strchr(cub->line_map, cub->pos) - (int)cub->line_map;
 	cub->dbl_pos_y = cub->dbl_pos_x;

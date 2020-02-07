@@ -63,7 +63,7 @@ void	sj_hit_dist(t_cub *cub)
 		{
 			cub->cast.sidedisty += cub->cast.deltadisty;
 			cub->cast.mapy += cub->cast.stepY;
-			cub->cast.side = 1;
+			cub->cast.side = 2;
 		}
 		if (cub->tab_map[cub->cast.mapy][cub->cast.mapx] == '1')
 		{

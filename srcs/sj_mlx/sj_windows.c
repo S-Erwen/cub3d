@@ -81,9 +81,9 @@ int		sj_key_press(int key, t_cub *cub)
 	dprintf(1, RESET);
 	if (key == L_DOWN)
 		cub->key.down = 1;
-	if (key == R_RIGHT)
+	if (key == L_RIGHT)
 		cub->key.right = 1;
-	if (key == R_LEFT)
+	if (key == L_LEFT)
 		cub->key.left = 1;
 	if (key == L_UP)
 		cub->key.up = 1;
