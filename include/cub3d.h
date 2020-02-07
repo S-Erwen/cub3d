@@ -6,7 +6,7 @@
 /*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 04:31:30 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/07 04:46:08 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -109,8 +109,6 @@ typedef struct	s_recast
 	float		pos_y;
 	float		time;
 	float		oldtime;
-	int			mapx;
-	int			mapy;
 	float		sidedistx;
 	float		sidedisty;
 	float		deltadistx;
@@ -118,6 +116,14 @@ typedef struct	s_recast
 	float		perpwalldist;
 	float		size_max_x;
 	float		x;
+	float		frametime;
+	float		move_speed;
+	float		rotation_speed;
+	float		old_dir_x;
+	float		oldcam_plane_x;
+	char		*str;
+	int			mapx;
+	int			mapy;
 	int			stepX;
 	int			stepY;
 	int			hit;
@@ -126,28 +132,27 @@ typedef struct	s_recast
 	int			drawstart;
 	int			drawend;
 	int			color;
-	float		frametime;
-	char		*str;
-	float		move_speed;
-	float		rotation_speed;
-	float		old_dir_x;
-	float		oldcam_plane_x;
 }				t_recast;
 
 typedef struct	s_cub
 {
-	int			res_x;
-	int			res_y;
 	float		dbl_pos_x;
 	float		dbl_pos_y;
-	int			init_pos_x;
-	int			init_pos_y;
 	char		pos;
 	char		*path_no;
 	char		*path_so;
 	char		*path_we;
 	char		*path_ea;
 	char		*path_sprit;
+	char		*line_map;
+	char		**tab_map;
+	void		*mlx;
+	void		*windows;
+	void		*img_ptr;
+	int			res_x;
+	int			res_y;
+	int			init_pos_x;
+	int			init_pos_y;
 	int			f_color_r;
 	int			f_color_g;
 	int			f_color_b;
@@ -155,17 +160,12 @@ typedef struct	s_cub
 	int			c_color_g;
 	int			c_color_b;
 	int			help;
-	char		*line_map;
-	char		**tab_map;
 	int			pc;
-	void		*mlx;
-	void		*windows;
 	int			x;
 	int			y;
 	int			bpp;
 	int			size_line;
 	int			endian;
-	void		*img_ptr;
 	int			*img_data;
 	t_key		key;
 	t_recast	cast;
@@ -225,10 +225,10 @@ void			sj_parse_f2(char *line, t_cub *cub);
 int				sj_parse_c(char *line, t_cub *cub);
 void			sj_parse_c2(char *line, t_cub *cub);
 
-int				sj_parsing_map(t_cub *cub, char *line);
-char			*sj_parsing_linemap(char *line);
-int				sj_count_map_line(char *line);
 void			sj_clean_line(t_cub *cub);
+char			*sj_parsing_linemap(char *line);
+int				sj_parsing_map(t_cub *cub, char *line);
+int				sj_count_map_line(char *line);
 int				sj_count_clean(t_cub *cub);
 
 int				sj_check_tab(t_cub *cub);
@@ -247,8 +247,8 @@ int				sj_first_line(char *str);
 */
 
 void			sj_creat_new_windows(t_cub *cub);
-int				sj_close();
 float			sj_abs(float nb);
+int				sj_close();
 int				sj_dda(t_cub *cub);
 int				sj_key_press(int key, t_cub *cub);
 int				sj_key_release(int key, t_cub *cub);
