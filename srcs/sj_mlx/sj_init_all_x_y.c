@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_init_all_x_y.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 11:57:08 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 04:25:36 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 01:26:09 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -106,6 +106,6 @@ void	sj_draw_start_end(t_cub *cub)
 
 void	sj_time(t_cub *cub)
 {
-	cub->cast.move_speed = 0.06;
-	cub->cast.rotation_speed = 0.06;
+	cub->cast.move_speed = 0.06f;
+	cub->cast.rotation_speed = 0.06f;
 }

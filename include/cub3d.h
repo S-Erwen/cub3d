@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   cub3d.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 04:46:08 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 09:06:45 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -92,8 +92,8 @@ typedef struct	s_key
 	int			down;
 	int			left;
 	int			right;
-	int			l_right;
-	int			l_left;
+	int			mv_right;
+	int			mv_left;
 }				t_key;
 
 typedef struct	s_recast
@@ -196,6 +196,8 @@ void			sj_init_player(t_cub *cub);
 
 int				sj_stderr_argcub(int ac, char **gv, t_cub *cub);
 void			sj_stderr_parsing(int nb);
+void			sj_stderr_parsing_tho(int nb);
+
 
 /*
 ** ______   ___  ______  _____  _____  _   _  _____
@@ -258,6 +260,9 @@ void			sj_key_down(t_cub *cub);
 void			sj_key_right(t_cub *cub);
 void			sj_key_left(t_cub *cub);
 void			sj_key_up(t_cub *cub);
+
+void			sj_key_mv_left(t_cub *cub);
+void			sj_key_mv_right(t_cub *cub);
 
 void			sj_init_start_dda(t_cub *cub);
 void			sj_raydir_step(t_cub *cub);

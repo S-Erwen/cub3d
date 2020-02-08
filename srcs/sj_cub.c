@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   sj_cub.c                                         .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 04:17:13 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 02:35:22 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -46,8 +46,8 @@ void	 sj_init_player(t_cub *cub)
 {
 	cub->dbl_pos_x = (int)ft_strchr(cub->line_map, cub->pos) - (int)cub->line_map;
 	cub->dbl_pos_y = cub->dbl_pos_x;
-	cub->dbl_pos_x = (int)cub->dbl_pos_x % ft_strlen(cub->tab_map[0]);
-	cub->dbl_pos_y = (int)cub->dbl_pos_y / ft_strlen(cub->tab_map[0]);
+	cub->dbl_pos_x = (int)cub->dbl_pos_x % ft_strlen(cub->tab_map[0]) + 0.5;
+	cub->dbl_pos_y = (int)cub->dbl_pos_y / ft_strlen(cub->tab_map[0]) + 0.5;
 	cub->init_pos_x = ft_strchr(cub->line_map, cub->pos) - cub->line_map;
 	cub->init_pos_y = cub->init_pos_x;
 	cub->init_pos_x = cub->init_pos_x % ft_strlen(cub->tab_map[0]);

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 12:15:56 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 00:34:49 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 01:55:10 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,10 +15,28 @@
 
 void    sj_init_cast(t_cub *cub)
 {
-	cub->cast.dir_x = -1; // ITS N of POS // (DEGRES)
+	if (cub->pos == 'N')
+	{
+		cub->cast.dir_x = -1; // ITS N of POS // (DEGRES)
+		cub->cast.cam_plane_y = 0.66f;
+	}
+	if (cub->pos == 'S')
+	{
+		cub->cast.dir_x = 1; // ITS N of POS // (DEGRES)
+		cub->cast.cam_plane_y = -0.66f;
+	}
+	if (cub->pos == 'E')
+	{
+		cub->cast.dir_x = 1; // ITS N of POS // (DEGRES)
+		cub->cast.cam_plane_y = 0.66f;
+	}
+	if (cub->pos == 'W')
+	{
+		cub->cast.dir_x = -1; // ITS N of POS // (DEGRES)
+		cub->cast.cam_plane_y = -0.66f;
+	}
 	cub->cast.dir_y = 0; // ITS N of POS // (DEGRES)
 	cub->cast.cam_plane_x = 0;
-	cub->cast.cam_plane_y = 0.66;
 	cub->cast.time = 0;
 	cub->cast.oldtime = 0;
 	cub->cast.x = 0;

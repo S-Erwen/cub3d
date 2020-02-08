@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 05:27:18 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 04:13:47 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/08 09:03:16 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -64,4 +64,11 @@ void	sj_stderr_parsing(int nb)
 		ft_printf("__ERROR__INCOMPLET_CUB__\n");
 	if (nb == -12)
 		ft_printf("__ERROR__MAP__\n");
+	sj_stderr_parsing_tho(nb);
+}
+
+void	sj_stderr_parsing_tho(int nb)
+{
+	if (nb == -13)
+		ft_printf("__ERROR_FILE__\n");
 }
