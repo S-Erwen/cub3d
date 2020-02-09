@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/02/08 01:10:31 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/09 05:04:39 by esidelar    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -98,6 +98,7 @@ SRCSLIB	= 	libft/ft_printf.c \
 SRCS =		main.c \
 			srcs/sj_cub.c \
 			srcs/sj_stderr.c \
+			srcs/sj_cub_init.c \
 			srcs/parsing_cub/sj_parsing.c \
 			srcs/parsing_cub/sj_parsing_r.c \
 			srcs/parsing_cub/sj_parsing_path.c \
@@ -108,7 +109,11 @@ SRCS =		main.c \
 			srcs/sj_mlx/sj_move.c \
 			srcs/sj_mlx/sj_init_all_x_y.c \
 			srcs/sj_mlx/sj_init_cast.c \
-			srcs/sj_mlx/sj_color.c
+			srcs/sj_mlx/sj_color.c \
+			srcs/sj_mlx/sj_draw.c \
+			srcs/sj_mlx/sj_key.c \
+			srcs/sj_mlx/sj_hit.c \
+			srcs/sj_mlx/sj_view.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

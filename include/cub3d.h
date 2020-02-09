@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 09:06:45 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 05:03:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -167,8 +167,8 @@ typedef struct	s_cub
 	int			size_line;
 	int			endian;
 	int			*img_data;
-	t_key		key;
-	t_recast	cast;
+	t_key		*key;
+	t_recast	*cast;
 }				t_cub;
 
 /*
@@ -250,7 +250,7 @@ int				sj_first_line(char *str);
 
 void			sj_creat_new_windows(t_cub *cub);
 float			sj_abs(float nb);
-int				sj_close();
+int				sj_close(void);
 int				sj_dda(t_cub *cub);
 int				sj_key_press(int key, t_cub *cub);
 int				sj_key_release(int key, t_cub *cub);
@@ -267,12 +267,20 @@ void			sj_key_mv_right(t_cub *cub);
 void			sj_init_start_dda(t_cub *cub);
 void			sj_raydir_step(t_cub *cub);
 void			sj_hit_dist(t_cub *cub);
-void			sj_draw_start_end(t_cub *cub);
 void			sj_time(t_cub *cub);
 
 void			sj_init_cast(t_cub *cub);
+void			sj_dir_init(t_cub *cub);
 
 int				sj_color(int r, int g, int b);
 
+void			sj_draw_start_end(t_cub *cub);
+void			sj_draw(t_cub *cub);
+
+void			sj_hit(t_cub *cub);
+
+void			sj_cub_init(t_cub *cub);
+void			sj_cub_init_ii(t_cub *cub);
+void			sj_cub_init_iii(t_cub *cub);
 
 #endif
