@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 12:15:56 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 04:54:27 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 07:43:02 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,6 +15,9 @@
 
 void	sj_init_cast(t_cub *cub)
 {
+	int		i;
+
+	i = 0;
 	sj_dir_init(cub);
 	cub->cast->dir_y = 0;
 	cub->cast->cam_plane_x = 0;
@@ -27,6 +30,12 @@ void	sj_init_cast(t_cub *cub)
 	cub->cast->pos_x = cub->dbl_pos_x;
 	cub->cast->pos_y = cub->dbl_pos_y;
 	cub->cast->size_max_x = cub->res_x;
+	while (i < 4)
+	{
+		cub->xpm_adrs[i] = mlx_xpm_file_to_image(cub->mlx, cub->path_no, &cub->xpm_x[i],
+			&cub->xpm_y[i]);
+		i++;
+	}
 	cub->img_ptr = mlx_new_image(cub->mlx, cub->res_x, cub->res_y);
 	cub->img_data = (int *)mlx_get_data_addr(cub->img_ptr,
 		&cub->bpp, &cub->size_line, &cub->endian);

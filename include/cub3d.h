@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 05:03:52 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/09 07:43:08 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -136,6 +136,9 @@ typedef struct	s_recast
 
 typedef struct	s_cub
 {
+	int			xpm_x[3];
+	int			xpm_y[3];
+	void		*xpm_adrs[3];
 	float		dbl_pos_x;
 	float		dbl_pos_y;
 	char		pos;
