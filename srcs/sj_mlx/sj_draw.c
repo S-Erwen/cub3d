@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/09 04:39:10 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 07:45:18 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 05:31:04 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -26,7 +26,7 @@ void	sj_draw(t_cub *cub)
 	}
 	while (cub->cast->drawstart < cub->cast->drawend)
 		cub->img_data[cub->cast->drawstart++ * cub->res_x +
-			(int)cub->cast->x] = cub->cast->color;
+			(int)cub->cast->x] = cub->xpm_x[0]++;
 	i = cub->cast->drawend;
 	while (i < cub->res_y - 1)
 	{
