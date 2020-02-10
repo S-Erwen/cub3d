@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:46:03 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 15:57:40 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -143,6 +143,12 @@ typedef struct	s_cub
 	int			xpm_y[4];
 	int			*xpm_txt[4];
 	void		*xpm_adrs[4];
+	int			texnum;
+	float		wallx;
+	float		step;
+	float		texpos;
+	int			texx;
+	int			texy;
 	float		dbl_pos_x;
 	float		dbl_pos_y;
 	char		pos;
@@ -191,6 +197,11 @@ int				sj_cub(int ac, char **gv);
 void			sj_cub_init(t_cub *cub);
 void			sj_cub_free(t_cub *cub);
 void			sj_init_player(t_cub *cub);
+
+void			sj_cub_init(t_cub *cub);
+void			sj_cub_init_ii(t_cub *cub);
+void			sj_cub_init_iii(t_cub *cub);
+void			sj_cub_init_iv(t_cub *cub);
 
 /*
 **  _____  _____ ______  _____ ______ ______
@@ -285,11 +296,8 @@ int				sj_color(int r, int g, int b);
 
 void			sj_draw_start_end(t_cub *cub);
 void			sj_draw(t_cub *cub);
+void			sj_draw_texture(t_cub *cub);
 
 void			sj_hit(t_cub *cub);
-
-void			sj_cub_init(t_cub *cub);
-void			sj_cub_init_ii(t_cub *cub);
-void			sj_cub_init_iii(t_cub *cub);
 
 #endif

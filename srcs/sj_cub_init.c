@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/09 04:56:07 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 15:56:37 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -96,4 +96,15 @@ void	sj_cub_init_iii(t_cub *cub)
 	C->C->drawstart = 0;
 	C->C->drawend = 0;
 	C->C->color = 0;
+	return (sj_cub_init_iv(cub));
+}
+
+void	sj_cub_init_iv(t_cub *cub)
+{
+	C->texnum = 0;
+	C->wallx = 0;
+	C->step = 0;
+	C->texpos = 0;
+	C->texx = 0;
+	C->texy = 0;
 }

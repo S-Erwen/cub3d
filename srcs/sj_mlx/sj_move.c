@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 11:50:08 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 16:39:42 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,16 +18,16 @@ void	sj_key_mv_right(t_cub *cub)
 	float		x;
 	float		y;
 
-	x = C->C->pos_x + C->C->dir_y * C->C->move_speed;
+	x = C->C->pos_x + C->C->dir_y * C->C->move_speed / 2;
 	y = C->C->pos_y;
 	if (C->tab_map[(int)(y + 0.00001)][(int)x] != '1'
 		&& C->tab_map[(int)(y - 0.00001)][(int)x] != '1')
-		C->C->pos_x += C->C->dir_y * C->C->move_speed;
-	y = C->C->pos_y - C->C->dir_x * C->C->move_speed;
+		C->C->pos_x += C->C->dir_y * C->C->move_speed / 2;
+	y = C->C->pos_y - C->C->dir_x * C->C->move_speed / 2;
 	x = C->C->pos_x;
 	if (C->tab_map[(int)y][(int)(x + 0.00001)] != '1'
 		&& C->tab_map[(int)y][(int)(x - 0.00001)] != '1')
-		C->C->pos_y -= C->C->dir_x * C->C->move_speed;
+		C->C->pos_y -= C->C->dir_x * C->C->move_speed / 2;
 }
 
 void	sj_key_mv_left(t_cub *cub)
@@ -35,16 +35,16 @@ void	sj_key_mv_left(t_cub *cub)
 	float		x;
 	float		y;
 
-	x = C->C->pos_x - C->C->dir_y * C->C->move_speed;
+	x = C->C->pos_x - C->C->dir_y * C->C->move_speed / 2;
 	y = C->C->pos_y;
 	if (C->tab_map[(int)(y - 0.00001)][(int)x] != '1'
 		&& C->tab_map[(int)(y + 0.00001)][(int)x] != '1')
-		C->C->pos_x -= C->C->dir_y * C->C->move_speed;
-	y = C->C->pos_y + C->C->dir_x * C->C->move_speed;
+		C->C->pos_x -= C->C->dir_y * C->C->move_speed / 2;
+	y = C->C->pos_y + C->C->dir_x * C->C->move_speed / 2;
 	x = C->C->pos_x;
 	if (C->tab_map[(int)y][(int)(x + 0.00001)] != '1'
 		&& C->tab_map[(int)y][(int)(x - 0.00001)] != '1')
-		C->C->pos_y += C->C->dir_x * C->C->move_speed;
+		C->C->pos_y += C->C->dir_x * C->C->move_speed / 2;
 }
 
 void	sj_key_up(t_cub *cub)
