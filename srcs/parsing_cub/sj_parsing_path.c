@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:11:42 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 06:18:14 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@ int		sj_parse_no(char *line, t_cub *cub)
 	i = sj_space_skip(line);
 	if (line[i] == 'N' && line[i + 1] == 'O')
 	{
-		if (cub->path_no)
+		if (C->path_no)
 			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
@@ -28,13 +28,13 @@ int		sj_parse_no(char *line, t_cub *cub)
 				return (-2);
 			else
 			{
-				cub->path_no = ft_strdup(ft_strchr(line, '/'));
+				C->path_no = ft_strdup(ft_strchr(line, '/'));
 				return (1);
 			}
 		}
 		else
 		{
-			cub->path_no = ft_strdup(ft_strchr(line, '.'));
+			C->path_no = ft_strdup(ft_strchr(line, '.'));
 			return (1);
 		}
 	}
@@ -48,7 +48,7 @@ int		sj_parse_so(char *line, t_cub *cub)
 	i = sj_space_skip(line);
 	if (line[i] == 'S' && line[i + 1] == 'O')
 	{
-		if (cub->path_so)
+		if (C->path_so)
 			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
@@ -56,13 +56,13 @@ int		sj_parse_so(char *line, t_cub *cub)
 				return (-3);
 			else
 			{
-				cub->path_so = ft_strdup(ft_strchr(line, '/'));
+				C->path_so = ft_strdup(ft_strchr(line, '/'));
 				return (1);
 			}
 		}
 		else
 		{
-			cub->path_so = ft_strdup(ft_strchr(line, '.'));
+			C->path_so = ft_strdup(ft_strchr(line, '.'));
 			return (1);
 		}
 	}
@@ -76,7 +76,7 @@ int		sj_parse_we(char *line, t_cub *cub)
 	i = sj_space_skip(line);
 	if (line[i] == 'W' && line[i + 1] == 'E')
 	{
-		if (cub->path_we)
+		if (C->path_we)
 			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
@@ -84,13 +84,13 @@ int		sj_parse_we(char *line, t_cub *cub)
 				return (-4);
 			else
 			{
-				cub->path_we = ft_strdup(ft_strchr(line, '/'));
+				C->path_we = ft_strdup(ft_strchr(line, '/'));
 				return (1);
 			}
 		}
 		else
 		{
-			cub->path_we = ft_strdup(ft_strchr(line, '.'));
+			C->path_we = ft_strdup(ft_strchr(line, '.'));
 			return (1);
 		}
 	}
@@ -104,7 +104,7 @@ int		sj_parse_ea(char *line, t_cub *cub)
 	i = sj_space_skip(line);
 	if (line[i] == 'E' && line[i + 1] == 'A')
 	{
-		if (cub->path_ea)
+		if (C->path_ea)
 			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
@@ -112,13 +112,13 @@ int		sj_parse_ea(char *line, t_cub *cub)
 				return (-5);
 			else
 			{
-				cub->path_ea = ft_strdup(ft_strchr(line, '/'));
+				C->path_ea = ft_strdup(ft_strchr(line, '/'));
 				return (1);
 			}
 		}
 		else
 		{
-			cub->path_ea = ft_strdup(ft_strchr(line, '.'));
+			C->path_ea = ft_strdup(ft_strchr(line, '.'));
 			return (1);
 		}
 	}
@@ -132,7 +132,7 @@ int		sj_parse_sprit(char *line, t_cub *cub)
 	i = sj_space_skip(line);
 	if (line[i] == 'S')
 	{
-		if (cub->path_sprit)
+		if (C->path_sprit)
 			return (-10);
 		if (!ft_strchr(line, '.'))
 		{
@@ -140,13 +140,13 @@ int		sj_parse_sprit(char *line, t_cub *cub)
 				return (-6);
 			else
 			{
-				cub->path_sprit = ft_strdup(ft_strchr(line, '/'));
+				C->path_sprit = ft_strdup(ft_strchr(line, '/'));
 				return (1);
 			}
 		}
 		else
 		{
-			cub->path_sprit = ft_strdup(ft_strchr(line, '.'));
+			C->path_sprit = ft_strdup(ft_strchr(line, '.'));
 			return (1);
 		}
 	}

@@ -6,18 +6,12 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/01 01:47:30 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/01 01:49:28 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 15:22:36 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 int		sj_color(int r, int g, int b)
 {
-	int		color;
-
-	color = 0;
-	color += r * 256 * 256;
-	color += g * 256;
-	color += b;
-	return (color);
+	return (r * 256 * 256 + g * 256 + b);
 }

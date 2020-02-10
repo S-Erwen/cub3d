@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:07:43 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 10:49:18 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,7 +37,7 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	retur = sj_gnl_parse(line, cub);
 	if (retur < 0)
 		return (retur);
-	cub->tab_map = ft_split(cub->line_map, '\n');
+	C->tab_map = ft_split(C->line_map, '\n');
 	sj_clean_line(cub);
 	close(fd);
 	return (sj_check_tab(cub));
@@ -61,8 +61,8 @@ int		sj_gnl_parse(char *line, t_cub *cub)
 	if (ret2 < 0)
 		return (ret2);
 	if (ret || ret2)
-		cub->pc++;
-	if (cub->pc > 8)
+		C->pc++;
+	if (C->pc > 8)
 		map = sj_parsing_map(cub, line);
 	if (map < 0)
 		return (-12);
@@ -113,9 +113,9 @@ int		sj_parse_letter_p2(char *line, t_cub *cub)
 		return (ret);
 	else if (ret == 1)
 		return (1);
-	if (ft_strchr(line, '1') && cub->pc < 8)
+	if (ft_strchr(line, '1') && C->pc < 8)
 		return (-11);
-	if (!sj_first_line(line) && cub->pc == 8)
+	if (!sj_first_line(line) && C->pc == 8)
 		return (-9);
 	if (ft_strchr(line, '1'))
 		return (1);

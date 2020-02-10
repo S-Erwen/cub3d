@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/09 04:50:37 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 04:51:12 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:08 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,15 +15,14 @@
 
 void	sj_hit(t_cub *cub)
 {
-	cub->cast->hit = 1;
-	if (cub->cast->side == 0)
+	if (C->C->side == 0)
 	{
-		if (cub->cast->mapx < cub->cast->pos_x)
-			cub->cast->side = 1;
+		if (C->C->mapx < C->C->pos_x)
+			C->C->side = 1;
 	}
 	else
 	{
-		if (cub->cast->mapy < cub->cast->pos_y)
-			cub->cast->side = 3;
+		if (C->C->mapy < C->C->pos_y)
+			C->C->side = 3;
 	}
 }

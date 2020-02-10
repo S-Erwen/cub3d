@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/09 04:39:10 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 05:31:04 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 15:16:07 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,48 +15,69 @@
 
 void	sj_draw(t_cub *cub)
 {
-	int i;
+	int 	i;
+	int		texnum;
+	float	wallx;
+	float	step;
+	float	texpos;
+	int		texx;
+	int		texy;
 
 	i = 0;
-	while (i < cub->cast->drawstart)
+	while (i < C->C->drawstart)
 	{
-		cub->img_data[i * cub->res_x + (int)cub->cast->x] =
-			sj_color(cub->f_color_r, cub->f_color_g, cub->f_color_b);
+		C->img_data[i * C->res_x + (int)C->C->x] =
+			sj_color(C->f_color_r, C->f_color_g, C->f_color_b);
 		i++;
 	}
-	while (cub->cast->drawstart < cub->cast->drawend)
-		cub->img_data[cub->cast->drawstart++ * cub->res_x +
-			(int)cub->cast->x] = cub->xpm_x[0]++;
-	i = cub->cast->drawend;
-	while (i < cub->res_y - 1)
+
+	/*~ GO IN FUNCTION ~*/
+	texnum = C->C->side;
+	if (C->C->side == 0)
+		wallx = C->C->pos_y + C->C->perpwalldist * C->C->raydir_y;
+	else
+		wallx = C->C->pos_x + C->C->perpwalldist * C->C->raydir_y;
+	wallx -= floorf(wallx);
+	texx = (int)(wallx * (float)C->xpm_x[C->C->side]);
+	if (C->C->side == 0 && C->C->raydir_x > 0)
+		texx = C->xpm_x[texnum] - texx - 1;
+	if (C->C->side == 1 && C->C->raydir_x < 0)
+		texx = C->xpm_x[texnum] - texx - 1;
+	step = 1.0 * C->xpm_y[texnum] / C->C->lineheight;
+	texpos = (C->C->drawstart - HEIGHT / 2 + C->C->lineheight / 2) * step;
+	/*~                ~*/
+
+	while (C->C->drawstart < C->C->drawend)
 	{
-		cub->img_data[i * cub->res_x + (int)cub->cast->x] =
-			sj_color(cub->c_color_r, cub->c_color_g, cub->c_color_b);
+
+		texy = (int)texpos & (C->xpm_y[texnum] - 1);
+		texpos += step;
+		C->img_data[C->C->drawstart++ * C->res_x + (int)C->C->x] =
+			C->xpm_txt[texnum][C->xpm_y[texnum] * texy + texx];
+	}
+	i = C->C->drawend;
+	while (i < C->res_y - 1)
+	{
+		C->img_data[i * C->res_x + (int)C->C->x] =
+			sj_color(C->c_color_r, C->c_color_g, C->c_color_b);
 		i++;
 	}
-	cub->cast->x++;
+	C->C->x++;
 }
 
 void	sj_draw_start_end(t_cub *cub)
 {
-	if (cub->cast->side == 0 || cub->cast->side == 1)
-		cub->cast->perpwalldist = (cub->cast->mapx - cub->cast->pos_x +
-			(1 - cub->cast->stepX) / 2) / cub->cast->raydir_x;
+	if (C->C->side == 0 || C->C->side == 1)
+		C->C->perpwalldist = (C->C->mapx - C->C->pos_x +
+			(1 - C->C->stepX) / 2) / C->C->raydir_x;
 	else
-		cub->cast->perpwalldist = (cub->cast->mapy - cub->cast->pos_y +
-			(1 - cub->cast->stepY) / 2) / cub->cast->raydir_y;
-	cub->cast->lineheight = (long int)(HEIGHT / cub->cast->perpwalldist);
-	cub->cast->drawstart = -cub->cast->lineheight / 2 + HEIGHT / 2;
-	if (cub->cast->drawstart < 0)
-		cub->cast->drawstart = 0;
-	cub->cast->drawend = cub->cast->lineheight / 2 + HEIGHT / 2;
-	if (cub->cast->drawend >= cub->res_y)
-		cub->cast->drawend = cub->res_y - 1;
-	cub->cast->color = OXRED;
-	if (cub->cast->side == 1)
-		cub->cast->color = OXBLUE;
-	if (cub->cast->side == 2)
-		cub->cast->color = OXYELLOW;
-	if (cub->cast->side == 3)
-		cub->cast->color = OXMAGENTA;
+		C->C->perpwalldist = (C->C->mapy - C->C->pos_y +
+			(1 - C->C->stepY) / 2) / C->C->raydir_y;
+	C->C->lineheight = (long int)(HEIGHT / C->C->perpwalldist);
+	C->C->drawstart = -C->C->lineheight / 2 + HEIGHT / 2;
+	if (C->C->drawstart < 0)
+		C->C->drawstart = 0;
+	C->C->drawend = C->C->lineheight / 2 + HEIGHT / 2;
+	if (C->C->drawend >= C->res_y)
+		C->C->drawend = C->res_y - 1;
 }

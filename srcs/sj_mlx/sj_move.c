@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 11:50:08 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 05:04:10 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,16 +18,16 @@ void	sj_key_mv_right(t_cub *cub)
 	float		x;
 	float		y;
 
-	x = cub->cast->pos_x + cub->cast->dir_y * cub->cast->move_speed;
-	y = cub->cast->pos_y;
-	if (cub->tab_map[(int)(y + 0.00001)][(int)x] != '1'
-		&& cub->tab_map[(int)(y - 0.00001)][(int)x] != '1')
-		cub->cast->pos_x += cub->cast->dir_y * cub->cast->move_speed;
-	y = cub->cast->pos_y - cub->cast->dir_x * cub->cast->move_speed;
-	x = cub->cast->pos_x;
-	if (cub->tab_map[(int)y][(int)(x + 0.00001)] != '1'
-		&& cub->tab_map[(int)y][(int)(x - 0.00001)] != '1')
-		cub->cast->pos_y -= cub->cast->dir_x * cub->cast->move_speed;
+	x = C->C->pos_x + C->C->dir_y * C->C->move_speed;
+	y = C->C->pos_y;
+	if (C->tab_map[(int)(y + 0.00001)][(int)x] != '1'
+		&& C->tab_map[(int)(y - 0.00001)][(int)x] != '1')
+		C->C->pos_x += C->C->dir_y * C->C->move_speed;
+	y = C->C->pos_y - C->C->dir_x * C->C->move_speed;
+	x = C->C->pos_x;
+	if (C->tab_map[(int)y][(int)(x + 0.00001)] != '1'
+		&& C->tab_map[(int)y][(int)(x - 0.00001)] != '1')
+		C->C->pos_y -= C->C->dir_x * C->C->move_speed;
 }
 
 void	sj_key_mv_left(t_cub *cub)
@@ -35,16 +35,16 @@ void	sj_key_mv_left(t_cub *cub)
 	float		x;
 	float		y;
 
-	x = cub->cast->pos_x - cub->cast->dir_y * cub->cast->move_speed;
-	y = cub->cast->pos_y;
-	if (cub->tab_map[(int)(y - 0.00001)][(int)x] != '1'
-		&& cub->tab_map[(int)(y + 0.00001)][(int)x] != '1')
-		cub->cast->pos_x -= cub->cast->dir_y * cub->cast->move_speed;
-	y = cub->cast->pos_y + cub->cast->dir_x * cub->cast->move_speed;
-	x = cub->cast->pos_x;
-	if (cub->tab_map[(int)y][(int)(x + 0.00001)] != '1'
-		&& cub->tab_map[(int)y][(int)(x - 0.00001)] != '1')
-		cub->cast->pos_y += cub->cast->dir_x * cub->cast->move_speed;
+	x = C->C->pos_x - C->C->dir_y * C->C->move_speed;
+	y = C->C->pos_y;
+	if (C->tab_map[(int)(y - 0.00001)][(int)x] != '1'
+		&& C->tab_map[(int)(y + 0.00001)][(int)x] != '1')
+		C->C->pos_x -= C->C->dir_y * C->C->move_speed;
+	y = C->C->pos_y + C->C->dir_x * C->C->move_speed;
+	x = C->C->pos_x;
+	if (C->tab_map[(int)y][(int)(x + 0.00001)] != '1'
+		&& C->tab_map[(int)y][(int)(x - 0.00001)] != '1')
+		C->C->pos_y += C->C->dir_x * C->C->move_speed;
 }
 
 void	sj_key_up(t_cub *cub)
@@ -52,14 +52,14 @@ void	sj_key_up(t_cub *cub)
 	int		x;
 	int		y;
 
-	x = (int)(cub->cast->pos_x + cub->cast->dir_x * cub->cast->move_speed);
-	y = (int)(cub->cast->pos_y);
-	if (cub->tab_map[y][x] != '1' || cub->tab_map[y][x] == cub->pos)
-		cub->cast->pos_x += cub->cast->dir_x * cub->cast->move_speed;
-	x = (int)cub->cast->pos_x;
-	y = (int)(cub->cast->pos_y + cub->cast->dir_y * 0.06);
-	if (cub->tab_map[y][x] != '1' || cub->tab_map[y][x] == cub->pos)
-		cub->cast->pos_y += cub->cast->dir_y * cub->cast->move_speed;
+	x = (int)(C->C->pos_x + C->C->dir_x * C->C->move_speed);
+	y = (int)(C->C->pos_y);
+	if (C->tab_map[y][x] != '1' || C->tab_map[y][x] == C->pos)
+		C->C->pos_x += C->C->dir_x * C->C->move_speed;
+	x = (int)C->C->pos_x;
+	y = (int)(C->C->pos_y + C->C->dir_y * 0.06);
+	if (C->tab_map[y][x] != '1' || C->tab_map[y][x] == C->pos)
+		C->C->pos_y += C->C->dir_y * C->C->move_speed;
 }
 
 void	sj_key_down(t_cub *cub)
@@ -67,12 +67,12 @@ void	sj_key_down(t_cub *cub)
 	int		x;
 	int		y;
 
-	x = (int)(cub->cast->pos_x - cub->cast->dir_x * cub->cast->move_speed);
-	y = (int)(cub->cast->pos_y);
-	if (cub->tab_map[y][x] != '1' || cub->tab_map[y][x] == cub->pos)
-		cub->cast->pos_x -= cub->cast->dir_x * cub->cast->move_speed;
-	x = (int)(cub->cast->pos_x);
-	y = (int)(cub->cast->pos_y - cub->cast->dir_y * 0.06);
-	if (cub->tab_map[y][x] != '1' || cub->tab_map[y][x] == cub->pos)
-		cub->cast->pos_y -= cub->cast->dir_y * cub->cast->move_speed;
+	x = (int)(C->C->pos_x - C->C->dir_x * C->C->move_speed);
+	y = (int)(C->C->pos_y);
+	if (C->tab_map[y][x] != '1' || C->tab_map[y][x] == C->pos)
+		C->C->pos_x -= C->C->dir_x * C->C->move_speed;
+	x = (int)(C->C->pos_x);
+	y = (int)(C->C->pos_y - C->C->dir_y * 0.06);
+	if (C->tab_map[y][x] != '1' || C->tab_map[y][x] == C->pos)
+		C->C->pos_y -= C->C->dir_y * C->C->move_speed;
 }

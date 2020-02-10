@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 11:57:08 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 04:52:02 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,69 +15,70 @@
 
 void	sj_init_start_dda(t_cub *cub)
 {
-	cub->cast->cameraX = 2 * cub->cast->x / (double)cub->cast->size_max_x - 1;
-	cub->cast->raydir_x = cub->cast->dir_x + cub->cast->cam_plane_x
-		* cub->cast->cameraX;
-	cub->cast->raydir_y = cub->cast->dir_y + cub->cast->cam_plane_y
-		* cub->cast->cameraX;
-	cub->cast->mapx = (int)cub->cast->pos_x;
-	cub->cast->mapy = (int)cub->cast->pos_y;
-	cub->cast->deltadistx = sj_abs(1 / cub->cast->raydir_x);
-	cub->cast->deltadisty = sj_abs(1 / cub->cast->raydir_y);
-	cub->cast->hit = 0;
+	C->C->cameraX = 2 * C->C->x / (double)C->C->size_max_x - 1;
+	C->C->raydir_x = C->C->dir_x + C->C->cam_plane_x
+		* C->C->cameraX;
+	C->C->raydir_y = C->C->dir_y + C->C->cam_plane_y
+		* C->C->cameraX;
+	C->C->mapx = (int)C->C->pos_x;
+	C->C->mapy = (int)C->C->pos_y;
+	C->C->deltadistx = sj_abs(1 / C->C->raydir_x);
+	C->C->deltadisty = sj_abs(1 / C->C->raydir_y);
+	C->C->hit = 0;
 }
 
 void	sj_raydir_step(t_cub *cub)
 {
-	if (cub->cast->raydir_x < 0)
+	if (C->C->raydir_x < 0)
 	{
-		cub->cast->stepX = -1;
-		cub->cast->sidedistx = (cub->cast->pos_x - cub->cast->mapx)
-			* cub->cast->deltadistx;
+		C->C->stepX = -1;
+		C->C->sidedistx = (C->C->pos_x - C->C->mapx)
+			* C->C->deltadistx;
 	}
 	else
 	{
-		cub->cast->stepX = 1;
-		cub->cast->sidedistx = (cub->cast->mapx + 1.0 - cub->cast->pos_x)
-			* cub->cast->deltadistx;
+		C->C->stepX = 1;
+		C->C->sidedistx = (C->C->mapx + 1.0 - C->C->pos_x)
+			* C->C->deltadistx;
 	}
-	if (cub->cast->raydir_y < 0)
+	if (C->C->raydir_y < 0)
 	{
-		cub->cast->stepY = -1;
-		cub->cast->sidedisty = (cub->cast->pos_y - cub->cast->mapy)
-			* cub->cast->deltadisty;
+		C->C->stepY = -1;
+		C->C->sidedisty = (C->C->pos_y - C->C->mapy)
+			* C->C->deltadisty;
 	}
 	else
 	{
-		cub->cast->stepY = 1;
-		cub->cast->sidedisty = (cub->cast->mapy + 1.0 - cub->cast->pos_y)
-			* cub->cast->deltadisty;
+		C->C->stepY = 1;
+		C->C->sidedisty = (C->C->mapy + 1.0 - C->C->pos_y)
+			* C->C->deltadisty;
 	}
 }
 
 void	sj_hit_dist(t_cub *cub)
 {
-	while (cub->cast->hit == 0)
+	while (C->C->hit == 0)
 	{
-		if (cub->cast->sidedistx < cub->cast->sidedisty)
+		if (C->C->sidedistx < C->C->sidedisty)
 		{
-			cub->cast->sidedistx += cub->cast->deltadistx;
-			cub->cast->mapx += cub->cast->stepX;
-			cub->cast->side = 0;
+			C->C->sidedistx += C->C->deltadistx;
+			C->C->mapx += C->C->stepX;
+			C->C->side = 0;
 		}
 		else
 		{
-			cub->cast->sidedisty += cub->cast->deltadisty;
-			cub->cast->mapy += cub->cast->stepY;
-			cub->cast->side = 2;
+			C->C->sidedisty += C->C->deltadisty;
+			C->C->mapy += C->C->stepY;
+			C->C->side = 2;
 		}
-		if (cub->tab_map[cub->cast->mapy][cub->cast->mapx] == '1')
-			sj_hit(cub);
+		if (C->tab_map[C->C->mapy][C->C->mapx] == '1')
+			C->C->hit = 1;
 	}
+	sj_hit(cub);
 }
 
 void	sj_time(t_cub *cub)
 {
-	cub->cast->move_speed = 0.06f;
-	cub->cast->rotation_speed = 0.06f;
+	C->C->move_speed = 0.06f;
+	C->C->rotation_speed = 0.06f;
 }

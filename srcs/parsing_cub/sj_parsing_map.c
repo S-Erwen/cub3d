@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:15:51 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/21 21:28:28 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -30,15 +30,15 @@ int		sj_parsing_map(t_cub *cub, char *line)
 		return (-12);
 	}
 	str = ft_add_char(str, '\n');
-	if (!cub->line_map)
+	if (!C->line_map)
 	{
 		if (ft_strchr(str, '0') || ft_strchr(str, '2'))
 			return (-12);
-		cub->line_map = ft_strdup(str);
+		C->line_map = ft_strdup(str);
 		free(str);
 	}
 	else
-		cub->line_map = ft_strjoin_with_free(cub->line_map, str, 3);
+		C->line_map = ft_strjoin_with_free(C->line_map, str, 3);
 	return (0);
 }
 
@@ -106,16 +106,16 @@ void	sj_clean_line(t_cub *cub)
 	if (!(str = malloc(sizeof(char) * (i + 1))))
 		return ;
 	i = 0;
-	while (cub->line_map[i])
+	while (C->line_map[i])
 	{
-		if (cub->line_map[i] == '\n')
+		if (C->line_map[i] == '\n')
 			i++;
 		else
-			str[y++] = cub->line_map[i++];
+			str[y++] = C->line_map[i++];
 	}
 	str[y] = '\0';
-	free(cub->line_map);
-	cub->line_map = ft_strdup(str);
+	free(C->line_map);
+	C->line_map = ft_strdup(str);
 	free(str);
 }
 
@@ -126,9 +126,9 @@ int		sj_count_clean(t_cub *cub)
 
 	i = 0;
 	count = 0;
-	while (cub->line_map[i])
+	while (C->line_map[i])
 	{
-		if (cub->line_map[i] == '\n')
+		if (C->line_map[i] == '\n')
 			i++;
 		else
 		{

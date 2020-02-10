@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 07:13:44 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/01/20 06:18:45 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,9 +18,9 @@ int		sj_parse_f(char *line, t_cub *cub)
 	if (line[0] == 'F')
 	{
 		sj_parse_f2(line, cub);
-		if (cub->f_color_r < 0 || cub->f_color_r < 0 || cub->f_color_b < 0
-			|| cub->f_color_r > 255 || cub->f_color_r > 255
-			|| cub->f_color_b > 255)
+		if (C->f_color_r < 0 || C->f_color_r < 0 || C->f_color_b < 0
+			|| C->f_color_r > 255 || C->f_color_r > 255
+			|| C->f_color_b > 255)
 			return (-7);
 		return (1);
 	}
@@ -34,17 +34,17 @@ void	sj_parse_f2(char *line, t_cub *cub)
 	i = 0;
 	while (line[i] && (line[i] > '9' || line[i] < '0'))
 		i++;
-	cub->f_color_r = ft_atoi(line + i);
+	C->f_color_r = ft_atoi(line + i);
 	while (line[i] && (line[i] <= '9' && line[i] >= '0'))
 		i++;
 	while (line[i] && (line[i] > '9' || line[i] < '0'))
 		i++;
-	cub->f_color_g = ft_atoi(line + i);
+	C->f_color_g = ft_atoi(line + i);
 	while (line[i] && (line[i] <= '9' && line[i] >= '0'))
 		i++;
 	while (line[i] && (line[i] > '9' || line[i] < '0'))
 		i++;
-	cub->f_color_b = ft_atoi(line + i);
+	C->f_color_b = ft_atoi(line + i);
 }
 
 int		sj_parse_c(char *line, t_cub *cub)
@@ -52,9 +52,9 @@ int		sj_parse_c(char *line, t_cub *cub)
 	if (line[0] == 'C')
 	{
 		sj_parse_c2(line, cub);
-		if (cub->c_color_r < 0 || cub->c_color_r < 0 || cub->c_color_b < 0
-			|| cub->c_color_r > 255 || cub->c_color_r > 255
-			|| cub->c_color_b > 255)
+		if (C->c_color_r < 0 || C->c_color_r < 0 || C->c_color_b < 0
+			|| C->c_color_r > 255 || C->c_color_r > 255
+			|| C->c_color_b > 255)
 			return (-7);
 		return (1);
 	}
@@ -68,15 +68,15 @@ void	sj_parse_c2(char *line, t_cub *cub)
 	i = 0;
 	while (line[i] && (line[i] > '9' || line[i] < '0'))
 		i++;
-	cub->c_color_r = ft_atoi(line + i);
+	C->c_color_r = ft_atoi(line + i);
 	while (line[i] && (line[i] <= '9' && line[i] >= '0'))
 		i++;
 	while (line[i] && (line[i] > '9' || line[i] < '0'))
 		i++;
-	cub->c_color_g = ft_atoi(line + i);
+	C->c_color_g = ft_atoi(line + i);
 	while (line[i] && (line[i] <= '9' && line[i] >= '0'))
 		i++;
 	while (line[i] && (line[i] > '9' || line[i] < '0'))
 		i++;
-	cub->c_color_b = ft_atoi(line + i);
+	C->c_color_b = ft_atoi(line + i);
 }

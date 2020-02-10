@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 05:21:06 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:46:03 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -57,6 +57,9 @@
 # define OXRESET 0xFFFFFF
 # define OXSKY 0x008AFF
 # define OXGROUND 0x95531D
+
+# define cub C
+# define cast C
 
 /*
 **  _   __ _______   _______
@@ -138,6 +141,7 @@ typedef struct	s_cub
 {
 	int			xpm_x[4];
 	int			xpm_y[4];
+	int			*xpm_txt[4];
 	void		*xpm_adrs[4];
 	float		dbl_pos_x;
 	float		dbl_pos_y;
@@ -241,6 +245,8 @@ int				sj_ckeck_double_local(t_cub *cub);
 int				sj_ckeck_double_local_tho(t_cub *cub);
 int				sj_space_skip(char *str);
 int				sj_first_line(char *str);
+
+int				sj_check_path(t_cub *cub);
 
 /*
 ** ___  ___ _     __   __

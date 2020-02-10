@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/02/10 05:21:42 by esidelar    ###    #+. /#+    ###.fr      #
+#    Updated: 2020/02/10 10:25:49 by esidelar    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -105,6 +105,7 @@ SRCS =		main.c \
 			srcs/parsing_cub/sj_parsing_map.c \
 			srcs/parsing_cub/sj_parsing_floor_and_ceiling.c \
 			srcs/parsing_cub/sj_check_tab.c \
+			srcs/parsing_cub/sj_check_path.c \
 			srcs/sj_mlx/sj_windows.c \
 			srcs/sj_mlx/sj_move.c \
 			srcs/sj_mlx/sj_init_all_x_y.c \

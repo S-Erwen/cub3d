@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/09 04:56:50 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,9 +20,9 @@ int		sj_cub(int ac, char **gv)
 
 	if (!(cub = malloc(sizeof(t_cub))))
 		return (0);
-	if (!(cub->key = malloc(sizeof(t_key))))
+	if (!(C->key = malloc(sizeof(t_key))))
 		return (0);
-	if (!(cub->cast = malloc(sizeof(t_recast))))
+	if (!(C->cast = malloc(sizeof(t_recast))))
 		return (0);
 	sj_cub_init(cub);
 	if (!sj_stderr_argcub(ac, gv, cub))
@@ -42,15 +42,15 @@ int		sj_cub(int ac, char **gv)
 
 void	sj_init_player(t_cub *cub)
 {
-	cub->dbl_pos_x = (int)ft_strchr(cub->line_map, cub->pos) -
-		(int)cub->line_map;
-	cub->dbl_pos_y = cub->dbl_pos_x;
-	cub->dbl_pos_x = (int)cub->dbl_pos_x % ft_strlen(cub->tab_map[0]) + 0.5;
-	cub->dbl_pos_y = (int)cub->dbl_pos_y / ft_strlen(cub->tab_map[0]) + 0.5;
-	cub->init_pos_x = ft_strchr(cub->line_map, cub->pos) - cub->line_map;
-	cub->init_pos_y = cub->init_pos_x;
-	cub->init_pos_x = cub->init_pos_x % ft_strlen(cub->tab_map[0]);
-	cub->init_pos_y = cub->init_pos_y / ft_strlen(cub->tab_map[0]);
+	C->dbl_pos_x = (int)ft_strchr(C->line_map, C->pos) -
+		(int)C->line_map;
+	C->dbl_pos_y = C->dbl_pos_x;
+	C->dbl_pos_x = (int)C->dbl_pos_x % ft_strlen(C->tab_map[0]) + 0.5;
+	C->dbl_pos_y = (int)C->dbl_pos_y / ft_strlen(C->tab_map[0]) + 0.5;
+	C->init_pos_x = ft_strchr(C->line_map, C->pos) - C->line_map;
+	C->init_pos_y = C->init_pos_x;
+	C->init_pos_x = C->init_pos_x % ft_strlen(C->tab_map[0]);
+	C->init_pos_y = C->init_pos_y / ft_strlen(C->tab_map[0]);
 }
 
 void	sj_cub_free(t_cub *cub)
@@ -58,10 +58,10 @@ void	sj_cub_free(t_cub *cub)
 	int		i;
 
 	i = 0;
-	while (cub->tab_map[i])
+	while (C->tab_map[i])
 		i++;
 	while (i)
-		free(cub->tab_map[--i]);
-	free(cub->line_map);
-	free(cub->tab_map);
+		free(C->tab_map[--i]);
+	free(C->line_map);
+	free(C->tab_map);
 }

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 05:27:18 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/08 09:03:16 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -34,7 +34,7 @@ int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
 	}
 	if (ac == 3)
 		if (ft_strnstr(gv[2], "--help", ft_strlen(gv[2])))
-			cub->help++;
+			C->help++;
 	return (1);
 }
 
@@ -71,4 +71,6 @@ void	sj_stderr_parsing_tho(int nb)
 {
 	if (nb == -13)
 		ft_printf("__ERROR_FILE__\n");
+	if (nb == -14)
+		ft_printf("__ERROR_NO_XPM_FILE__\n");
 }
