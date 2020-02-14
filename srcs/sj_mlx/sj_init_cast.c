@@ -6,14 +6,14 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 12:15:56 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 15:25:54 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 04:56:56 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-void	sj_init_cast(t_cub *cub)
+void	sj_init_image(t_cub *cub)
 {
 	int	bpp;
 	int	size;
@@ -21,18 +21,7 @@ void	sj_init_cast(t_cub *cub)
 	int	i;
 
 	i = 0;
-	sj_dir_init(cub);
-	C->C->dir_y = 0;
-	C->C->cam_plane_x = 0;
-	C->C->time = 0;
-	C->C->oldtime = 0;
-	C->C->x = 0;
-	C->bpp = 32;
-	C->size_line = C->res_x * 4;
 	C->endian = 1;
-	C->C->pos_x = C->dbl_pos_x;
-	C->C->pos_y = C->dbl_pos_y;
-	C->C->size_max_x = C->res_x;
 	C->xpm_adrs[0] = mlx_xpm_file_to_image(C->mlx, C->path_no, &C->xpm_x[0],
 		&C->xpm_y[0]);
 	C->xpm_adrs[1] = mlx_xpm_file_to_image(C->mlx, C->path_so, &C->xpm_x[1],
@@ -52,26 +41,42 @@ void	sj_init_cast(t_cub *cub)
 		&C->bpp, &C->size_line, &C->endian);
 }
 
+void	sj_init_cast(t_cub *cub)
+{
+	sj_dir_init(cub);
+	C->CS->dir_y = 0;
+	C->CS->cam_plane_x = 0;
+	C->CS->time = 0;
+	C->CS->oldtime = 0;
+	C->CS->x = 0;
+	C->bpp = 32;
+	C->size_line = C->res_x * 4;
+	C->CS->pos_x = C->dbl_pos_x;
+	C->CS->pos_y = C->dbl_pos_y;
+	C->CS->size_max_x = C->res_x;
+	sj_init_image(cub);
+}
+
 void	sj_dir_init(t_cub *cub)
 {
 	if (C->pos == 'N')
 	{
-		C->C->dir_x = -1;
-		C->C->cam_plane_y = 0.66f;
+		C->CS->dir_x = -1;
+		C->CS->cam_plane_y = 0.66f;
 	}
 	if (C->pos == 'S')
 	{
-		C->C->dir_x = 1;
-		C->C->cam_plane_y = -0.66f;
+		C->CS->dir_x = 1;
+		C->CS->cam_plane_y = -0.66f;
 	}
 	if (C->pos == 'E')
 	{
-		C->C->dir_x = 1;
-		C->C->cam_plane_y = 0.66f;
+		C->CS->dir_x = 1;
+		C->CS->cam_plane_y = 0.66f;
 	}
 	if (C->pos == 'W')
 	{
-		C->C->dir_x = -1;
-		C->C->cam_plane_y = -0.66f;
+		C->CS->dir_x = -1;
+		C->CS->cam_plane_y = -0.66f;
 	}
 }

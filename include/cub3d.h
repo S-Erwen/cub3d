@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 15:57:40 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 04:56:38 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,7 @@
 # include <stdio.h>
 # include "../mlx/mlx.h"
 
-
-# define HEIGHT 500
+# define HEIGHT height
 
 /*
 **  _____  _____  _      _____ ______
@@ -58,8 +57,8 @@
 # define OXSKY 0x008AFF
 # define OXGROUND 0x95531D
 
-# define cub C
-# define cast C
+# define C cub
+# define CS cast
 
 /*
 **  _   __ _______   _______
@@ -105,7 +104,7 @@ typedef struct	s_recast
 	float		dir_y;
 	float		cam_plane_x;
 	float		cam_plane_y;
-	float		cameraX;
+	float		camera_x;
 	float		raydir_x;
 	float		raydir_y;
 	float		pos_x;
@@ -127,8 +126,8 @@ typedef struct	s_recast
 	char		*str;
 	int			mapx;
 	int			mapy;
-	int			stepX;
-	int			stepY;
+	int			step_x;
+	int			step_y;
 	int			hit;
 	int			side;
 	int			lineheight;
@@ -144,6 +143,7 @@ typedef struct	s_cub
 	int			*xpm_txt[4];
 	void		*xpm_adrs[4];
 	int			texnum;
+	int			height;
 	float		wallx;
 	float		step;
 	float		texpos;
@@ -216,7 +216,6 @@ int				sj_stderr_argcub(int ac, char **gv, t_cub *cub);
 void			sj_stderr_parsing(int nb);
 void			sj_stderr_parsing_tho(int nb);
 
-
 /*
 ** ______   ___  ______  _____  _____  _   _  _____
 ** | ___ \ / _ \ | ___ \/  ___||_   _|| \ | ||  __ \
@@ -232,6 +231,7 @@ int				sj_parse_letter(char *line, t_cub *cub);
 int				sj_parse_letter_p2(char *line, t_cub *cub);
 
 int				sj_parse_r(char *line, t_cub *cub);
+int				sj_res(char *line, t_cub *cub, int i);
 
 int				sj_parse_no(char *line, t_cub *cub);
 int				sj_parse_so(char *line, t_cub *cub);
@@ -240,10 +240,10 @@ int				sj_parse_ea(char *line, t_cub *cub);
 int				sj_parse_sprit(char *line, t_cub *cub);
 
 int				sj_parse_f(char *line, t_cub *cub);
-void			sj_parse_f2(char *line, t_cub *cub);
+int				sj_parse_f2(char *line, t_cub *cub);
 
 int				sj_parse_c(char *line, t_cub *cub);
-void			sj_parse_c2(char *line, t_cub *cub);
+int				sj_parse_c2(char *line, t_cub *cub);
 
 void			sj_clean_line(t_cub *cub);
 char			*sj_parsing_linemap(char *line);
@@ -290,6 +290,7 @@ void			sj_hit_dist(t_cub *cub);
 void			sj_time(t_cub *cub);
 
 void			sj_init_cast(t_cub *cub);
+void			sj_init_image(t_cub *cub);
 void			sj_dir_init(t_cub *cub);
 
 int				sj_color(int r, int g, int b);

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 04:44:53 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 04:56:56 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,8 +27,9 @@ float	sj_abs(float nb)
 
 int		sj_dda(t_cub *cub)
 {
-	C->C->x = 0;
-	while (C->C->x < C->C->size_max_x)
+	C->CS->x = 0;
+	C->height = C->res_y / 1.35;
+	while (C->CS->x < C->CS->size_max_x)
 	{
 		sj_init_start_dda(cub);
 		sj_raydir_step(cub);

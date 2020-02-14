@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 04:47:55 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -42,6 +42,10 @@ int		sj_cub(int ac, char **gv)
 
 void	sj_init_player(t_cub *cub)
 {
+	if (C->res_x > 2560)
+		C->res_x = 2560;
+	if (C->res_y > 1400)
+		C->res_y = 1400;
 	C->dbl_pos_x = (int)ft_strchr(C->line_map, C->pos) -
 		(int)C->line_map;
 	C->dbl_pos_y = C->dbl_pos_x;
