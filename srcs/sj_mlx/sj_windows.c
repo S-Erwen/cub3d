@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 04:44:53 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 04:56:56 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 02:45:02 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,6 +29,8 @@ int		sj_dda(t_cub *cub)
 {
 	C->CS->x = 0;
 	C->height = C->res_y / 1.35;
+	if (!(C->SP->zbuffer = malloc(sizeof(float) * (C->CS->size_max_x - 1))))
+		return (0);
 	while (C->CS->x < C->CS->size_max_x)
 	{
 		sj_init_start_dda(cub);
@@ -36,11 +38,15 @@ int		sj_dda(t_cub *cub)
 		sj_hit_dist(cub);
 		sj_draw_start_end(cub);
 		sj_draw(cub);
+		C->SP->zbuffer[(int)C->CS->x] = C->CS->perpwalldist;
+		C->CS->x++;
 	}
+	sj_sprite(cub);
 	sj_time(cub);
 	sj_move(cub);
 	mlx_clear_window(C->mlx, C->windows);
 	mlx_put_image_to_window(C->mlx, C->windows, C->img_ptr, 0, 0);
+	free(C->SP->zbuffer);
 	return (1);
 }
 

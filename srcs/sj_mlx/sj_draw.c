@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/09 04:39:10 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 04:56:56 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/20 01:52:11 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -32,7 +32,6 @@ void	sj_draw(t_cub *cub)
 			sj_color(C->c_color_r, C->c_color_g, C->c_color_b);
 		i++;
 	}
-	C->CS->x++;
 }
 
 void	sj_draw_start_end(t_cub *cub)

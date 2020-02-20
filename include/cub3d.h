@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 04:56:38 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 08:16:11 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -23,7 +23,10 @@
 # include "../mlx/mlx.h"
 
 # define HEIGHT height
-
+# define WIDTH width
+# define UDIV 1
+# define VDIV 1
+# define VMOVE 0.0
 /*
 **  _____  _____  _      _____ ______
 ** /  __ \|  _  || |    |  _  || ___ \
@@ -59,6 +62,7 @@
 
 # define C cub
 # define CS cast
+# define SP sprite
 
 /*
 **  _   __ _______   _______
@@ -88,101 +92,115 @@
 ** \____/  \_/ \_| \_|\___/ \____/ \_/ \____/
 */
 
-typedef struct	s_key
+typedef struct		s_key
 {
-	int			up;
-	int			down;
-	int			left;
-	int			right;
-	int			mv_right;
-	int			mv_left;
-}				t_key;
+	int				up;
+	int				down;
+	int				left;
+	int				right;
+	int				mv_right;
+	int				mv_left;
+}					t_key;
 
-typedef struct	s_recast
-{
-	float		dir_x;
-	float		dir_y;
-	float		cam_plane_x;
-	float		cam_plane_y;
-	float		camera_x;
-	float		raydir_x;
-	float		raydir_y;
-	float		pos_x;
-	float		pos_y;
-	float		time;
-	float		oldtime;
-	float		sidedistx;
-	float		sidedisty;
-	float		deltadistx;
-	float		deltadisty;
-	float		perpwalldist;
-	float		size_max_x;
-	float		x;
-	float		frametime;
-	float		move_speed;
-	float		rotation_speed;
-	float		old_dir_x;
-	float		oldcam_plane_x;
-	char		*str;
-	int			mapx;
-	int			mapy;
-	int			step_x;
-	int			step_y;
-	int			hit;
-	int			side;
-	int			lineheight;
-	int			drawstart;
-	int			drawend;
-	int			color;
-}				t_recast;
+typedef struct		s_recast
+{	
+	float			dir_x;
+	float			dir_y;
+	float			cam_plane_x;
+	float			cam_plane_y;
+	float			camera_x;
+	float			raydir_x;
+	float			raydir_y;
+	float			pos_x;
+	float			pos_y;
+	float			time;
+	float			oldtime;
+	float			sidedistx;
+	float			sidedisty;
+	float			deltadistx;
+	float			deltadisty;
+	float			perpwalldist;
+	float			size_max_x;
+	float			x;
+	float			frametime;
+	float			move_speed;
+	float			rotation_speed;
+	float			old_dir_x;
+	float			oldcam_plane_x;
+	char			*str;
+	int				mapx;
+	int				mapy;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+	int				lineheight;
+	int				drawstart;
+	int				drawend;
+	int				color;
+}					t_recast;
 
-typedef struct	s_cub
+typedef struct		s_sprite
 {
-	int			xpm_x[4];
-	int			xpm_y[4];
-	int			*xpm_txt[4];
-	void		*xpm_adrs[4];
-	int			texnum;
-	int			height;
-	float		wallx;
-	float		step;
-	float		texpos;
-	int			texx;
-	int			texy;
-	float		dbl_pos_x;
-	float		dbl_pos_y;
-	char		pos;
-	char		*path_no;
-	char		*path_so;
-	char		*path_we;
-	char		*path_ea;
-	char		*path_sprit;
-	char		*line_map;
-	char		**tab_map;
-	void		*mlx;
-	void		*windows;
-	void		*img_ptr;
-	int			res_x;
-	int			res_y;
-	int			init_pos_x;
-	int			init_pos_y;
-	int			f_color_r;
-	int			f_color_g;
-	int			f_color_b;
-	int			c_color_r;
-	int			c_color_g;
-	int			c_color_b;
-	int			help;
-	int			pc;
-	int			x;
-	int			y;
-	int			bpp;
-	int			size_line;
-	int			endian;
-	int			*img_data;
-	t_key		*key;
-	t_recast	*cast;
-}				t_cub;
+	int				*x;
+	int				*y;
+	int				nb_sp;
+	void			*adrs_sp;
+	float			*zbuffer;
+	int				x_sp;
+	int				y_sp;
+	int				*txt_sp;
+}					t_sprite;
+
+typedef struct		s_cub
+{
+	int				xpm_x[4];
+	int				xpm_y[4];
+	int				*xpm_txt[4];
+	void			*xpm_adrs[4];
+	int				texnum;
+	int				height;
+	int				width;
+	float			wallx;
+	float			step;
+	float			texpos;
+	int				texx;
+	int				texy;
+	float			dbl_pos_x;
+	float			dbl_pos_y;
+	char			pos;
+	char			*path_no;
+	char			*path_so;
+	char			*path_we;
+	char			*path_ea;
+	char			*path_sprit;
+	char			*line_map;
+	char			**tab_map;
+	void			*mlx;
+	void			*windows;
+	void			*img_ptr;
+	int				res_x;
+	int				res_y;
+	int				init_pos_x;
+	int				init_pos_y;
+	int				f_color_r;
+	int				f_color_g;
+	int				f_color_b;
+	int				c_color_r;
+	int				c_color_g;
+	int				c_color_b;
+	int				help;
+	int				pc;
+	int				x;
+	int				y;
+	int				bpp;
+	int				size_line;
+	int				endian;
+	int				*img_data;
+	t_sprite		*sprite;
+	t_key			*key;
+	t_recast		*cast;
+}					t_cub;
 
 /*
 **  _____  _   _ ______
@@ -291,6 +309,7 @@ void			sj_time(t_cub *cub);
 
 void			sj_init_cast(t_cub *cub);
 void			sj_init_image(t_cub *cub);
+void			sj_get_adrs(t_cub *cub);
 void			sj_dir_init(t_cub *cub);
 
 int				sj_color(int r, int g, int b);
@@ -300,5 +319,8 @@ void			sj_draw(t_cub *cub);
 void			sj_draw_texture(t_cub *cub);
 
 void			sj_hit(t_cub *cub);
+
+void			sj_sprite(t_cub *cub);
+void			sj_tab_sprite(t_cub *cub);
 
 #endif

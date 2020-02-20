@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:09:34 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 04:47:55 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/14 07:49:45 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -18,11 +18,13 @@ int		sj_cub(int ac, char **gv)
 	t_cub	*cub;
 	int		ret;
 
-	if (!(cub = malloc(sizeof(t_cub))))
+	if (!(C = malloc(sizeof(t_cub))))
 		return (0);
 	if (!(C->key = malloc(sizeof(t_key))))
 		return (0);
-	if (!(C->cast = malloc(sizeof(t_recast))))
+	if (!(C->CS = malloc(sizeof(t_recast))))
+		return (0);
+	if (!(C->SP = malloc(sizeof(t_sprite))))
 		return (0);
 	sj_cub_init(cub);
 	if (!sj_stderr_argcub(ac, gv, cub))
