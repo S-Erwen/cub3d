@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/14 05:04:56 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/22 02:14:57 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/22 07:58:42 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -152,39 +152,41 @@ void	sj_sprite(t_cub *cub)
 		sprite_y = C->SP->y[spriteorder[i]] - C->CS->pos_y;
 		i++;
 	}
-	invdet = 1.0 / (C->CS->cam_plane_x * C->CS->dir_y - C->CS->dir_x *
+	invdet = 1 / (C->CS->cam_plane_x * C->CS->dir_y - C->CS->dir_x *
 		C->CS->cam_plane_y);
 	transform_x = invdet * (C->CS->dir_y * sprite_x - C->CS->dir_x * sprite_y);
 	transform_y = invdet * (-C->CS->cam_plane_y * sprite_x +
 		C->CS->cam_plane_x * sprite_y);
-	sprite_screenx = (int)((C->HEIGHT / 2) * (1 + transform_x - transform_y));
-	spriteheight = sj_abs((int)(C->WIDTH / transform_y));
-	draw_start_y = -spriteheight / 2 + C->WIDTH / 2;
+	sprite_screenx = (int)((C->WIDTH / 2) * (1 + transform_x / transform_y));
+	int	vmovescreen = (int)(VMOVE / transform_y);
+	spriteheight = sj_abs((int)(C->HEIGHT / transform_y)) / VDIV;
+	draw_start_y = -spriteheight / 2 + C->HEIGHT / 2 + vmovescreen;
 	if (draw_start_y < 0)
 		draw_start_y = 0;
-	draw_end_y = spriteheight / 2 + C->WIDTH / 2;
-	if (draw_end_y >= C->WIDTH)
-		draw_end_y = C->WIDTH - 1;
-	spritewidth = sj_abs((int)(C->WIDTH / transform_y));
+	draw_end_y = spriteheight / 2 + C->HEIGHT / 2 + vmovescreen;
+	if (draw_end_y >= C->HEIGHT)
+		draw_end_y = C->HEIGHT - 1;
+	spritewidth = sj_abs((int)(C->HEIGHT / transform_y)) / UDIV;
 	draw_start_x = -spritewidth / 2 + sprite_screenx;
 	if (draw_start_x < 0)
 		draw_start_x = 0;
 	draw_end_x = spritewidth / 2 + sprite_screenx;
-	if (draw_end_x >= C->HEIGHT)
-		draw_end_x = C->HEIGHT - 1;
+	if (draw_end_x >= C->WIDTH)
+		draw_end_x = C->WIDTH - 1;
 	stripe = draw_start_x;
 	while (stripe < draw_end_x)
 	{
 		tex_x = (int)((stripe - (-spritewidth / 2 + sprite_screenx)) * tex_width / spritewidth);
 		y = draw_start_y;
-		if (transform_y > 0 && stripe > 0 && stripe < C->width && transform_y < C->SP->zbuffer[stripe])
+		if (transform_y > 0 && stripe > 0 && stripe < C->res_x && transform_y < C->SP->zbuffer[stripe])
 			while (y < draw_end_y)
 			{
-				d = (y) * 256 - C->WIDTH * 128 + spriteheight * 128;
-				tex_y = ((d * tex_height) / spriteheight) / 256;
+				d = (y - vmovescreen) * 256 - C->HEIGHT * 128 + spriteheight * 128;
+				tex_y = ((d * tex_width) / spriteheight) / 256;
 				color = C->SP->txt_sp[tex_width * tex_y + tex_x];
-				if (color)
-					C->img_data[y * C->res_y + stripe] = color;
+				dprintf(2, "COLOR = [%d] | D = [%d] | TEXY = [%d] | CALCUL = [%d]\n", color, d, tex_y, tex_width * tex_y + tex_x);
+				if (color > 0)
+					C->img_data[y * C->res_x + stripe] = C->xpm_txt[1][tex_height * tex_x + tex_y];
 				y++;
 			}
 		stripe++;
