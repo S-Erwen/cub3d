@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   cub3d.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 08:16:11 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/23 10:08:08 by sanjaro     ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -24,9 +24,9 @@
 
 # define HEIGHT height
 # define WIDTH width
-# define UDIV 1
-# define VDIV 1
-# define VMOVE 0.0
+# define UDIV 2
+# define VDIV 2
+# define VMOVE 64.0
 /*
 **  _____  _____  _      _____ ______
 ** /  __ \|  _  || |    |  _  || ___ \
