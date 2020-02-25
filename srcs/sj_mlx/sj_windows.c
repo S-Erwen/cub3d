@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/20 04:44:53 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 02:45:02 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 05:58:32 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,13 +16,6 @@
 int		sj_close(void)
 {
 	exit(EXIT_SUCCESS);
-}
-
-float	sj_abs(float nb)
-{
-	if (nb < 0)
-		return (-nb);
-	return (nb);
 }
 
 int		sj_dda(t_cub *cub)

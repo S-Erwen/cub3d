@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 05:27:18 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/24 22:27:03 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -73,4 +73,6 @@ void	sj_stderr_parsing_tho(int nb)
 		ft_printf("__ERROR_FILE__\n");
 	if (nb == -14)
 		ft_printf("__ERROR_NO_XPM_FILE__\n");
+	if (nb == -15)
+		ft_printf("__ERROR_BAD_XPM_FILE__\n");
 }

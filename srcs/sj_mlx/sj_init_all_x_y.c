@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 11:57:08 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 04:56:56 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 06:00:19 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -22,8 +22,8 @@ void	sj_init_start_dda(t_cub *cub)
 		* C->CS->camera_x;
 	C->CS->mapx = (int)C->CS->pos_x;
 	C->CS->mapy = (int)C->CS->pos_y;
-	C->CS->deltadistx = sj_abs(1 / C->CS->raydir_x);
-	C->CS->deltadisty = sj_abs(1 / C->CS->raydir_y);
+	C->CS->deltadistx = fabsf(1 / C->CS->raydir_x);
+	C->CS->deltadisty = fabsf(1 / C->CS->raydir_y);
 	C->CS->hit = 0;
 }
 

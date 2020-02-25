@@ -3,10 +3,10 @@
 /*                                                              /             */
 /*   cub3d.h                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sanjaro <sanjaro@student.le-101.fr>        +:+   +:    +:    +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/23 10:08:08 by sanjaro     ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 05:59:52 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,13 +20,12 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include "../mlx/mlx.h"
 
 # define HEIGHT height
 # define WIDTH width
-# define UDIV 2
-# define VDIV 2
-# define VMOVE 64.0
+
 /*
 **  _____  _____  _      _____ ______
 ** /  __ \|  _  || |    |  _  || ___ \

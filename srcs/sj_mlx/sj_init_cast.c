@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/30 12:15:56 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/22 07:45:06 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 05:39:03 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -47,6 +47,13 @@ void	sj_init_image(t_cub *cub)
 		&C->xpm_y[3]);
 	C->SP->adrs_sp = mlx_xpm_file_to_image(C->mlx, C->path_sprit, &C->SP->x_sp,
 		&C->SP->y_sp);
+	if (!C->xpm_adrs[0] || !C->xpm_adrs[1] || !C->xpm_adrs[2]
+		|| !C->xpm_adrs[3] || !C->SP->adrs_sp)
+	{
+		ft_printf(RED);
+		ft_printf("Error\n");
+		sj_stderr_parsing(-15);
+	}
 	sj_get_adrs(cub);
 }
 
@@ -71,7 +78,7 @@ void	sj_dir_init(t_cub *cub)
 	if (C->pos == 'N')
 	{
 		C->CS->dir_x = -1;
-		C->CS->cam_plane_y = 0.66f;
+		C->CS->cam_plane_y = 0.66;
 	}
 	if (C->pos == 'S')
 	{
