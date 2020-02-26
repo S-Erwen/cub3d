@@ -1,19 +1,19 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   sj_sprite.c                                      .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/14 05:04:56 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 07:25:13 by esidelar    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_sprite.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/14 05:04:56 by esidelar          #+#    #+#             */
+/*   Updated: 2020/02/26 05:08:59 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../include/cub3d.h"
 
-void	sj_tab_sprite(t_cub *cub)
+int		sj_tab_sprite(t_cub *cub)
 {
 	int			x;
 	int			y;
@@ -29,10 +29,9 @@ void	sj_tab_sprite(t_cub *cub)
 		y++;
 	}
 	C->SP->nb_sp = i;
-	if (!(C->SP->y = malloc(sizeof(int) * (i))))
-		return ;
-	if (!(C->SP->x = malloc(sizeof(int) * (i))))
-		return ;
+	if (!(C->SP->y = malloc(sizeof(int) * (i)))
+		|| !(C->SP->x = malloc(sizeof(int) * (i))))
+		return (-1);
 	i = 0;
 	y = 0;
 	while (C->tab_map[y])
@@ -49,6 +48,7 @@ void	sj_tab_sprite(t_cub *cub)
 		x = 0;
 		y++;
 	}
+	return (0);
 }
 
 void	sj_tri(float tab[], int size)
@@ -89,15 +89,17 @@ void	sj_sort_sprites(int spriteorder[], float sprite_dist[], t_cub *cub)
 	while (i < C->SP->nb_sp)
 	{
 		sprite_dist[i] = spritex[C->SP->nb_sp - i - 1];
+		dprintf(2, "sprite_dist[%d] = [%f]\n", i, sprite_dist[i]);
 		spriteorder[i] = spritey[C->SP->nb_sp - i - 1];
 		i++;
 	}
+	dprintf(2, "------------------------\n\n");
 }
 
 void	sj_sprite(t_cub *cub)
 {
-	int				spriteorder[C->SP->nb_sp];
-	float			sprite_dist[C->SP->nb_sp];
+	int				spriteorder[50];
+	float			sprite_dist[50];
 	int				i;
 	int				y;
 	int				z;
@@ -120,7 +122,11 @@ void	sj_sprite(t_cub *cub)
 	int				d;
 	unsigned int	color;
 
-	sj_tab_sprite(cub);
+	if (sj_tab_sprite(cub))
+	{
+		sj_stderr_parsing_tho(-15);
+		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	z = 0;
 	while (i < C->SP->nb_sp)
@@ -130,8 +136,14 @@ void	sj_sprite(t_cub *cub)
 			pow(C->CS->pos_y - C->SP->y[i], 2);
 		i++;
 	}
+	dprintf(2, "pos_x = [%f]\n", C->CS->pos_x);
+	dprintf(2, "pos_y = [%f]\n\n", C->CS->pos_y);
 	i = 0;
+	// dprintf(2, "BEF = sprite_dist = [%f]\n", sprite_dist[0]);
+	// dprintf(2, "BEF = sprite_dist = [%f]\n", sprite_dist[1]);
 	sj_sort_sprites(spriteorder, sprite_dist, cub);
+	// dprintf(2, "sprite_dist = [%f]\n", sprite_dist[0]);
+	// dprintf(2, "sprite_dist = [%f]\n\n", sprite_dist[1]);
 	while (z < C->SP->nb_sp)
 	{
 		sprite_x = C->SP->x[spriteorder[z]] - C->CS->pos_x + 0.5;
@@ -157,25 +169,26 @@ void	sj_sprite(t_cub *cub)
 		if (draw_end_x >= C->res_x)
 			draw_end_x = C->res_x;
 		i = draw_start_x;
-		dprintf(2, "I = [%d]\n", i);
 		while (i < draw_end_x)
 		{
-			tex_x = (int)((i - (-spritewidth / 2 + sprite_screenx))
-				* tex_width / spritewidth);
+			tex_x = (int)(256 * (i - (-spritewidth / 2 + sprite_screenx))
+				* tex_width / spritewidth) / 256;
 			y = draw_start_y;
 			if (transform_y > 0 && i > 0 && i < C->res_x && transform_y
 				< C->SP->zbuffer[i])
+			{
 				while (y < draw_end_y)
 				{
 					d = (y) * 256 - C->res_y * 128 + spriteheight
 						* 128;
 					tex_y = ((d * tex_height) / spriteheight) / 256;
-					color = C->SP->txt_sp[tex_height * tex_y + tex_x];
+					color = C->SP->txt_sp[tex_width * tex_y + tex_x];
 					if (color > 0 && color & 0x00FFFFFF)
 						C->img_data[y * C->res_x + i] =
 							color;
 					y++;
 				}
+			}
 			i++;
 		}
 		z++;

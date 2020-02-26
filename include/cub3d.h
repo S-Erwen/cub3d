@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 05:59:52 by esidelar    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/25 22:30:59 by esidelar    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -320,6 +320,6 @@ void			sj_draw_texture(t_cub *cub);
 void			sj_hit(t_cub *cub);
 
 void			sj_sprite(t_cub *cub);
-void			sj_tab_sprite(t_cub *cub);
+int				sj_tab_sprite(t_cub *cub);
 
 #endif
