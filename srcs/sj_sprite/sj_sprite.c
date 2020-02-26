@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 05:04:56 by esidelar          #+#    #+#             */
-/*   Updated: 2020/02/26 05:08:59 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/02/26 06:53:11 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,11 @@ int		sj_tab_sprite(t_cub *cub)
 	return (0);
 }
 
-void	sj_tri(float tab[], int size)
+void	sj_tri(float tab[], int tab2[],int size)
 {
 	int i;
-	int temp;
+	float temp;
+	int		temp2;
 
 	i = 0;
 	while (i < size - 1)
@@ -64,6 +65,9 @@ void	sj_tri(float tab[], int size)
 			temp = tab[i];
 			tab[i] = tab[i + 1];
 			tab[i + 1] = temp;
+			temp2 = tab2[i];
+			tab2[i] = tab2[i + 1];
+			tab2[i + 1] = temp2;
 			i = -1;
 		}
 		i++;
@@ -83,28 +87,25 @@ void	sj_sort_sprites(int spriteorder[], float sprite_dist[], t_cub *cub)
 		spritey[i] = spriteorder[i];
 		i++;
 	}
-	sj_tri(spritex, i);
-	sj_tri((float *)spritey, i);
+	sj_tri(spritex, spritey, i);
 	i = 0;
 	while (i < C->SP->nb_sp)
 	{
 		sprite_dist[i] = spritex[C->SP->nb_sp - i - 1];
-		dprintf(2, "sprite_dist[%d] = [%f]\n", i, sprite_dist[i]);
 		spriteorder[i] = spritey[C->SP->nb_sp - i - 1];
 		i++;
 	}
-	dprintf(2, "------------------------\n\n");
 }
 
 void	sj_sprite(t_cub *cub)
 {
-	int				spriteorder[50];
-	float			sprite_dist[50];
+	int				spriteorder[C->SP->nb_sp];
+	float			sprite_dist[C->SP->nb_sp];
 	int				i;
 	int				y;
 	int				z;
-	double			sprite_x = 0.0;
-    double			sprite_y = 0.0;
+	float			sprite_x = 0.0;
+    float			sprite_y = 0.0;
 	float			invdet;
 	float			transform_x;
 	float			transform_y;
@@ -129,6 +130,7 @@ void	sj_sprite(t_cub *cub)
 	}
 	i = 0;
 	z = 0;
+	spriteorder[0] = 0;
 	while (i < C->SP->nb_sp)
 	{
 		spriteorder[i] = i;
@@ -136,14 +138,8 @@ void	sj_sprite(t_cub *cub)
 			pow(C->CS->pos_y - C->SP->y[i], 2);
 		i++;
 	}
-	dprintf(2, "pos_x = [%f]\n", C->CS->pos_x);
-	dprintf(2, "pos_y = [%f]\n\n", C->CS->pos_y);
-	i = 0;
-	// dprintf(2, "BEF = sprite_dist = [%f]\n", sprite_dist[0]);
-	// dprintf(2, "BEF = sprite_dist = [%f]\n", sprite_dist[1]);
+	spriteorder[0] = 0;
 	sj_sort_sprites(spriteorder, sprite_dist, cub);
-	// dprintf(2, "sprite_dist = [%f]\n", sprite_dist[0]);
-	// dprintf(2, "sprite_dist = [%f]\n\n", sprite_dist[1]);
 	while (z < C->SP->nb_sp)
 	{
 		sprite_x = C->SP->x[spriteorder[z]] - C->CS->pos_x + 0.5;
