@@ -37,13 +37,13 @@ void	sj_get_adrs(t_cub *cub)
 
 void	sj_init_image(t_cub *cub)
 {
-	C->xpm_adrs[0] = mlx_xpm_file_to_image(C->mlx, C->path_no, &C->xpm_x[0],
+	C->xpm_adrs[0] = mlx_xpm_file_to_image(C->mlx, C->path_ea, &C->xpm_x[0],
 		&C->xpm_y[0]);
-	C->xpm_adrs[1] = mlx_xpm_file_to_image(C->mlx, C->path_so, &C->xpm_x[1],
+	C->xpm_adrs[1] = mlx_xpm_file_to_image(C->mlx, C->path_we, &C->xpm_x[1],
 		&C->xpm_y[1]);
-	C->xpm_adrs[2] = mlx_xpm_file_to_image(C->mlx, C->path_we, &C->xpm_x[2],
+	C->xpm_adrs[2] = mlx_xpm_file_to_image(C->mlx, C->path_no, &C->xpm_x[2],
 		&C->xpm_y[2]);
-	C->xpm_adrs[3] = mlx_xpm_file_to_image(C->mlx, C->path_ea, &C->xpm_x[3],
+	C->xpm_adrs[3] = mlx_xpm_file_to_image(C->mlx, C->path_so, &C->xpm_x[3],
 		&C->xpm_y[3]);
 	C->SP->adrs_sp = mlx_xpm_file_to_image(C->mlx, C->path_sprit, &C->SP->x_sp,
 		&C->SP->y_sp);
@@ -60,8 +60,6 @@ void	sj_init_image(t_cub *cub)
 void	sj_init_cast(t_cub *cub)
 {
 	sj_dir_init(cub);
-	C->CS->dir_y = 0;
-	C->CS->cam_plane_x = 0;
 	C->CS->time = 0;
 	C->CS->oldtime = 0;
 	C->CS->x = 0;
@@ -75,24 +73,23 @@ void	sj_init_cast(t_cub *cub)
 
 void	sj_dir_init(t_cub *cub)
 {
+	float	rot;
+
+	rot = 0;
+	C->CS->dir_x = -1;
+	C->CS->cam_plane_y = 0.66;
 	if (C->pos == 'N')
-	{
-		C->CS->dir_x = -1;
-		C->CS->cam_plane_y = 0.66;
-	}
+		rot = 4.71;
 	if (C->pos == 'S')
-	{
-		C->CS->dir_x = 1;
-		C->CS->cam_plane_y = -0.66f;
-	}
+		rot = 1.58;
 	if (C->pos == 'E')
-	{
-		C->CS->dir_x = 1;
-		C->CS->cam_plane_y = 0.66f;
-	}
-	if (C->pos == 'W')
-	{
-		C->CS->dir_x = -1;
-		C->CS->cam_plane_y = -0.66f;
-	}
+		rot = 3.14;
+	C->CS->old_dir_x = C->CS->dir_x;
+	C->CS->dir_x = C->CS->dir_x * cos(-rot) - C->CS->dir_y * sin(-rot);
+	C->CS->dir_y = C->CS->old_dir_x * sin(-rot) + C->CS->dir_y * cos(-rot);
+	C->CS->oldcam_plane_x = C->CS->cam_plane_x;
+	C->CS->cam_plane_x = C->CS->cam_plane_x * cos(-rot) - C->CS->cam_plane_y
+		* sin(-rot);
+	C->CS->cam_plane_y = C->CS->oldcam_plane_x * sin(-rot) + C->CS->cam_plane_y
+		* cos(-rot);
 }

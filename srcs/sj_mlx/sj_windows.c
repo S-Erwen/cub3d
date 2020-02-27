@@ -22,7 +22,7 @@ int		sj_dda(t_cub *cub)
 {
 	C->CS->x = 0;
 	C->height = C->res_y / 1.35;
-	if (!(C->SP->zbuffer = malloc(sizeof(float) * (C->CS->size_max_x - 1))))
+	if (!(C->SP->zbuffer = malloc(sizeof(float) * (C->CS->size_max_x))))
 		return (0);
 	while (C->CS->x < C->CS->size_max_x)
 	{
@@ -45,17 +45,17 @@ int		sj_dda(t_cub *cub)
 
 int		sj_move(t_cub *cub)
 {
-	if (C->key->down)
+	if (C->K->down)
 		sj_key_down(cub);
-	if (C->key->mv_right)
+	if (C->K->mv_right)
 		sj_key_mv_right(cub);
-	if (C->key->mv_left)
+	if (C->K->mv_left)
 		sj_key_mv_left(cub);
-	if (C->key->left)
+	if (C->K->left)
 		sj_key_left(cub);
-	if (C->key->right)
+	if (C->K->right)
 		sj_key_right(cub);
-	if (C->key->up)
+	if (C->K->up)
 		sj_key_up(cub);
 	return (1);
 }

@@ -99,6 +99,7 @@ SRCS =		main.c \
 			srcs/sj_cub.c \
 			srcs/sj_stderr.c \
 			srcs/sj_cub_init.c \
+			srcs/sj_ultimatefree.c \
 			srcs/parsing_cub/sj_parsing.c \
 			srcs/parsing_cub/sj_parsing_r.c \
 			srcs/parsing_cub/sj_parsing_path.c \

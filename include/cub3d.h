@@ -60,6 +60,7 @@
 # define OXGROUND 0x95531D
 
 # define C cub
+# define K key
 # define CS cast
 # define SP sprite
 
@@ -321,5 +322,8 @@ void			sj_hit(t_cub *cub);
 
 void			sj_sprite(t_cub *cub);
 int				sj_tab_sprite(t_cub *cub);
+
+void			ult_i_to_vii(int ret, t_cub *cub);
+void			ult_vii_to_xii(int ret, t_cub *cub);
 
 #endif

@@ -16,17 +16,17 @@
 int		sj_key_press(int key, t_cub *cub)
 {
 	if (key == L_LEFT)
-		C->key->mv_left = 1;
+		C->K->mv_left = 1;
 	if (key == L_RIGHT)
-		C->key->mv_right = 1;
+		C->K->mv_right = 1;
 	if (key == L_DOWN || key == R_DOWN)
-		C->key->down = 1;
+		C->K->down = 1;
 	if (key == R_RIGHT)
-		C->key->right = 1;
+		C->K->right = 1;
 	if (key == R_LEFT)
-		C->key->left = 1;
+		C->K->left = 1;
 	if (key == L_UP || key == R_UP)
-		C->key->up = 1;
+		C->K->up = 1;
 	if (key == ESCAPE)
 		exit(EXIT_SUCCESS);
 	return (0);
@@ -35,16 +35,16 @@ int		sj_key_press(int key, t_cub *cub)
 int		sj_key_release(int key, t_cub *cub)
 {
 	if (key == L_LEFT)
-		C->key->mv_left = 0;
+		C->K->mv_left = 0;
 	if (key == L_RIGHT)
-		C->key->mv_right = 0;
+		C->K->mv_right = 0;
 	if (key == L_DOWN || key == R_DOWN)
-		C->key->down = 0;
+		C->K->down = 0;
 	if (key == R_RIGHT)
-		C->key->right = 0;
+		C->K->right = 0;
 	if (key == R_LEFT)
-		C->key->left = 0;
+		C->K->left = 0;
 	if (key == L_UP || key == R_UP)
-		C->key->up = 0;
+		C->K->up = 0;
 	return (0);
 }

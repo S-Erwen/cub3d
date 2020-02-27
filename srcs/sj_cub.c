@@ -20,7 +20,7 @@ int		sj_cub(int ac, char **gv)
 
 	if (!(C = malloc(sizeof(t_cub))))
 		return (0);
-	if (!(C->key = malloc(sizeof(t_key))))
+	if (!(C->K = malloc(sizeof(t_key))))
 		return (0);
 	if (!(C->CS = malloc(sizeof(t_recast))))
 		return (0);
@@ -34,6 +34,7 @@ int		sj_cub(int ac, char **gv)
 		ft_printf(RED);
 		ft_printf("Error\n");
 		sj_stderr_parsing(ret);
+		ult_i_to_vii(ret, cub);
 		exit(EXIT_FAILURE);
 	}
 	sj_init_player(cub);

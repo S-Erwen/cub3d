@@ -25,7 +25,6 @@ int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
 		ft_printf("Error\n__ERROR_ARG__\n");
 		return (0);
 	}
-	dprintf(1, "AV[1] = {%s}\n", gv[1]);
 	if (!ft_strnstr(gv[1], ".cub", ft_strlen(gv[1])))
 	{
 		ft_printf(RED);

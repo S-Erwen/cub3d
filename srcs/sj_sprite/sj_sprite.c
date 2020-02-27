@@ -99,6 +99,12 @@ void	sj_sort_sprites(int spriteorder[], float sprite_dist[], t_cub *cub)
 
 void	sj_sprite(t_cub *cub)
 {
+	if (sj_tab_sprite(cub))
+	{
+		sj_stderr_parsing_tho(-15);
+		exit(EXIT_FAILURE);
+	}
+
 	int				spriteorder[C->SP->nb_sp];
 	float			sprite_dist[C->SP->nb_sp];
 	int				i;
@@ -123,22 +129,15 @@ void	sj_sprite(t_cub *cub)
 	int				d;
 	unsigned int	color;
 
-	if (sj_tab_sprite(cub))
-	{
-		sj_stderr_parsing_tho(-15);
-		exit(EXIT_FAILURE);
-	}
 	i = 0;
 	z = 0;
-	spriteorder[0] = 0;
-	while (i < C->SP->nb_sp)
+  	while (i < C->SP->nb_sp)
 	{
 		spriteorder[i] = i;
 		sprite_dist[i] = pow(C->CS->pos_x - C->SP->x[i], 2) +
 			pow(C->CS->pos_y - C->SP->y[i], 2);
 		i++;
 	}
-	spriteorder[0] = 0;
 	sj_sort_sprites(spriteorder, sprite_dist, cub);
 	while (z < C->SP->nb_sp)
 	{
@@ -150,10 +149,10 @@ void	sj_sprite(t_cub *cub)
 		transform_y = invdet * (-C->CS->cam_plane_y * sprite_x +
 			C->CS->cam_plane_x * sprite_y);
 		sprite_screenx = (int)((C->res_x / 2) * (1 + transform_x / transform_y));
-		spriteheight = abs((int)(C->res_y / transform_y));
-		spritewidth = abs((int)(C->res_y / transform_y));
-		draw_start_y = -spriteheight / 2 + C->res_y / 2;
-		draw_end_y = spriteheight / 2 + C->res_y / 2;
+		spriteheight = abs((int)(C->HEIGHT / transform_y));
+		spritewidth = abs((int)(C->HEIGHT / transform_y));
+		draw_start_y = -spriteheight / 2 + C->HEIGHT / 2;
+		draw_end_y = spriteheight / 2 + C->HEIGHT / 2;
 		draw_start_x = -spritewidth / 2 + sprite_screenx;
 		draw_end_x = spritewidth / 2 + sprite_screenx;
 		if (draw_start_y < 0)
@@ -175,7 +174,7 @@ void	sj_sprite(t_cub *cub)
 			{
 				while (y < draw_end_y)
 				{
-					d = (y) * 256 - C->res_y * 128 + spriteheight
+					d = (y) * 256 - C->HEIGHT * 128 + spriteheight
 						* 128;
 					tex_y = ((d * tex_height) / spriteheight) / 256;
 					color = C->SP->txt_sp[tex_width * tex_y + tex_x];

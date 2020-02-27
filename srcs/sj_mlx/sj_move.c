@@ -20,13 +20,13 @@ void	sj_key_mv_right(t_cub *cub)
 
 	x = C->CS->pos_x + C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y;
-	if (C->tab_map[(int)(y + 0.00001)][(int)x] != '1'
-		&& C->tab_map[(int)(y - 0.00001)][(int)x] != '1')
+	if (C->tab_map[(int)(y)][(int)x] != '1'
+		&& C->tab_map[(int)(y)][(int)x] != '1')
 		C->CS->pos_x += C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y - C->CS->dir_x * C->CS->move_speed / 2;
 	x = C->CS->pos_x;
-	if (C->tab_map[(int)y][(int)(x + 0.00001)] != '1'
-		&& C->tab_map[(int)y][(int)(x - 0.00001)] != '1')
+	if (C->tab_map[(int)y][(int)(x)] != '1'
+		&& C->tab_map[(int)y][(int)(x)] != '1')
 		C->CS->pos_y -= C->CS->dir_x * C->CS->move_speed / 2;
 }
 
@@ -37,13 +37,13 @@ void	sj_key_mv_left(t_cub *cub)
 
 	x = C->CS->pos_x - C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y;
-	if (C->tab_map[(int)(y - 0.00001)][(int)x] != '1'
-		&& C->tab_map[(int)(y + 0.00001)][(int)x] != '1')
+	if (C->tab_map[(int)(y)][(int)x] != '1'
+		&& C->tab_map[(int)(y)][(int)x] != '1')
 		C->CS->pos_x -= C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y + C->CS->dir_x * C->CS->move_speed / 2;
 	x = C->CS->pos_x;
-	if (C->tab_map[(int)y][(int)(x + 0.00001)] != '1'
-		&& C->tab_map[(int)y][(int)(x - 0.00001)] != '1')
+	if (C->tab_map[(int)y][(int)(x)] != '1'
+		&& C->tab_map[(int)y][(int)(x)] != '1')
 		C->CS->pos_y += C->CS->dir_x * C->CS->move_speed / 2;
 }
 

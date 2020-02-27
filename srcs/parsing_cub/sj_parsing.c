@@ -56,17 +56,18 @@ int		sj_gnl_parse(char *line, t_cub *cub)
 		return (-9);
 	if (!(ret = sj_parse_letter(line, cub)))
 		ret2 = sj_parse_letter_p2(line, cub);
-	if (ret < 0)
+	if (ret < 0 || ret2 < 0)
+	{
+		free(line);
 		return (ret);
-	if (ret2 < 0)
-		return (ret2);
+	}
 	if (ret || ret2)
 		C->pc++;
 	if (C->pc > 8)
 		map = sj_parsing_map(cub, line);
+	free(line);
 	if (map < 0)
 		return (-12);
-	free(line);
 	return (0);
 }
 

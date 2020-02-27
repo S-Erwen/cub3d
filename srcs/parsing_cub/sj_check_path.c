@@ -17,11 +17,19 @@ int		sj_check_path(t_cub *cub)
 {
 	int		fd;
 
-	if ((fd = open(C->path_ea, 0x0000) < 0)
-		|| (fd = open(C->path_so, 0x0000) < 0)
-		|| (fd = open(C->path_we, 0x0000) < 0)
-		|| (fd = open(C->path_no, 0x0000) < 0)
-		|| (fd = open(C->path_sprit, 0x0000) < 0))
+	if ((fd = open(C->path_ea, 0x0000) < 0))
+		return (-13);
+	close(fd);
+	if ((fd = open(C->path_so, 0x0000) < 0))
+		return (-13);
+	close(fd);
+	if ((fd = open(C->path_we, 0x0000) < 0))
+		return (-13);
+	close(fd);
+	if ((fd = open(C->path_no, 0x0000) < 0))
+		return (-13);
+	close(fd);
+	if ((fd = open(C->path_sprit, 0x0000) < 0))
 		return (-13);
 	close(fd);
 	if (!ft_strnstr(C->path_ea, ".xpm", ft_strlen(C->path_ea))
