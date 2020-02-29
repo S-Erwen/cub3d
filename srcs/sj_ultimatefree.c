@@ -15,15 +15,15 @@ void	ult_i_to_vii(int ret, t_cub *cub)
 		if (C->path_sprit)
 			free(C->path_sprit);
 	}
-	else if (ret <= -3)
+	if (ret <= -3 && ret != -13 && ret != -10)
 		free(C->path_no);
-	else if (ret <= -4)
+	if (ret <= -4 && ret != -13 && ret != -10)
 		free(C->path_so);
-	else if (ret <= -5)
+	if (ret <= -5 && ret != -13 && ret != -10)
 		free(C->path_we);
-	else if (ret <= -6)
+	if (ret <= -6 && ret != -13 && ret != -10)
 		free(C->path_ea);
-	else if (ret <= -7)
+	if (ret <= -7 && ret != -13 && ret != -10)
 		free(C->path_sprit);
 	ult_vii_to_xii(ret, cub);
 }
@@ -33,12 +33,17 @@ void	ult_vii_to_xii(int ret, t_cub *cub)
 	int		i;
 
 	i = 0;
-	if (ret >= -12 && C->line_map)
+	if (ret <= -12 && C->line_map && ret != -13)
 	{
 		free(C->line_map);
 		while (C->tab_map[i])
 			i++;
 		while (i)
 			free(C->tab_map[i--]);
+		free(C->tab_map[i]);
 	}
+	free(C);
+	free(C->K);
+	free(C->SP);
+	free(C->CS);
 }

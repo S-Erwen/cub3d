@@ -40,6 +40,7 @@ int		sj_cub(int ac, char **gv)
 	sj_init_player(cub);
 	sj_creat_new_windows(cub);
 	sj_cub_free(cub);
+	ult_i_to_vii(-99, cub);
 	exit(EXIT_SUCCESS);
 }
 

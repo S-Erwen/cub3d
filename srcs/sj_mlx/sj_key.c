@@ -28,7 +28,10 @@ int		sj_key_press(int key, t_cub *cub)
 	if (key == L_UP || key == R_UP)
 		C->K->up = 1;
 	if (key == ESCAPE)
+	{
+		ult_i_to_vii(-99, cub);
 		exit(EXIT_SUCCESS);
+	}
 	return (0);
 }
 
