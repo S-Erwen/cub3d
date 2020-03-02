@@ -17,6 +17,11 @@ int		sj_check_path(t_cub *cub)
 {
 	int		fd;
 
+	dprintf(2, "OPEN = [%s]\n", C->path_ea);
+	dprintf(2, "OPEN = [%s]\n", C->path_so);
+	dprintf(2, "OPEN = [%s]\n", C->path_we);
+	dprintf(2, "OPEN = [%s]\n", C->path_no);
+	dprintf(2, "OPEN = [%s]\n", C->path_sprit);
 	if ((fd = open(C->path_ea, 0x0000) < 0))
 		return (-13);
 	close(fd);

@@ -20,13 +20,13 @@ void	sj_key_mv_right(t_cub *cub)
 
 	x = C->CS->pos_x + C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y;
-	if (C->tab_map[(int)(y)][(int)x] == '0''
-		&& C->tab_map[(int)(y)][(int)x] == '0'')
+	if (C->tab_map[(int)(y)][(int)x] == '0'
+		&& C->tab_map[(int)(y)][(int)x] == '0')
 		C->CS->pos_x += C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y - C->CS->dir_x * C->CS->move_speed / 2;
 	x = C->CS->pos_x;
-	if (C->tab_map[(int)y][(int)(x)] == '0''
-		&& C->tab_map[(int)y][(int)(x)] == '0'')
+	if (C->tab_map[(int)y][(int)(x)] == '0'
+		&& C->tab_map[(int)y][(int)(x)] == '0')
 		C->CS->pos_y -= C->CS->dir_x * C->CS->move_speed / 2;
 }
 
@@ -37,13 +37,13 @@ void	sj_key_mv_left(t_cub *cub)
 
 	x = C->CS->pos_x - C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y;
-	if (C->tab_map[(int)(y)][(int)x] == '0''
-		&& C->tab_map[(int)(y)][(int)x] == '0'')
+	if (C->tab_map[(int)(y)][(int)x] == '0'
+		&& C->tab_map[(int)(y)][(int)x] == '0')
 		C->CS->pos_x -= C->CS->dir_y * C->CS->move_speed / 2;
 	y = C->CS->pos_y + C->CS->dir_x * C->CS->move_speed / 2;
 	x = C->CS->pos_x;
-	if (C->tab_map[(int)y][(int)(x)] == '0''
-		&& C->tab_map[(int)y][(int)(x)] == '0'')
+	if (C->tab_map[(int)y][(int)(x)] == '0'
+		&& C->tab_map[(int)y][(int)(x)] == '0')
 		C->CS->pos_y += C->CS->dir_x * C->CS->move_speed / 2;
 }
 
@@ -54,11 +54,11 @@ void	sj_key_up(t_cub *cub)
 
 	x = (int)(C->CS->pos_x + C->CS->dir_x * C->CS->move_speed);
 	y = (int)(C->CS->pos_y);
-	if (C->tab_map[y][x] == '0'' || C->tab_map[y][x] == C->pos)
+	if (C->tab_map[y][x] == '0' || C->tab_map[y][x] == C->pos)
 		C->CS->pos_x += C->CS->dir_x * C->CS->move_speed;
 	x = (int)C->CS->pos_x;
 	y = (int)(C->CS->pos_y + C->CS->dir_y * 0.06);
-	if (C->tab_map[y][x] == '0'' || C->tab_map[y][x] == C->pos)
+	if (C->tab_map[y][x] == '0' || C->tab_map[y][x] == C->pos)
 		C->CS->pos_y += C->CS->dir_y * C->CS->move_speed;
 }
 
@@ -69,10 +69,10 @@ void	sj_key_down(t_cub *cub)
 
 	x = (int)(C->CS->pos_x - C->CS->dir_x * C->CS->move_speed);
 	y = (int)(C->CS->pos_y);
-	if (C->tab_map[y][x] == '0'' || C->tab_map[y][x] == C->pos)
+	if (C->tab_map[y][x] == '0' || C->tab_map[y][x] == C->pos)
 		C->CS->pos_x -= C->CS->dir_x * C->CS->move_speed;
 	x = (int)(C->CS->pos_x);
 	y = (int)(C->CS->pos_y - C->CS->dir_y * 0.06);
-	if (C->tab_map[y][x] == '0'' || C->tab_map[y][x] == C->pos)
+	if (C->tab_map[y][x] == '0' || C->tab_map[y][x] == C->pos)
 		C->CS->pos_y -= C->CS->dir_y * C->CS->move_speed;
 }
