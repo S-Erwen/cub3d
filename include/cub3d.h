@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   cub3d.h                                          .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/01/16 04:08:27 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 22:30:59 by esidelar    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/16 04:08:27 by esidelar          #+#    #+#             */
+/*   Updated: 2020/03/03 06:42:30 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
@@ -143,6 +142,7 @@ typedef struct		s_recast
 typedef struct		s_sprite
 {
 	int				*x;
+	int				size;
 	int				*y;
 	int				nb_sp;
 	void			*adrs_sp;
@@ -154,6 +154,8 @@ typedef struct		s_sprite
 
 typedef struct		s_cub
 {
+	int				up_c;
+	int				up_f;
 	int				xpm_x[4];
 	int				xpm_y[4];
 	int				*xpm_txt[4];

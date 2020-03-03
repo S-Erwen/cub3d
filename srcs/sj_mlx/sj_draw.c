@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   sj_draw.c                                        .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/09 04:39:10 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/20 01:52:11 by esidelar    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_draw.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/09 04:39:10 by esidelar          #+#    #+#             */
+/*   Updated: 2020/03/03 06:44:22 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
@@ -69,9 +68,9 @@ void	sj_draw_texture(t_cub *cub)
 		C->step;
 	while (C->CS->drawstart < C->CS->drawend)
 	{
-		C->texy = (int)C->texpos & (C->xpm_y[C->texnum] - 1);
+		C->texy = (int)C->texpos;
 		C->texpos += C->step;
 		C->img_data[C->CS->drawstart++ * C->res_x + (int)C->CS->x] =
-			C->xpm_txt[C->texnum][C->xpm_y[C->texnum] * C->texy + C->texx];
+			C->xpm_txt[C->texnum][C->xpm_x[C->texnum] * C->texy + C->texx];
 	}
 }

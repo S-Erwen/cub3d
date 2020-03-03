@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 12:15:56 by esidelar          #+#    #+#             */
-/*   Updated: 2020/02/26 06:00:17 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/03 05:04:45 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	sj_get_adrs(t_cub *cub)
 
 	i = 0;
 	C->endian = 1;
-	C->SP->txt_sp = (int *)mlx_get_data_addr(C->SP->adrs_sp, &bpp, &size,
-		&endian);
+	C->SP->txt_sp = (int *)mlx_get_data_addr(C->SP->adrs_sp, &bpp,
+		&C->SP->size, &endian);
 	while (i < 4)
 	{
 		C->xpm_txt[i] = (int *)mlx_get_data_addr(C->xpm_adrs[i],

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 05:04:56 by esidelar          #+#    #+#             */
-/*   Updated: 2020/02/26 06:53:11 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/03 06:40:09 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int		sj_tab_sprite(t_cub *cub)
 
 void	sj_tri(float tab[], int tab2[],int size)
 {
-	int i;
-	float temp;
+	int		i;
+	float	temp;
 	int		temp2;
 
 	i = 0;
@@ -110,8 +110,8 @@ void	sj_sprite(t_cub *cub)
 	int				i;
 	int				y;
 	int				z;
-	float			sprite_x = 0.0;
-    float			sprite_y = 0.0;
+	float			sprite_x;
+    float			sprite_y;
 	float			invdet;
 	float			transform_x;
 	float			transform_y;
@@ -177,7 +177,10 @@ void	sj_sprite(t_cub *cub)
 					d = (y) * 256 - C->HEIGHT * 128 + spriteheight
 						* 128;
 					tex_y = ((d * tex_height) / spriteheight) / 256;
-					color = C->SP->txt_sp[tex_width * tex_y + tex_x];
+					if ((tex_width * tex_y + tex_x) > C->SP->size)
+						color = C->SP->txt_sp[tex_width * tex_y + tex_x];
+					else
+						color = 0;
 					if (color > 0 && color & 0x00FFFFFF)
 						C->img_data[y * C->res_x + i] =
 							color;
@@ -188,4 +191,6 @@ void	sj_sprite(t_cub *cub)
 		}
 		z++;
 	}
+	free(C->SP->x);
+	free(C->SP->y);
 }

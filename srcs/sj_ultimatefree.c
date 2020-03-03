@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_ultimatefree.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 06:42:46 by esidelar          #+#    #+#             */
+/*   Updated: 2020/03/03 06:42:47 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 void	ult_i_to_vii(int ret, t_cub *cub)
@@ -40,10 +52,9 @@ void	ult_vii_to_xii(int ret, t_cub *cub)
 			i++;
 		while (i)
 			free(C->tab_map[i--]);
-		free(C->tab_map[i]);
 	}
-	free(C);
 	free(C->K);
 	free(C->SP);
 	free(C->CS);
+	free(C);
 }

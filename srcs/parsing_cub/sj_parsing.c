@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   sj_parsing.c                                     .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/01/16 04:07:43 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/10 14:47:52 by esidelar    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/16 04:07:43 by esidelar          #+#    #+#             */
+/*   Updated: 2020/03/03 06:44:12 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
@@ -26,6 +25,8 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	char	*line;
 	int		retur;
 
+	C->up_c = 0;
+	C->up_f = 0;
 	if ((fd = open(gv[1], 0x0000)) < 0)
 		return (-13);
 	while (get_next_line(fd, &line))
@@ -59,7 +60,9 @@ int		sj_gnl_parse(char *line, t_cub *cub)
 	if (ret < 0 || ret2 < 0)
 	{
 		free(line);
-		return (ret);
+		if (ret < 0)
+			return (ret);
+		return (ret2);
 	}
 	if (ret || ret2)
 		C->pc++;

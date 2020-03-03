@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   sj_check_path.c                                  .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/10 10:25:13 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 02:55:31 by esidelar    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_check_path.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/10 10:25:13 by esidelar          #+#    #+#             */
+/*   Updated: 2020/03/03 06:43:46 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
@@ -17,11 +16,6 @@ int		sj_check_path(t_cub *cub)
 {
 	int		fd;
 
-	dprintf(2, "OPEN = [%s]\n", C->path_ea);
-	dprintf(2, "OPEN = [%s]\n", C->path_so);
-	dprintf(2, "OPEN = [%s]\n", C->path_we);
-	dprintf(2, "OPEN = [%s]\n", C->path_no);
-	dprintf(2, "OPEN = [%s]\n", C->path_sprit);
 	if ((fd = open(C->path_ea, 0x0000) < 0))
 		return (-13);
 	close(fd);
