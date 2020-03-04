@@ -24,8 +24,6 @@ int		sj_check_tab(t_cub *cub)
 	while (C->tab_map[i - 1][y])
 		if (C->tab_map[i - 1][y++] != '1')
 			return (-12);
-	if ((ft_strlen(C->tab_map[0]) * i) != ft_strlen(C->line_map))
-		return (-12);
 	if (!ft_strchr(C->line_map, 'S') && !ft_strchr(C->line_map, 'W')
 		&& !ft_strchr(C->line_map, 'E') && !ft_strchr(C->line_map, 'N'))
 		return (-12);

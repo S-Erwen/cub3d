@@ -279,6 +279,11 @@ int				sj_first_line(char *str);
 
 int				sj_check_path(t_cub *cub);
 
+int				sj_fck_new_sujet(t_cub *cub);
+size_t			sj_count_new_sujet(t_cub *cub);
+int				sj_cmp_ud(t_cub *cub, int *i, size_t len, int bool);
+int				sj_cmp_end(t_cub *cub, int *i, size_t len);
+
 /*
 ** ___  ___ _     __   __
 ** |  \/  || |    \ \ / /

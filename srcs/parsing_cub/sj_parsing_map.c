@@ -58,10 +58,18 @@ char	*sj_parsing_linemap(char *line)
 	while (line[i])
 	{
 		while (line[i] == ' ')
-			i++;
+		{
+			if (line[i] == ' ' && line[i + 1] == ' ')
+			{
+				str[y++] = '1';
+				i += 2;
+			}
+			else if (line[i] == ' ')
+				i++;
+		}
 		while (line[i] == '1' || line[i] == '0' || line[i] == '2'
-			|| line[i] == 'N' || line[i] == 'W'
-			|| line[i] == 'E' || line[i] == 'S')
+			|| line[i] == 'N' || line[i] == 'W' || line[i] == 'E'
+			|| line[i] == 'S')
 			str[y++] = line[i++];
 		if (line[i])
 			i++;
@@ -76,20 +84,25 @@ int		sj_count_map_line(char *line)
 	int		i;
 
 	i = 0;
-	count = 0;
-	while (line[i])
+	count = -1;
+	while (line[++i])
 	{
 		while (line[i] == ' ')
-			i++;
+		{
+			if (line[i] == ' ' && line[i + 1] == ' ')
+			{
+				count++;
+				i += 2;
+			}
+			else if (line[i] == ' ')
+				i++;
+		}
 		if (line[i] == '1' || line[i] == '0' || line[i] == '2'
 			|| line[i] == 'N' || line[i] == 'W'
 			|| line[i] == 'E' || line[i] == 'S')
 			count++;
-		if (line[i] != '1' && line[i] != '0' && line[i] != '2'
-			&& line[i] != ' ' && line[i] != 'N' && line[i] != 'W'
-			&& line[i] != 'E' && line[i] != 'S')
+		else if (line[i] != ' ')
 			return (-12);
-		i++;
 	}
 	return (count);
 }

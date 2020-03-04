@@ -107,6 +107,7 @@ SRCS =		main.c \
 			srcs/parsing_cub/sj_parsing_floor_and_ceiling.c \
 			srcs/parsing_cub/sj_check_tab.c \
 			srcs/parsing_cub/sj_check_path.c \
+			srcs/parsing_cub/sj_addchr_for_map.c \
 			srcs/sj_mlx/sj_windows.c \
 			srcs/sj_mlx/sj_move.c \
 			srcs/sj_mlx/sj_init_all_x_y.c \
