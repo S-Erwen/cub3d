@@ -283,6 +283,7 @@ int				sj_fck_new_sujet(t_cub *cub);
 size_t			sj_count_new_sujet(t_cub *cub);
 int				sj_cmp_ud(t_cub *cub, int *i, size_t len, int bool);
 int				sj_cmp_end(t_cub *cub, int *i, size_t len);
+void			sj_newline(t_cub *cub);
 
 /*
 ** ___  ___ _     __   __

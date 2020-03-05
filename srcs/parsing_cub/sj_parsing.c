@@ -39,10 +39,12 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	if (retur < 0)
 		return (retur);
 	C->tab_map = ft_split(C->line_map, '\n');
-	dprintf(2, "LINE = [\n%s\n]\n", C->line_map);
 	if (sj_fck_new_sujet(cub))
 		return (-12);
+	sj_newline(cub);
+	dprintf(2, "LINE = [\n%s]\n", C->line_map);
 	sj_clean_line(cub);
+	dprintf(2, "LINE = [%s]\n", C->line_map);
 	close(fd);
 	return (sj_check_tab(cub));
 }

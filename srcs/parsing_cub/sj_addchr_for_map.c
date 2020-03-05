@@ -1,5 +1,20 @@
 #include "../../include/cub3d.h"
 
+void	sj_newline(t_cub *cub)
+{
+	int		i;
+
+	i = 0;
+	free(C->line_map);
+	C->line_map = ft_strdup(C->tab_map[i++]);
+	C->line_map = ft_add_char(C->line_map, '\n');
+	while (C->tab_map[i])
+	{
+		C->line_map = ft_strjoin_with_free(C->line_map, C->tab_map[i++], 1);
+		C->line_map = ft_add_char(C->line_map, '\n');
+	}
+}
+
 int		sj_fck_new_sujet(t_cub *cub)
 {
 	size_t	len;
@@ -24,7 +39,6 @@ int		sj_fck_new_sujet(t_cub *cub)
 		}
 		else if (ft_strlen(C->tab_map[i]) != len)
 			ret = sj_cmp_end(cub, &i, len);
-		dprintf(2, "%s\n", C->tab_map[i]);
 		i++;
 	}
 	return (0);

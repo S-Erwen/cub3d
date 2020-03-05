@@ -18,14 +18,12 @@ int		sj_cub(int ac, char **gv)
 	t_cub	*cub;
 	int		ret;
 
-	if (!(C = malloc(sizeof(t_cub))))
-		return (0);
-	if (!(C->K = malloc(sizeof(t_key))))
-		return (0);
-	if (!(C->CS = malloc(sizeof(t_recast))))
-		return (0);
-	if (!(C->SP = malloc(sizeof(t_sprite))))
-		return (0);
+	ret = 0;
+	if (!(C = malloc(sizeof(t_cub) + ret++))
+	|| !(C->K = malloc(sizeof(t_key) + ret++ - 1))
+	|| !(C->CS = malloc(sizeof(t_recast) + ret++ - 2))
+	|| !(C->SP = malloc(sizeof(t_sprite) + ret++ - 3)))
+		return (-ret);
 	sj_cub_init(cub);
 	if (!sj_stderr_argcub(ac, gv, cub))
 		exit(EXIT_FAILURE);
