@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:15:51 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:43:32 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/05 17:20:42 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,26 +55,8 @@ char	*sj_parsing_linemap(char *line)
 		return (NULL);
 	if (!(str = malloc(sizeof(char) * (count + 1))))
 		return (0);
-	while (line[i])
-	{
-		while (line[i] == ' ')
-		{
-			if (line[i] == ' ' && line[i + 1] == ' ')
-			{
-				str[y++] = '1';
-				i += 2;
-			}
-			else if (line[i] == ' ')
-				i++;
-		}
-		while (line[i] == '1' || line[i] == '0' || line[i] == '2'
-			|| line[i] == 'N' || line[i] == 'W' || line[i] == 'E'
-			|| line[i] == 'S')
-			str[y++] = line[i++];
-		if (line[i])
-			i++;
-	}
-	str[y] = '\0';
+	if (!(str = sj_line_to_str(line, str, i, y)))
+		return (NULL);
 	return (str);
 }
 

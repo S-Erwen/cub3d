@@ -1,15 +1,15 @@
 # **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    Makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/10/10 09:32:01 by alidy        #+#   ##    ##    #+#        #
-#    Updated: 2020/02/14 08:28:16 by esidelar    ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/10 09:32:01 by alidy             #+#    #+#              #
+#    Updated: 2020/03/05 17:17:55 by esidelar         ###   ########lyon.fr    #
+#                                                                              #
 # **************************************************************************** #
+
 
 
 NAMELIB = 	libft.a
@@ -108,6 +108,7 @@ SRCS =		main.c \
 			srcs/parsing_cub/sj_check_tab.c \
 			srcs/parsing_cub/sj_check_path.c \
 			srcs/parsing_cub/sj_addchr_for_map.c \
+			srcs/parsing_cub/sj_line_to_str.c \
 			srcs/sj_mlx/sj_windows.c \
 			srcs/sj_mlx/sj_move.c \
 			srcs/sj_mlx/sj_init_all_x_y.c \

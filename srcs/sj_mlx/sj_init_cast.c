@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 12:15:56 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 05:04:45 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/05 18:03:56 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	sj_dir_init(t_cub *cub)
 
 	rot = 0;
 	C->CS->dir_x = -1;
-	C->CS->cam_plane_y = 0.66;
+	C->CS->cam_plane_y = -0.66;
 	if (C->pos == 'N')
 		rot = 4.71;
 	if (C->pos == 'S')

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_addchr_for_map.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/07 21:17:55 by esidelar          #+#    #+#             */
+/*   Updated: 2020/03/07 21:43:47 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/cub3d.h"
 
 void	sj_newline(t_cub *cub)
@@ -33,13 +45,13 @@ int		sj_fck_new_sujet(t_cub *cub)
 					ret = sj_cmp_ud(cub, &i, len, 0);
 				else
 					ret = sj_cmp_ud(cub, &i, len, 1);
-				if (ret == -12)
-					return (ret);
 			}
 		}
 		else if (ft_strlen(C->tab_map[i]) != len)
 			ret = sj_cmp_end(cub, &i, len);
-		i++;
+		ret = sj_check_spcline(cub, i++);
+		if (ret == -12)
+			return (ret);
 	}
 	return (0);
 }

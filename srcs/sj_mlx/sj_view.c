@@ -1,19 +1,19 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   sj_view.c                                        .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: esidelar <esidelar@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/09 05:04:15 by esidelar     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/14 04:56:56 by esidelar    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_view.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/09 05:04:15 by esidelar          #+#    #+#             */
+/*   Updated: 2020/03/05 18:05:20 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../include/cub3d.h"
 
-void	sj_key_right(t_cub *cub)
+void	sj_key_left(t_cub *cub)
 {
 	C->CS->old_dir_x = C->CS->dir_x;
 	C->CS->dir_x = C->CS->dir_x
@@ -31,7 +31,7 @@ void	sj_key_right(t_cub *cub)
 		* cos(-C->CS->rotation_speed);
 }
 
-void	sj_key_left(t_cub *cub)
+void	sj_key_right(t_cub *cub)
 {
 	C->CS->old_dir_x = C->CS->dir_x;
 	C->CS->dir_x = C->CS->dir_x

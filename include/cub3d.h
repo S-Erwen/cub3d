@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:08:27 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:42:30 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/07 21:43:41 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,6 +284,9 @@ size_t			sj_count_new_sujet(t_cub *cub);
 int				sj_cmp_ud(t_cub *cub, int *i, size_t len, int bool);
 int				sj_cmp_end(t_cub *cub, int *i, size_t len);
 void			sj_newline(t_cub *cub);
+
+int				sj_check_spcline(t_cub *cub, int i);
+char			*sj_line_to_str(char *line, char *str, int i, int y);
 
 /*
 ** ___  ___ _     __   __

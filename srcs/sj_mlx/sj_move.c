@@ -6,14 +6,14 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:50:08 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/02 21:32:23 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/05 18:05:01 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/cub3d.h"
 
-void	sj_key_mv_right(t_cub *cub)
+void	sj_key_mv_left(t_cub *cub)
 {
 	float		x;
 	float		y;
@@ -30,7 +30,7 @@ void	sj_key_mv_right(t_cub *cub)
 		C->CS->pos_y -= C->CS->dir_x * C->CS->move_speed / 2;
 }
 
-void	sj_key_mv_left(t_cub *cub)
+void	sj_key_mv_right(t_cub *cub)
 {
 	float		x;
 	float		y;
