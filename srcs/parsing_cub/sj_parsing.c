@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:07:43 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:44:12 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 08:16:59 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	if (sj_fck_new_sujet(cub))
 		return (-12);
 	sj_newline(cub);
-	dprintf(2, "LINE = [\n%s]\n", C->line_map);
 	sj_clean_line(cub);
-	dprintf(2, "LINE = [%s]\n", C->line_map);
 	close(fd);
 	return (sj_check_tab(cub));
 }

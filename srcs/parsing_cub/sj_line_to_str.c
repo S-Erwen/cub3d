@@ -6,50 +6,54 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 17:08:20 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/07 21:44:00 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 08:34:18 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-char	*sj_line_to_str(char *line, char *str, int i, int y)
+char	*sj_line_to_str(char *line, t_cub *cub, char *str)
 {
-	while (line[i])
+	if (sj_check_spcline(line, C->in))
+		return (NULL);
+	C->kr = ft_strdup("");
+	while (line[C->in])
 	{
-		while (line[i] == ' ' && line[i + 1] == ' ')
+		if (!(C->in % 2))
 		{
-			str[y++] = '1';
-			i += 2;
+			if (line[C->in] != ' ')
+			{
+				C->kr = ft_add_char(C->kr, line[C->in]);
+				str[C->yn++] = line[C->in++];
+			}
+			else
+			{
+				C->in++;
+				C->kr = ft_add_char(C->kr, ' ');
+				str[C->yn++] = '1';
+			}
 		}
-		if (line[i] == '1' || line[i] == '0' || line[i] == '2'
-			|| line[i] == 'N' || line[i] == 'W' || line[i] == 'E'
-			|| line[i] == 'S')
-			str[y++] = line[i++];
-		else if (line[i] == ' ')
+		else if ((line[C->in] != ' ' && line[C->in])
+			|| (line[C->in] == ' ' && !line[C->in + 1]))
 			return (NULL);
-		if (line[i] != ' ' && line[i])
-			return (NULL);
-		if (line[i])
-			i++;
+		else
+			C->in++;
 	}
-	str[y] = '\0';
+	str[C->yn++] = '\0';
 	return (str);
 }
 
-int		sj_check_spcline(t_cub *cub, int i)
+int		sj_check_spcline(char *line, int i)
 {
-	int	y;
-
-	y = 0;
-	while (C->tab_map[i][y])
+	while (line[i])
 	{
-		if (y > 1 && (C->tab_map[i][y] == '0' || C->tab_map[i][y] == '1')
-			&& C->tab_map[i][y - 2] == ' ')
-		{
-			if (C->tab_map[i][y] == '0')
-				return (-12);
-		}
-		y++;
+		if (i > 1 && line[i] == '0' && line[i - 2] == ' ')
+			return (-12);
+		if (line[i + 1])
+			if (line[i + 2])
+				if (i > 1 && line[i] == '0' && line[i + 2] == ' ')
+					return (-12);
+		i++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:10:54 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:44:04 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 02:19:59 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		sj_res(char *line, t_cub *cub, int i)
 {
 	if (C->res_x || C->res_y)
 		return (-10);
+	i++;
 	while (line[i] && line[i] == ' ')
 		i++;
-	i++;
 	C->res_x = ft_atoi(line + i);
 	i++;
 	while (line[i] && ft_isdigit(line[i]))

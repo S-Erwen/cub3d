@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:13:44 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 07:51:33 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 01:50:12 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ int		sj_parse_f2(char *line, t_cub *cub)
 	int		i;
 
 	i = sj_space_skip(line);
-	i++;
+	if (line[i + 1] != ' ')
+		return (-1);
+	i += 2;
 	while (line[i] && line[i] == ' ')
 		i++;
 	C->f_color_r = ft_atoi(line + i);
@@ -86,7 +88,9 @@ int		sj_parse_c2(char *line, t_cub *cub)
 	int		i;
 
 	i = sj_space_skip(line);
-	i++;
+	if (line[i + 1] != ' ')
+		return (-1);
+	i += 2;
 	while (line[i] && line[i] == ' ')
 		i++;
 	C->c_color_r = ft_atoi(line + i);

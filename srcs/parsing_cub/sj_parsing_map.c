@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:15:51 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/05 17:20:42 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 09:04:30 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int		sj_parsing_map(t_cub *cub, char *line)
 {
 	char	*str;
 
-	str = sj_parsing_linemap(line);
+	str = sj_parsing_linemap(line, cub);
 	if (!str)
 		return (-12);
-	if (str[0] != '1' || str[ft_strlen(str) - 1] != '1')
+	if ((str[0] != '1' || str[ft_strlen(str) - 1] != '1')
+		&& (str[0] != ' ' || str[ft_strlen(str) - 1] != ' '))
 	{
 		free(str);
 		return (-12);
@@ -41,21 +42,19 @@ int		sj_parsing_map(t_cub *cub, char *line)
 	return (0);
 }
 
-char	*sj_parsing_linemap(char *line)
+char	*sj_parsing_linemap(char *line, t_cub *cub)
 {
 	char	*str;
 	int		count;
-	int		i;
-	int		y;
 
-	i = 0;
-	y = 0;
+	C->in = 0;
+	C->yn = 0;
 	count = sj_count_map_line(line);
 	if (count == -12)
 		return (NULL);
 	if (!(str = malloc(sizeof(char) * (count + 1))))
 		return (0);
-	if (!(str = sj_line_to_str(line, str, i, y)))
+	if (!(str = sj_line_to_str(line, cub, str)))
 		return (NULL);
 	return (str);
 }
@@ -66,12 +65,13 @@ int		sj_count_map_line(char *line)
 	int		i;
 
 	i = 0;
-	count = -1;
-	while (line[++i])
+	count = 0;
+	while (line[i])
 	{
 		while (line[i] == ' ')
 		{
-			if (line[i] == ' ' && line[i + 1] == ' ')
+			if (line[i] && line[i] == ' '
+				&& line[i + 1] && line[i + 1] == ' ' && line[i + 2])
 			{
 				count++;
 				i += 2;
@@ -79,12 +79,13 @@ int		sj_count_map_line(char *line)
 			else if (line[i] == ' ')
 				i++;
 		}
-		if (line[i] == '1' || line[i] == '0' || line[i] == '2'
-			|| line[i] == 'N' || line[i] == 'W'
-			|| line[i] == 'E' || line[i] == 'S')
+		if (L[i] == '1' || L[i] == '0' || L[i] == '2'
+			|| L[i] == 'N' || L[i] == 'W' || L[i] == 'E' || L[i] == 'S')
 			count++;
-		else if (line[i] != ' ')
+		else if (line[i] != ' ' && line[i])
 			return (-12);
+		if (line[i])
+			i++;
 	}
 	return (count);
 }

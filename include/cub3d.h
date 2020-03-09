@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:08:27 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/07 21:43:41 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 08:01:43 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@
 # define K key
 # define CS cast
 # define SP sprite
+# define L line
 
 /*
 **  _   __ _______   _______
@@ -160,6 +161,9 @@ typedef struct		s_cub
 	int				xpm_y[4];
 	int				*xpm_txt[4];
 	void			*xpm_adrs[4];
+	char			*kr;
+	int				in;
+	int				yn;
 	int				texnum;
 	int				height;
 	int				width;
@@ -266,7 +270,7 @@ int				sj_parse_c(char *line, t_cub *cub);
 int				sj_parse_c2(char *line, t_cub *cub);
 
 void			sj_clean_line(t_cub *cub);
-char			*sj_parsing_linemap(char *line);
+char			*sj_parsing_linemap(char *line, t_cub *cub);
 int				sj_parsing_map(t_cub *cub, char *line);
 int				sj_count_map_line(char *line);
 int				sj_count_clean(t_cub *cub);
@@ -285,8 +289,8 @@ int				sj_cmp_ud(t_cub *cub, int *i, size_t len, int bool);
 int				sj_cmp_end(t_cub *cub, int *i, size_t len);
 void			sj_newline(t_cub *cub);
 
-int				sj_check_spcline(t_cub *cub, int i);
-char			*sj_line_to_str(char *line, char *str, int i, int y);
+int				sj_check_spcline(char *line, int i);
+char			*sj_line_to_str(char *line, t_cub *cub, char *str);
 
 /*
 ** ___  ___ _     __   __

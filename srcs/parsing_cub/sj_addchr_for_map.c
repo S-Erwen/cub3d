@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 21:17:55 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/07 21:43:47 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 08:15:02 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int		sj_fck_new_sujet(t_cub *cub)
 		}
 		else if (ft_strlen(C->tab_map[i]) != len)
 			ret = sj_cmp_end(cub, &i, len);
-		ret = sj_check_spcline(cub, i++);
 		if (ret == -12)
 			return (ret);
+		i++;
 	}
 	return (0);
 }
