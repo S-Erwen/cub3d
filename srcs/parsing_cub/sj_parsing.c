@@ -25,25 +25,25 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	char	*line;
 	int		retur;
 
-	C->up_c = 0;
-	C->up_f = 0;
 	if ((fd = open(gv[1], 0x0000)) < 0)
 		return (-13);
 	while (get_next_line(fd, &line))
 	{
 		retur = sj_gnl_parse(line, cub);
+		free(line);
 		if (retur < 0)
+		{
+			close(fd);
 			return (retur);
+		}
 	}
 	retur = sj_gnl_parse(line, cub);
+	close(fd);
+	free(line);
 	if (retur < 0)
 		return (retur);
-	C->tab_map = ft_split(C->line_map, '\n');
-	if (sj_fck_new_sujet(cub))
-		return (-12);
-	sj_newline(cub);
-	sj_clean_line(cub);
-	close(fd);
+	if ((retur = sj_suit_parse(cub)) < 0)
+		return (retur);
 	return (sj_check_tab(cub));
 }
 
@@ -51,28 +51,26 @@ int		sj_gnl_parse(char *line, t_cub *cub)
 {
 	int		ret;
 	int		ret2;
-	int		map;
 
 	ret = 0;
 	ret2 = 0;
-	map = 0;
 	if (!line)
 		return (-9);
 	if (!(ret = sj_parse_letter(line, cub)))
 		ret2 = sj_parse_letter_p2(line, cub);
 	if (ret < 0 || ret2 < 0)
 	{
-		free(line);
 		if (ret < 0)
 			return (ret);
 		return (ret2);
 	}
 	if (ret || ret2)
 		C->pc++;
+	else if (ft_strlen(line) || line[0])
+		return (-15);
 	if (C->pc > 8)
-		map = sj_parsing_map(cub, line);
-	free(line);
-	if (map < 0)
+		ret = sj_parsing_map(cub, line);
+	if (ret < 0)
 		return (-12);
 	return (0);
 }

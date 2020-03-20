@@ -32,8 +32,15 @@ int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
 		return (0);
 	}
 	if (ac == 3)
-		if (ft_strnstr(gv[2], "--help", ft_strlen(gv[2])))
+	{
+		if (ft_strnstr(gv[2], "--save", ft_strlen(gv[2])))
 			C->help++;
+		else
+		{
+			ft_printf("\033[0;31mError\n__ERROR_BAD_ARG__\n");
+			return (0);
+		}
+	}
 	return (1);
 }
 
@@ -74,4 +81,13 @@ void	sj_stderr_parsing_tho(int nb)
 		ft_printf("__ERROR_NO_XPM_FILE__\n");
 	if (nb == -15)
 		ft_printf("__ERROR_BAD_XPM_FILE__\n");
+	if (nb == -16)
+		ft_printf("__ERROR_MALLOC__\n");
+}
+
+char	*sj_free(char *str)
+{
+	free(str);
+	str = NULL;
+	return (str);
 }

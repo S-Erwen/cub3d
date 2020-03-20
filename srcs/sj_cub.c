@@ -15,18 +15,16 @@
 
 int		sj_cub(int ac, char **gv)
 {
-	t_cub	*cub;
+	t_cub	*cub = NULL;
 	int		ret;
 
-	ret = 0;
-	if (!(C = malloc(sizeof(t_cub) + ret++))
-	|| !(C->K = malloc(sizeof(t_key) + ret++ - 1))
-	|| !(C->CS = malloc(sizeof(t_recast) + ret++ - 2))
-	|| !(C->SP = malloc(sizeof(t_sprite) + ret++ - 3)))
-		return (-ret);
+	cub = sj_cub_init_stuct(cub);
 	sj_cub_init(cub);
 	if (!sj_stderr_argcub(ac, gv, cub))
+	{
+		ult_i_to_vii(0, cub);
 		exit(EXIT_FAILURE);
+	}
 	if ((ret = sj_parse_all(cub, gv)) < 0)
 	{
 		ft_printf(RED);
@@ -67,7 +65,11 @@ void	sj_cub_free(t_cub *cub)
 	while (C->tab_map[i])
 		i++;
 	while (i)
-		free(C->tab_map[--i]);
-	free(C->line_map);
+	{
+		C->tab_map[i] = sj_free(C->tab_map[i]);
+		i--;
+	}
+	C->line_map = sj_free(C->line_map);
 	free(C->tab_map);
+	C->tab_map = NULL;
 }

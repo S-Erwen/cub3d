@@ -10,187 +10,99 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../include/cub3d.h"
-
-int		sj_tab_sprite(t_cub *cub)
-{
-	int			x;
-	int			y;
-	int			i;
-
-	x = 0;
-	y = 0;
-	i = 0;
-	while (C->line_map[y])
-	{
-		if (C->line_map[y] == '2')
-			i++;
-		y++;
-	}
-	C->SP->nb_sp = i;
-	if (!(C->SP->y = malloc(sizeof(int) * (i)))
-		|| !(C->SP->x = malloc(sizeof(int) * (i))))
-		return (-1);
-	i = 0;
-	y = 0;
-	while (C->tab_map[y])
-	{
-		while (C->tab_map[y][x])
-		{
-			if (C->tab_map[y][x] == '2')
-			{
-				C->SP->y[i] = y;
-				C->SP->x[i++] = x;
-			}
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	return (0);
-}
-
-void	sj_tri(float tab[], int tab2[],int size)
-{
-	int		i;
-	float	temp;
-	int		temp2;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		if (tab[i + 1] < tab[i])
-		{
-			temp = tab[i];
-			tab[i] = tab[i + 1];
-			tab[i + 1] = temp;
-			temp2 = tab2[i];
-			tab2[i] = tab2[i + 1];
-			tab2[i + 1] = temp2;
-			i = -1;
-		}
-		i++;
-	}
-}
-
-void	sj_sort_sprites(int spriteorder[], float sprite_dist[], t_cub *cub)
-{
-	float		spritex[C->SP->nb_sp];
-	int			spritey[C->SP->nb_sp];
-	int			i;
-
-	i = 0;
-	while (i < C->SP->nb_sp)
-	{
-		spritex[i] = sprite_dist[i];
-		spritey[i] = spriteorder[i];
-		i++;
-	}
-	sj_tri(spritex, spritey, i);
-	i = 0;
-	while (i < C->SP->nb_sp)
-	{
-		sprite_dist[i] = spritex[C->SP->nb_sp - i - 1];
-		spriteorder[i] = spritey[C->SP->nb_sp - i - 1];
-		i++;
-	}
-}
 
 void	sj_sprite(t_cub *cub)
 {
-	if (sj_tab_sprite(cub))
-	{
-		sj_stderr_parsing_tho(-15);
-		exit(EXIT_FAILURE);
-	}
-
 	int				spriteorder[C->SP->nb_sp];
 	float			sprite_dist[C->SP->nb_sp];
-	int				i;
-	int				y;
-	int				z;
-	float			sprite_x;
-    float			sprite_y;
-	float			invdet;
-	float			transform_x;
-	float			transform_y;
-	int				sprite_screenx;
-	int				spriteheight;
-	int				spritewidth;
-	int				draw_start_x;
-	int				draw_start_y;
-	int				draw_end_x;
-	int				draw_end_y;
-	int				tex_x;
-	int				tex_y;
-	int				tex_width = C->SP->x_sp;
-	int				tex_height = C->SP->y_sp;
-	int				d;
-	unsigned int	color;
 
-	i = 0;
-	z = 0;
-  	while (i < C->SP->nb_sp)
+	C->SP->i = 0;
+	C->SP->z = 0;
+	C->SP->tex_width = C->SP->x_sp;
+	C->SP->tex_height = C->SP->y_sp;
+  	while (C->SP->i < C->SP->nb_sp)
 	{
-		spriteorder[i] = i;
-		sprite_dist[i] = pow(C->CS->pos_x - C->SP->x[i], 2) +
-			pow(C->CS->pos_y - C->SP->y[i], 2);
-		i++;
+		spriteorder[C->SP->i] = C->SP->i;
+		sprite_dist[C->SP->i] = pow(C->CS->pos_x - C->SP->x[C->SP->i], 2) +
+			pow(C->CS->pos_y - C->SP->y[C->SP->i], 2);
+		C->SP->i++;
 	}
 	sj_sort_sprites(spriteorder, sprite_dist, cub);
-	while (z < C->SP->nb_sp)
-	{
-		sprite_x = C->SP->x[spriteorder[z]] - C->CS->pos_x + 0.5;
-		sprite_y = C->SP->y[spriteorder[z]] - C->CS->pos_y + 0.5;
-		invdet = 1 / (C->CS->cam_plane_x * C->CS->dir_y - C->CS->dir_x *
-			C->CS->cam_plane_y);
-		transform_x = invdet * (C->CS->dir_y * sprite_x - C->CS->dir_x * sprite_y);
-		transform_y = invdet * (-C->CS->cam_plane_y * sprite_x +
-			C->CS->cam_plane_x * sprite_y);
-		sprite_screenx = (int)((C->res_x / 2) * (1 + transform_x / transform_y));
-		spriteheight = abs((int)(C->HEIGHT / transform_y));
-		spritewidth = abs((int)(C->HEIGHT / transform_y));
-		draw_start_y = -spriteheight / 2 + C->HEIGHT / 2;
-		draw_end_y = spriteheight / 2 + C->HEIGHT / 2;
-		draw_start_x = -spritewidth / 2 + sprite_screenx;
-		draw_end_x = spritewidth / 2 + sprite_screenx;
-		if (draw_start_y < 0)
-			draw_start_y = 0;
-		if (draw_end_y >= C->res_y)
-			draw_end_y = C->res_y - 1;
-		if (draw_start_x < 0)
-			draw_start_x = 0;
-		if (draw_end_x >= C->res_x)
-			draw_end_x = C->res_x;
-		i = draw_start_x;
-		while (i < draw_end_x)
-		{
-			tex_x = (int)(256 * (i - (-spritewidth / 2 + sprite_screenx))
-				* tex_width / spritewidth) / 256;
-			y = draw_start_y;
-			if (transform_y > 0 && i > 0 && i < C->res_x && transform_y
-				< C->SP->zbuffer[i])
-			{
-				while (y < draw_end_y)
-				{
-					d = (y) * 256 - C->HEIGHT * 128 + spriteheight
-						* 128;
-					tex_y = ((d * tex_height) / spriteheight) / 256;
-					if ((tex_width * tex_y + tex_x) > C->SP->size)
-						color = C->SP->txt_sp[tex_width * tex_y + tex_x];
-					else
-						color = 0;
-					if (color > 0 && color & 0x00FFFFFF)
-						C->img_data[y * C->res_x + i] =
-							color;
-					y++;
-				}
-			}
-			i++;
-		}
-		z++;
-	}
+	while (C->SP->z < C->SP->nb_sp)
+		sj_sp_cnt(cub, spriteorder);
 	free(C->SP->x);
 	free(C->SP->y);
+}
+
+void	sj_pave_one(t_cub *cub, int *spriteorder)
+{
+	C->SP->sprite_x = C->SP->x[spriteorder[C->SP->z]] - C->CS->pos_x + 0.5;
+	C->SP->sprite_y = C->SP->y[spriteorder[C->SP->z]] - C->CS->pos_y + 0.5;
+	C->SP->invdet = 1 / (C->CS->cam_plane_x * C->CS->dir_y - C->CS->dir_x *
+		C->CS->cam_plane_y);
+	C->SP->transform_x = C->SP->invdet * (C->CS->dir_y * C->SP->sprite_x -
+		C->CS->dir_x * C->SP->sprite_y);
+	C->SP->transform_y = C->SP->invdet * (-C->CS->cam_plane_y *
+		C->SP->sprite_x + C->CS->cam_plane_x * C->SP->sprite_y);
+	C->SP->sprite_screenx = (int)((C->res_x / 2) * (1 + C->SP->transform_x /
+		C->SP->transform_y));
+	C->SP->spriteheight = abs((int)(C->HEIGHT / C->SP->transform_y));
+	C->SP->spritewidth = abs((int)(C->HEIGHT / C->SP->transform_y));
+	C->SP->draw_start_y = -C->SP->spriteheight / 2 + C->HEIGHT / 2;
+	C->SP->draw_end_y = C->SP->spriteheight / 2 + C->HEIGHT / 2;
+	C->SP->draw_start_x = -C->SP->spritewidth / 2 + C->SP->sprite_screenx;
+	C->SP->draw_end_x = C->SP->spritewidth / 2 + C->SP->sprite_screenx;
+	if (C->SP->draw_start_y < 0)
+		C->SP->draw_start_y = 0;
+	if (C->SP->draw_end_y >= C->res_y)
+		C->SP->draw_end_y = C->res_y - 1;
+	if (C->SP->draw_start_x < 0)
+		C->SP->draw_start_x = 0;
+	if (C->SP->draw_end_x >= C->res_x)
+		C->SP->draw_end_x = C->res_x;
+}
+
+void	sj_pave_two(t_cub *cub)
+{
+	if (C->SP->transform_y > 0 && C->SP->i > 0 && C->SP->i < C->res_x
+		&& C->SP->transform_y < C->SP->zbuffer[C->SP->i])
+	{
+		while (C->SP->j < C->SP->draw_end_y)
+		{
+			C->SP->d = (C->SP->j) * 256 - C->HEIGHT * 128 + C->SP->spriteheight
+				* 128;
+			C->SP->tex_y = ((C->SP->d * C->SP->tex_height) /
+				C->SP->spriteheight) / 256;
+			if ((C->SP->tex_width * C->SP->tex_y + C->SP->tex_x)
+				> C->SP->size)
+				C->SP->color = C->SP->txt_sp[C->SP->tex_width *
+					C->SP->tex_y + C->SP->tex_x];
+			else
+				C->SP->color = 0;
+			if (C->SP->color > 0 && C->SP->color & 0x00FFFFFF)
+			{
+				C->img_data[C->SP->j * C->res_x + C->SP->i] =
+					C->SP->color;
+				sj_writebmp(cub, C->SP->color);
+			}
+			C->SP->j++;
+		}
+	}
+}
+
+void	sj_sp_cnt(t_cub *cub, int *spriteorder)
+{
+	sj_pave_one(cub, spriteorder);
+	C->SP->i = C->SP->draw_start_x;
+	while (C->SP->i < C->SP->draw_end_x)
+	{
+		C->SP->tex_x = (int)(256 * (C->SP->i - (-C->SP->spritewidth / 2 +
+			C->SP->sprite_screenx)) * C->SP->tex_width /
+			C->SP->spritewidth) / 256;
+		C->SP->j = C->SP->draw_start_y;
+		sj_pave_two(cub);
+		C->SP->i++;
+	}
+	C->SP->z++;
 }

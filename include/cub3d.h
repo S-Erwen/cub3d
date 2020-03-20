@@ -63,6 +63,7 @@
 # define CS cast
 # define SP sprite
 # define L line
+# define B bmp
 
 /*
 **  _   __ _______   _______
@@ -151,7 +152,44 @@ typedef struct		s_sprite
 	int				x_sp;
 	int				y_sp;
 	int				*txt_sp;
+	int				i;
+	int				j;
+	int				z;
+	float			sprite_x;
+    float			sprite_y;
+	float			invdet;
+	float			transform_x;
+	float			transform_y;
+	int				sprite_screenx;
+	int				spriteheight;
+	int				spritewidth;
+	int				draw_start_x;
+	int				draw_start_y;
+	int				draw_end_x;
+	int				draw_end_y;
+	int				tex_x;
+	int				tex_y;
+	int				tex_width;
+	int				tex_height;
+	int				d;
+	unsigned int	color;
 }					t_sprite;
+
+typedef struct		s_bmp
+{
+	unsigned int	file_size;
+	unsigned int	larg;
+	unsigned int	haut;
+	int				planes;
+	int				bits;
+	unsigned int	image_size;
+	unsigned int	ppm_x;
+	unsigned int	ppm_y;
+	unsigned int	used;
+	unsigned int	need;
+	int				fd;
+	int				yes;
+}					t_bmp;
 
 typedef struct		s_cub
 {
@@ -162,6 +200,7 @@ typedef struct		s_cub
 	int				*xpm_txt[4];
 	void			*xpm_adrs[4];
 	char			*kr;
+	char			**kr_tab;
 	int				in;
 	int				yn;
 	int				texnum;
@@ -206,6 +245,7 @@ typedef struct		s_cub
 	t_sprite		*sprite;
 	t_key			*key;
 	t_recast		*cast;
+	t_bmp			*bmp;
 }					t_cub;
 
 /*
@@ -218,6 +258,7 @@ typedef struct		s_cub
 */
 
 int				sj_cub(int ac, char **gv);
+t_cub			*sj_cub_init_stuct(t_cub *cub);
 void			sj_cub_init(t_cub *cub);
 void			sj_cub_free(t_cub *cub);
 void			sj_init_player(t_cub *cub);
@@ -239,6 +280,7 @@ void			sj_cub_init_iv(t_cub *cub);
 int				sj_stderr_argcub(int ac, char **gv, t_cub *cub);
 void			sj_stderr_parsing(int nb);
 void			sj_stderr_parsing_tho(int nb);
+char			*sj_free(char *str);
 
 /*
 ** ______   ___  ______  _____  _____  _   _  _____
@@ -291,6 +333,12 @@ void			sj_newline(t_cub *cub);
 
 int				sj_check_spcline(char *line, int i);
 char			*sj_line_to_str(char *line, t_cub *cub, char *str);
+void			sj_add_for_kr(t_cub *cub, size_t len);
+int				sj_suit_parse(t_cub *cub);
+
+int				sj_check_updown(int ret, size_t len, t_cub *cub, int i);
+int				sj_gigaif(int i, int y, t_cub *cub);
+int				sj_zero_itsok(int i, int y, t_cub *cub);
 
 /*
 ** ___  ___ _     __   __
@@ -303,7 +351,7 @@ char			*sj_line_to_str(char *line, t_cub *cub, char *str);
 
 void			sj_creat_new_windows(t_cub *cub);
 float			sj_abs(float nb);
-int				sj_close(void);
+int				sj_close(t_cub *cub);
 int				sj_dda(t_cub *cub);
 int				sj_key_press(int key, t_cub *cub);
 int				sj_key_release(int key, t_cub *cub);
@@ -336,9 +384,22 @@ void			sj_draw_texture(t_cub *cub);
 void			sj_hit(t_cub *cub);
 
 void			sj_sprite(t_cub *cub);
+void			sj_pave_one(t_cub *cub, int *spriteorder);
+void			sj_pave_two(t_cub *cub);
+void			sj_sprite_init(t_cub *cub);
+void			sj_sp_cnt(t_cub *cub, int *spriteorder);
+
+
 int				sj_tab_sprite(t_cub *cub);
+void			sj_tab_spritew(t_cub *cub);
+void			sj_sort_sprites(int spriteorder[],
+					float sprite_dist[], t_cub *cub);
+void			sj_tri(float tab[], int tab2[],int size);
 
 void			ult_i_to_vii(int ret, t_cub *cub);
 void			ult_vii_to_xii(int ret, t_cub *cub);
+
+void			set_bmp(t_cub *cub);
+void			sj_writebmp(t_cub *cub, int color);
 
 #endif

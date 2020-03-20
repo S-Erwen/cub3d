@@ -52,6 +52,8 @@ void	sj_init_image(t_cub *cub)
 	{
 		ft_printf(RED);
 		ft_printf("Error\n");
+		free(C->xpm_adrs);
+		ult_i_to_vii(-15, cub);
 		sj_stderr_parsing(-15);
 	}
 	sj_get_adrs(cub);

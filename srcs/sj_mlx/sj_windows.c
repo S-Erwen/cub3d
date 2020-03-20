@@ -13,8 +13,9 @@
 
 #include "../../include/cub3d.h"
 
-int		sj_close(void)
+int		sj_close(t_cub *cub)
 {
+	ult_i_to_vii(-99, cub);
 	exit(EXIT_SUCCESS);
 }
 
@@ -34,12 +35,16 @@ int		sj_dda(t_cub *cub)
 		C->SP->zbuffer[(int)C->CS->x] = C->CS->perpwalldist;
 		C->CS->x++;
 	}
+	sj_tab_sprite(cub);
 	sj_sprite(cub);
 	sj_time(cub);
 	sj_move(cub);
 	mlx_clear_window(C->mlx, C->windows);
 	mlx_put_image_to_window(C->mlx, C->windows, C->img_ptr, 0, 0);
 	free(C->SP->zbuffer);
+	if (!C->B->yes)
+		close(C->B->fd);
+	C->B->yes = 1;
 	return (1);
 }
 

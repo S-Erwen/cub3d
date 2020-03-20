@@ -54,8 +54,20 @@ char	*sj_parsing_linemap(char *line, t_cub *cub)
 		return (NULL);
 	if (!(str = malloc(sizeof(char) * (count + 1))))
 		return (0);
-	if (!(str = sj_line_to_str(line, cub, str)))
+	if (sj_check_spcline(line, C->in))
+	{
+		str = sj_free(str);
 		return (NULL);
+	}
+	if (!C->kr)
+		C->kr = ft_strdup("");
+	if (!(str = sj_line_to_str(line, cub, str)))
+	{
+		str = sj_free(str);
+		C->kr = sj_free(C->kr);
+		return (NULL);
+	}
+	C->kr = ft_add_char(C->kr, '\n');
 	return (str);
 }
 
@@ -109,7 +121,7 @@ void	sj_clean_line(t_cub *cub)
 			str[y++] = C->line_map[i++];
 	}
 	str[y] = '\0';
-	free(C->line_map);
+	C->line_map = sj_free(C->line_map);
 	C->line_map = ft_strdup(str);
 	free(str);
 }

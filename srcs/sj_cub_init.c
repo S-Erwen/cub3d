@@ -107,4 +107,23 @@ void	sj_cub_init_iv(t_cub *cub)
 	C->texpos = 0;
 	C->texx = 0;
 	C->texy = 0;
+	C->up_c = 0;
+	C->up_f = 0;
+	C->kr = NULL;
+	set_bmp(cub);
+	C->B->yes = 0;
+}
+
+t_cub	*sj_cub_init_stuct(t_cub *cub)
+{
+	if (!(C = malloc(sizeof(t_cub)))
+		|| !(C->K = malloc(sizeof(t_key)))
+		|| !(C->CS = malloc(sizeof(t_recast)))
+		|| !(C->SP = malloc(sizeof(t_sprite))))
+	{
+		sj_stderr_parsing(-16);
+		ult_i_to_vii(0, cub);
+		exit(EXIT_FAILURE);
+	}
+	return (C);
 }

@@ -109,6 +109,7 @@ SRCS =		main.c \
 			srcs/parsing_cub/sj_check_path.c \
 			srcs/parsing_cub/sj_addchr_for_map.c \
 			srcs/parsing_cub/sj_line_to_str.c \
+			srcs/parsing_cub/sj_map_add_fnrm.c \
 			srcs/sj_mlx/sj_windows.c \
 			srcs/sj_mlx/sj_move.c \
 			srcs/sj_mlx/sj_init_all_x_y.c \
@@ -118,7 +119,9 @@ SRCS =		main.c \
 			srcs/sj_mlx/sj_key.c \
 			srcs/sj_mlx/sj_hit.c \
 			srcs/sj_mlx/sj_view.c \
-			srcs/sj_sprite/sj_sprite.c
+			srcs/sj_sprite/sj_sprite.c \
+			srcs/sj_sprite/sj_triforsprite.c \
+			srcs/sj_bmp/sj_bmp.c
 
 OBJS	= 	$(SRCS:.c=.o)
 

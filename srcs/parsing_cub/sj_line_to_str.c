@@ -14,9 +14,6 @@
 
 char	*sj_line_to_str(char *line, t_cub *cub, char *str)
 {
-	if (sj_check_spcline(line, C->in))
-		return (NULL);
-	C->kr = ft_strdup("");
 	while (line[C->in])
 	{
 		if (!(C->in % 2))
@@ -55,5 +52,44 @@ int		sj_check_spcline(char *line, int i)
 					return (-12);
 		i++;
 	}
+	return (0);
+}
+
+void		sj_add_for_kr(t_cub *cub, size_t len)
+{
+	int	i;
+
+	i = 0;
+	while (C->kr_tab[i])
+	{	
+		while (ft_strlen(C->kr_tab[i]) < len)
+			C->kr_tab[i] = ft_add_char(C->kr_tab[i], ' ');
+		i++;
+	}
+}
+
+int		sj_suit_parse(t_cub *cub)
+{
+	int i;
+
+	i = 0;
+	C->tab_map = ft_split(C->line_map, '\n');
+	if (sj_fck_new_sujet(cub))
+	{
+		while (C->kr_tab[i])
+			i++;
+		while (i)
+		{
+			C->kr_tab[i] = sj_free(C->kr_tab[i]);
+			i--;
+		}
+		C->kr_tab[i] = sj_free(C->kr_tab[i]);
+		free(C->kr_tab);
+		C->kr_tab = NULL;
+		return (-12);
+	}
+	C->kr_tab = NULL;
+	sj_newline(cub);
+	sj_clean_line(cub);
 	return (0);
 }

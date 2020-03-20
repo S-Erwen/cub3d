@@ -17,7 +17,7 @@ void	sj_newline(t_cub *cub)
 	int		i;
 
 	i = 0;
-	free(C->line_map);
+	C->line_map = sj_free(C->line_map);
 	C->line_map = ft_strdup(C->tab_map[i++]);
 	C->line_map = ft_add_char(C->line_map, '\n');
 	while (C->tab_map[i])
@@ -31,28 +31,28 @@ int		sj_fck_new_sujet(t_cub *cub)
 {
 	size_t	len;
 	int		i;
+	int		y;
 	int		ret;
 
 	i = 0;
+	y = 0;
+	C->kr_tab = ft_split(C->kr, '\n');
+	C->kr = sj_free(C->kr);
 	len = sj_count_new_sujet(cub);
+	sj_add_for_kr(cub, len);
 	while (C->tab_map[i])
 	{
-		if (C->tab_map[i + 1])
-		{
-			if (ft_strlen(C->tab_map[i]) != len)
-			{
-				if (ft_strlen(C->tab_map[i]) > ft_strlen(C->tab_map[i + 1]))
-					ret = sj_cmp_ud(cub, &i, len, 0);
-				else
-					ret = sj_cmp_ud(cub, &i, len, 1);
-			}
-		}
-		else if (ft_strlen(C->tab_map[i]) != len)
-			ret = sj_cmp_end(cub, &i, len);
-		if (ret == -12)
+		if ((ret = sj_check_updown(ret, len, cub, i)) < 0)
 			return (ret);
 		i++;
 	}
+	i = 0;
+	if ((i = sj_zero_itsok(i, y, cub)) < 0)
+		return (i);
+	while (i)
+		free(C->kr_tab[i--]);
+	C->kr_tab[i] = sj_free(C->kr_tab[i]);
+	free(C->kr_tab);
 	return (0);
 }
 
