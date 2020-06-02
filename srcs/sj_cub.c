@@ -42,10 +42,10 @@ int		sj_cub(int ac, char **gv)
 
 void	sj_init_player(t_cub *cub)
 {
-	if (C->res_x > 2560)
-		C->res_x = 2560;
-	if (C->res_y > 1400)
-		C->res_y = 1400;
+	if (C->res_x > 1920)
+		C->res_x = 1920;
+	if (C->res_y > 1080)
+		C->res_y = 1080;
 	C->dbl_pos_x = (int)ft_strchr(C->line_map, C->pos) -
 		(int)C->line_map;
 	C->dbl_pos_y = C->dbl_pos_x;

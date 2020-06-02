@@ -110,8 +110,8 @@ void	sj_cub_init_iv(t_cub *cub)
 	C->up_c = 0;
 	C->up_f = 0;
 	C->kr = NULL;
-	set_bmp(cub);
-	C->B->yes = 0;
+	// set_bmp(cub);
+	// C->B->yes = 0;
 }
 
 t_cub	*sj_cub_init_stuct(t_cub *cub)

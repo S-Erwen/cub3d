@@ -84,7 +84,6 @@ void	sj_pave_two(t_cub *cub)
 			{
 				C->img_data[C->SP->j * C->res_x + C->SP->i] =
 					C->SP->color;
-				sj_writebmp(cub, C->SP->color);
 			}
 			C->SP->j++;
 		}

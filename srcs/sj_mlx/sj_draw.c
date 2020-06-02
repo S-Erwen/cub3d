@@ -21,7 +21,6 @@ void	sj_draw(t_cub *cub)
 	{
 		C->img_data[i * C->res_x + (int)C->CS->x] =
 			sj_color(C->f_color_r, C->f_color_g, C->f_color_b);
-		sj_writebmp(cub, sj_color(C->f_color_r, C->f_color_g, C->f_color_b));
 		i++;
 	}
 	sj_draw_texture(cub);
@@ -30,7 +29,6 @@ void	sj_draw(t_cub *cub)
 	{
 		C->img_data[i * C->res_x + (int)C->CS->x] =
 			sj_color(C->c_color_r, C->c_color_g, C->c_color_b);
-		sj_writebmp(cub, sj_color(C->f_color_r, C->f_color_g, C->f_color_b));
 		i++;
 	}
 }
@@ -74,7 +72,5 @@ void	sj_draw_texture(t_cub *cub)
 		C->texpos += C->step;
 		C->img_data[C->CS->drawstart++ * C->res_x + (int)C->CS->x] =
 			C->xpm_txt[C->texnum][C->xpm_x[C->texnum] * C->texy + C->texx];
-		sj_writebmp(cub, C->xpm_txt[C->texnum][C->xpm_x[C->texnum] *
-			C->texy + C->texx]);
 	}
 }

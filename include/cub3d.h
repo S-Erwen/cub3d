@@ -63,7 +63,7 @@
 # define CS cast
 # define SP sprite
 # define L line
-# define B bmp
+// # define B bmp
 
 /*
 **  _   __ _______   _______
@@ -74,15 +74,15 @@
 ** \_| \_/\____/  \_/ \____/
 */
 
-# define L_LEFT 0
-# define L_DOWN 1
-# define L_RIGHT 2
-# define L_UP 13
-# define R_LEFT 123
-# define R_RIGHT 124
-# define R_DOWN 125
-# define R_UP 126
-# define ESCAPE 53
+# define L_LEFT 97
+# define L_DOWN 115
+# define L_RIGHT 100
+# define L_UP 119
+# define R_LEFT 65361
+# define R_RIGHT 65363
+# define R_DOWN 65364
+# define R_UP 65362
+# define ESCAPE 65307
 
 /*
 **  _____ ___________ _   _ _____ _____ _____
@@ -175,21 +175,21 @@ typedef struct		s_sprite
 	unsigned int	color;
 }					t_sprite;
 
-typedef struct		s_bmp
-{
-	unsigned int	file_size;
-	unsigned int	larg;
-	unsigned int	haut;
-	int				planes;
-	int				bits;
-	unsigned int	image_size;
-	unsigned int	ppm_x;
-	unsigned int	ppm_y;
-	unsigned int	used;
-	unsigned int	need;
-	int				fd;
-	int				yes;
-}					t_bmp;
+// typedef struct		s_bmp
+// {
+// 	unsigned int	file_size;
+// 	unsigned int	larg;
+// 	unsigned int	haut;
+// 	int				planes;
+// 	int				bits;
+// 	unsigned int	image_size;
+// 	unsigned int	ppm_x;
+// 	unsigned int	ppm_y;
+// 	unsigned int	used;
+// 	unsigned int	need;
+// 	int				fd;
+// 	int				yes;
+// }					t_bmp;
 
 typedef struct		s_cub
 {
@@ -245,7 +245,7 @@ typedef struct		s_cub
 	t_sprite		*sprite;
 	t_key			*key;
 	t_recast		*cast;
-	t_bmp			*bmp;
+	// t_bmp			*bmp;
 }					t_cub;
 
 /*

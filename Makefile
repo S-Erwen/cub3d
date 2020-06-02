@@ -10,12 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-
-
 NAMELIB = 	libft.a
 NAME	= 	Cub3D
 HEADERS	=	libft.h
-CC		=	gcc
+CC		=	clang-9
 CFLAGS 	= 	-Wall -Wextra -Werror
 
 ################################################################################
@@ -156,11 +154,11 @@ $(NAME)	:	$(OBJSLIB) $(OBJS)
 		ar rcs $(NAMELIB) $(OBJSLIB)
 		@echo "\033[0;34m"
 		# make -C mlx re
-		gcc $(CFLAGS) -g -lm libft.a mlx/libmlx.a $(OBJS) -o $(NAME) -framework OpenGL -framework Appkit
+		$(CC) $(OBJS) -I./include $(CFLAGS) -L./mlx -lX11 -lXext -lmlx -lm -pthread -lbsd ./libft.a -o $(NAME)
 		@echo "\033[0m"
 
 %.o: %.c $(HEADERS)
-		clang $(FLAG) -c $< -o $@ -I $(HEADERS)
+		$(CC) $(FLAG) -c $< -o $@ -I $(HEADERS)
 
 clean	:
 		@echo "\033[1;31m"
