@@ -45,12 +45,19 @@ void	ult_vii_to_xii(int ret, t_cub *cub)
 		free(C->tab_map[i]);
 		free(C->tab_map);
 	}
+	ult_xii_to_xvii(ret, cub);
+}
+
+void	ult_xii_to_xvii(int ret, t_cub *cub)
+{
 	if (C->K)
 		free(C->K);
 	if (C->SP)
 		free(C->SP);
 	if (C->CS)
 		free(C->CS);
+	if (C->bmp)
+		free(C->bmp);
 	if (C)
 		free(C);
 	ret = 0;

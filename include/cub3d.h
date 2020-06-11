@@ -175,21 +175,21 @@ typedef struct		s_sprite
 	unsigned int	color;
 }					t_sprite;
 
-// typedef struct		s_bmp
-// {
-// 	unsigned int	file_size;
-// 	unsigned int	larg;
-// 	unsigned int	haut;
-// 	int				planes;
-// 	int				bits;
-// 	unsigned int	image_size;
-// 	unsigned int	ppm_x;
-// 	unsigned int	ppm_y;
-// 	unsigned int	used;
-// 	unsigned int	need;
-// 	int				fd;
-// 	int				yes;
-// }					t_bmp;
+typedef	struct		s_bmp
+{
+	int             width;
+    int             height;
+    unsigned int    bitcount;
+    int             width_in_bytes;
+    unsigned int    imagesize;
+    unsigned int    bisize;
+    unsigned int    bfoffbits;
+    unsigned int    filesize;
+    unsigned int    biplanes;
+    unsigned char   header[54];
+    int             fd;
+	int				reset;
+}					t_bmp;
 
 typedef struct		s_cub
 {
@@ -245,6 +245,7 @@ typedef struct		s_cub
 	t_sprite		*sprite;
 	t_key			*key;
 	t_recast		*cast;
+	t_bmp			*bmp;
 	// t_bmp			*bmp;
 }					t_cub;
 
@@ -398,8 +399,10 @@ void			sj_tri(float tab[], int tab2[],int size);
 
 void			ult_i_to_vii(int ret, t_cub *cub);
 void			ult_vii_to_xii(int ret, t_cub *cub);
+void			ult_xii_to_xvii(int ret, t_cub *cub);
 
-void			set_bmp(t_cub *cub);
-void			sj_writebmp(t_cub *cub, int color);
+void    		sj_bmp(t_cub *cub);
+void    		sj_init_bpm(t_cub *cub);
+void    		sj_write_bmp(t_cub *cub);
 
 #endif

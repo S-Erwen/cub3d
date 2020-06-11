@@ -39,12 +39,11 @@ int		sj_dda(t_cub *cub)
 	sj_sprite(cub);
 	sj_time(cub);
 	sj_move(cub);
+	if (C->help && C->bmp->reset)
+		sj_write_bmp(cub);
 	mlx_clear_window(C->mlx, C->windows);
 	mlx_put_image_to_window(C->mlx, C->windows, C->img_ptr, 0, 0);
 	free(C->SP->zbuffer);
-	// if (!C->B->yes)
-	// 	close(C->B->fd);
-	// C->B->yes = 1;
 	return (1);
 }
 
@@ -69,6 +68,8 @@ void	sj_creat_new_windows(t_cub *cub)
 {
 	C->mlx = mlx_init();
 	sj_init_cast(cub);
+	if (C->help && C->bmp->reset)
+		sj_init_bpm(cub);
 	C->windows = mlx_new_window(C->mlx, C->res_x, C->res_y, "Cub3D");
 	// mlx_do_key_autorepeaton(C->mlx);
 	mlx_loop_hook(C->mlx, sj_dda, cub);
