@@ -10,12 +10,10 @@ void    sj_bmp(t_cub *cub)
 		close(C->bmp->fd);
 		exit(EXIT_SUCCESS);
 	}
-	dprintf(2, "FD = [%d]\n", C->bmp->fd);
 }
 
 void    sj_init_bpm(t_cub *cub)
 {
-	system("rm -rf 4deepthought/capture.bmp");
 	C->bmp->width = C->res_x;
 	C->bmp->height = C->res_y;
 	C->bmp->bitcount = 32;
@@ -41,7 +39,12 @@ void    sj_init_bpm(t_cub *cub)
 void    sj_write_bmp(t_cub *cub)
 {
 	write(C->bmp->fd, C->bmp->header, 54);
-	write(C->bmp->fd, C->img_data, C->bmp->imagesize);
+	int y = C->res_y;
+	while (y)
+	{
+		write(C->bmp->fd, C->img_data + (y * C->res_x), C->res_x * 4);
+		y--;
+	}
 	close(C->bmp->fd);
 	C->bmp->reset = 0;
 }
