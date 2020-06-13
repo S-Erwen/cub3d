@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   sj_windows.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 04:44:53 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/02 23:11:02 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:20:14 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 
@@ -71,7 +70,6 @@ void	sj_creat_new_windows(t_cub *cub)
 	if (C->help && C->bmp->reset)
 		sj_init_bpm(cub);
 	C->windows = mlx_new_window(C->mlx, C->res_x, C->res_y, "Cub3D");
-	// mlx_do_key_autorepeaton(C->mlx);
 	mlx_loop_hook(C->mlx, sj_dda, cub);
 	mlx_hook(C->windows, 2, 2, sj_key_press, cub);
 	mlx_hook(C->windows, 3, 2, sj_key_release, cub);

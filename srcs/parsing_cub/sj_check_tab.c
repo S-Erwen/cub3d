@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_check_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 01:11:25 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 08:16:44 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:06:25 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:07:43 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 08:16:59 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:06:47 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

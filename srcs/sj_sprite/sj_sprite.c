@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_sprite.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 05:04:56 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:40:09 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:19:17 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	sj_sprite(t_cub *cub)
 	C->SP->z = 0;
 	C->SP->tex_width = C->SP->x_sp;
 	C->SP->tex_height = C->SP->y_sp;
-  	while (C->SP->i < C->SP->nb_sp)
+	while (C->SP->i < C->SP->nb_sp)
 	{
 		spriteorder[C->SP->i] = C->SP->i;
 		sprite_dist[C->SP->i] = pow(C->CS->pos_x - C->SP->x[C->SP->i], 2) +

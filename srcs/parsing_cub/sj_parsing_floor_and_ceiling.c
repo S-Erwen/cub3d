@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_parsing_floor_and_ceiling.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:13:44 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 01:50:12 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:06:33 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

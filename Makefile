@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+         #
+#    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/10 09:32:01 by alidy             #+#    #+#              #
-#    Updated: 2020/03/05 17:17:55 by esidelar         ###   ########lyon.fr    #
+#    Created: 2019/10/10 09:32:01 by esidelar          #+#    #+#              #
+#    Updated: 2020/06/13 04:07:26 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,7 +153,7 @@ $(NAME)	:	$(OBJSLIB) $(OBJS)
 		@echo "\033[1;33m"
 		ar rcs $(NAMELIB) $(OBJSLIB)
 		@echo "\033[0;34m"
-		# make -C mlx re
+		make -C mlx re
 		$(CC) $(OBJS) -I./include $(CFLAGS) -L./mlx -lX11 -lXext -lmlx -lm -pthread -lbsd ./libft.a -o $(NAME)
 		@echo "\033[0m"
 

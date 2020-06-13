@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   sj_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:50:08 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/05 18:05:01 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:05:58 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 

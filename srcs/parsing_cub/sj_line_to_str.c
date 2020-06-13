@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sj_line_to_str.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 17:08:20 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 08:34:18 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:22:45 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-char	*sj_line_to_str(char *line, t_cub *cub, char *str)
+char		*sj_line_to_str(char *line, t_cub *cub, char *str)
 {
 	while (line[C->in])
 	{
@@ -40,7 +40,7 @@ char	*sj_line_to_str(char *line, t_cub *cub, char *str)
 	return (str);
 }
 
-int		sj_check_spcline(char *line, int i)
+int			sj_check_spcline(char *line, int i)
 {
 	while (line[i])
 	{
@@ -61,14 +61,14 @@ void		sj_add_for_kr(t_cub *cub, size_t len)
 
 	i = 0;
 	while (C->kr_tab[i])
-	{	
+	{
 		while (ft_strlen(C->kr_tab[i]) < len)
 			C->kr_tab[i] = ft_add_char(C->kr_tab[i], ' ');
 		i++;
 	}
 }
 
-int		sj_suit_parse(t_cub *cub)
+int			sj_suit_parse(t_cub *cub)
 {
 	int i;
 

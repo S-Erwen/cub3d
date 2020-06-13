@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_addchr_for_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 21:17:55 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 08:15:02 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:06:21 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

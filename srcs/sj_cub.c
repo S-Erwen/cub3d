@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   sj_cub.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:09:34 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 08:16:19 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:31:32 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include/cub3d.h"
 
 int		sj_cub(int ac, char **gv)
 {
-	t_cub	*cub = NULL;
+	t_cub	*cub;
 	int		ret;
 
+	cub = NULL;
 	cub = sj_cub_init_stuct(cub);
 	sj_cub_init(cub);
 	if (!sj_stderr_argcub(ac, gv, cub))

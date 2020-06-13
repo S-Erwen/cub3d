@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_init_all_x_y.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 11:57:08 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:44:30 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:05:45 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

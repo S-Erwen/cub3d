@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_triforsprite.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/13 04:05:24 by esidelar          #+#    #+#             */
+/*   Updated: 2020/06/13 04:19:48 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/cub3d.h"
 
 int		sj_tab_sprite(t_cub *cub)
@@ -32,7 +44,7 @@ void	sj_tab_spritew(t_cub *cub)
 
 	i = 0;
 	x = 0;
-	y = 0;	
+	y = 0;
 	while (C->tab_map[y])
 	{
 		while (C->tab_map[y][x])
@@ -49,7 +61,7 @@ void	sj_tab_spritew(t_cub *cub)
 	}
 }
 
-void	sj_tri(float tab[], int tab2[],int size)
+void	sj_tri(float tab[], int tab2[], int size)
 {
 	int		i;
 	float	temp;

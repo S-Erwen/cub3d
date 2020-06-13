@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sj_bmp.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/13 04:06:15 by esidelar          #+#    #+#             */
+/*   Updated: 2020/06/13 04:18:11 by esidelar         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/cub3d.h"
 
-void    sj_bmp(t_cub *cub)
+void	sj_bmp(t_cub *cub)
 {
 	if ((C->bmp->fd = open("./4deepthought/capture.bmp"
 		, O_CREAT | O_APPEND | O_RDWR, 0777)) < 1)
@@ -12,7 +24,7 @@ void    sj_bmp(t_cub *cub)
 	}
 }
 
-void    sj_init_bpm(t_cub *cub)
+void	sj_init_bpm(t_cub *cub)
 {
 	C->bmp->width = C->res_x;
 	C->bmp->height = C->res_y;
@@ -36,10 +48,12 @@ void    sj_init_bpm(t_cub *cub)
 	sj_bmp(cub);
 }
 
-void    sj_write_bmp(t_cub *cub)
+void	sj_write_bmp(t_cub *cub)
 {
+	int y;
+
+	y = C->res_y;
 	write(C->bmp->fd, C->bmp->header, 54);
-	int y = C->res_y;
 	while (y)
 	{
 		write(C->bmp->fd, C->img_data + (y * C->res_x), C->res_x * 4);

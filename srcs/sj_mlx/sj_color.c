@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_color.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/01 01:47:30 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:44:17 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:05:37 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

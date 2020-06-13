@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   sj_view.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 05:04:15 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/05 18:05:20 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:06:01 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 

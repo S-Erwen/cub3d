@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sj_ultimatefree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 06:42:46 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/03 06:42:47 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:23:09 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ult_vii_to_xii(int ret, t_cub *cub)
 	if (C->line_map)
 		free(C->line_map);
 	if (C->tab_map)
-	{			
+	{
 		while (C->tab_map[i])
 			i++;
 		while (i)

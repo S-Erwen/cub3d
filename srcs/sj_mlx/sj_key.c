@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   sj_key.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 04:45:00 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 08:33:14 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:05:53 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../include/cub3d.h"
 

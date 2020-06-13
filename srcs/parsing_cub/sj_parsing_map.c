@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sj_parsing_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:15:51 by esidelar          #+#    #+#             */
-/*   Updated: 2020/03/09 09:04:30 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/13 04:30:05 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-
-/*
-**	PAS DU TOUT FINI !!!!
-*/
 
 int		sj_parsing_map(t_cub *cub, char *line)
 {
@@ -49,7 +45,7 @@ char	*sj_parsing_linemap(char *line, t_cub *cub)
 
 	C->in = 0;
 	C->yn = 0;
-	count = sj_count_map_line(line);
+	count = sj_count_map_line(line, 0, 0);
 	if (count == -12)
 		return (NULL);
 	if (!(str = malloc(sizeof(char) * (count + 1))))
@@ -71,13 +67,8 @@ char	*sj_parsing_linemap(char *line, t_cub *cub)
 	return (str);
 }
 
-int		sj_count_map_line(char *line)
+int		sj_count_map_line(char *line, int count, int i)
 {
-	int		count;
-	int		i;
-
-	i = 0;
-	count = 0;
 	while (line[i])
 	{
 		while (line[i] == ' ')
