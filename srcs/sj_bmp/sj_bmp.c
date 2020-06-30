@@ -14,7 +14,7 @@
 
 void	sj_bmp(t_cub *cub)
 {
-	if ((C->bmp->fd = open("./4deepthought/capture.bmp"
+	if ((C->bmp->fd = open("./capture.bmp"
 		, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR)) < 1)
 	{
 		ft_printf("Error\n__ERROR_BMP__\n");
