@@ -6,88 +6,16 @@
 #    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/10 09:32:01 by esidelar          #+#    #+#              #
-#    Updated: 2020/06/13 04:07:26 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2020/06/30 20:24:23 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAMELIB = 	libft.a
 NAME	= 	Cub3D
-HEADERS	=	libft.h
+HEADERS	=	include/cub3d.h
 CC		=	clang-9
 CFLAGS 	= 	-Wall -Wextra -Werror
-
-################################################################################
-#								     LIBFT								   	   #
-################################################################################
-
-SRCSLIB	= 	libft/ft_printf.c \
-			libft/srcs/sj_parce.c \
-			libft/srcs/sj_pourcent.c \
-			libft/srcs/sj_conversion.c \
-			libft/srcs/sj_parce_main.c \
-			libft/srcs/sj_parce_s_point_fin.c \
-			libft/srcs/sj_parce_zero_mp.c \
-			libft/srcs/sj_not_flag.c \
-			libft/srcs/sj_zero.c \
-			libft/srcs/sj_reset_char.c \
-			libft/srcs/sj_minfors.c \
-			libft/srcs/sj_minus.c \
-			libft/srcs/sj_to_pf.c \
-			libft/srcs/sj_part_two.c \
-			libft/srcs/sj_part_three.c \
-			libft/srcs/sj_printf_norm.c \
-			libft/ft_memset.c \
-			libft/ft_bzero.c \
-			libft/ft_memcpy.c \
-			libft/ft_memccpy.c \
-			libft/ft_memmove.c \
-			libft/ft_memchr.c \
-			libft/ft_memcmp.c \
-			libft/ft_strlen.c \
-			libft/ft_isalpha.c \
-			libft/ft_isdigit.c \
-			libft/ft_isalnum.c \
-			libft/ft_isascii.c \
-			libft/ft_isprint.c \
-			libft/ft_toupper.c \
-			libft/ft_tolower.c \
-			libft/ft_strchr.c \
-			libft/ft_strrchr.c \
-			libft/ft_strncmp.c \
-			libft/ft_strlcpy.c \
-			libft/ft_strlcat.c \
-			libft/ft_strnstr.c \
-			libft/ft_atoi.c \
-			libft/ft_calloc.c \
-			libft/ft_strdup.c \
-			libft/ft_substr.c \
-			libft/ft_strjoin.c \
-			libft/ft_strtrim.c \
-			libft/ft_split.c \
-			libft/ft_itoa.c \
-			libft/ft_strmapi.c \
-			libft/ft_putchar_fd.c \
-			libft/ft_putstr_fd.c \
-			libft/ft_putendl_fd.c \
-			libft/ft_putnbr_fd.c \
-			libft/ft_putnbr_base.c \
-			libft/ft_putchar.c \
-			libft/ft_putstr.c \
-			libft/ft_itoa_base.c \
-			libft/ft_add_char.c \
-			libft/ft_utoa_base.c \
-			libft/ft_ltoa.c \
-			libft/ft_strilen.c \
-			libft/ft_neg_atoi.c \
-			libft/ft_strllen.c \
-			libft/ft_lltoa_base.c \
-			libft/ft_douilled_putstr.c \
-			libft/ft_utoi.c \
-			libft/ft_strjoin_with_free.c \
-			libft/get_next_line.c \
-			libft/get_next_line_utils.c \
-			libft/ft_ispace.c
-
+CLEAKS	=	-fsanitize=leak
 
 ################################################################################
 #								      CUB3D									   #
@@ -123,9 +51,7 @@ SRCS =		main.c \
 
 OBJS	= 	$(SRCS:.c=.o)
 
-OBJSLIB	= 	$(SRCSLIB:.c=.o)
-
-all		: 	$(NAME)
+all		: 	$(NAMELIB) $(NAME)
 			@echo "\033[1;33m          _____                    _____                    _____          \033[1;34m          _____                                   "
 			@echo "\033[1;33m         /\    \                  /\    \                  /\    \         \033[1;34m         /\    \                  /\    \         "
 			@echo "\033[1;33m        /::\    \                /::\____\                /::\    \        \033[1;34m        /::\    \                /::\    \        "
@@ -149,25 +75,31 @@ all		: 	$(NAME)
 			@echo "\033[1;33m         \/____/                  ~~                       ~~              \033[1;34m         \/____/                  ~~              "
 			@echo "\033[0m"
 
-$(NAME)	:	$(OBJSLIB) $(OBJS)
+$(NAMELIB):
+			$(MAKE) -C libft all
+
+$(NAME)	:	$(OBJS) $(HEADERS)
 		@echo "\033[1;33m"
-		ar rcs $(NAMELIB) $(OBJSLIB)
-		@echo "\033[0;34m"
-		make -C mlx re
-		$(CC) $(OBJS) -I./include $(CFLAGS) -L./mlx -lX11 -lXext -lmlx -lm -pthread -lbsd ./libft.a -o $(NAME)
+		$(MAKE) -C mlx re
+		$(CC) $(OBJS) -I $(HEADERS) -g3 -L./mlx -lX11 -lXext -lmlx -lm -pthread -lbsd libft/libft.a -o $(NAME)
 		@echo "\033[0m"
 
 %.o: %.c $(HEADERS)
-		$(CC) $(FLAG) -c $< -o $@ -I $(HEADERS)
+		$(CC) $(CFLAGS) -g3 -c $< -o $@ -I $(HEADERS)
 
 clean	:
 		@echo "\033[1;31m"
-		rm -f $(OBJSLIB) $(OBJS)
+		$(MAKE) -C libft clean
+		$(MAKE) -C mlx clean
+		rm -f $(OBJS)
 		@echo "\033[0m"
 			
 fclean	:	clean
 		@echo "\033[1;31m"
+		$(MAKE) -C libft fclean
+		$(MAKE) -C mlx clean
 		rm -f $(NAME)
+		rm -f 4deepthought/capture.bmp
 		@echo "\033[0m"
 
 re		: 	fclean all

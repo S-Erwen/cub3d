@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 04:06:15 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:18:11 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/06/30 20:18:35 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sj_bmp(t_cub *cub)
 {
 	if ((C->bmp->fd = open("./4deepthought/capture.bmp"
-		, O_CREAT | O_APPEND | O_RDWR, 0777)) < 1)
+		, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR)) < 1)
 	{
 		ft_printf("Error\n__ERROR_BMP__\n");
 		ult_i_to_vii(-99, cub);
