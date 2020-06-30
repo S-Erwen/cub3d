@@ -99,7 +99,7 @@ fclean	:	clean
 		$(MAKE) -C libft fclean
 		$(MAKE) -C mlx clean
 		rm -f $(NAME)
-		rm -f 4deepthought/capture.bmp
+		rm -f capture.bmp
 		@echo "\033[0m"
 
 re		: 	fclean all
