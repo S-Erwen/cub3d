@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/20 04:44:53 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 05:07:43 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/13 15:21:22 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int		sj_dda(t_cub *cub)
 	sj_sprite(cub);
 	sj_time(cub);
 	sj_move(cub);
+	free(C->SP->zbuffer);
 	if (C->help && C->bmp->reset)
 		sj_write_bmp(cub);
-	mlx_clear_window(C->mlx, C->windows);
 	mlx_put_image_to_window(C->mlx, C->windows, C->img_ptr, 0, 0);
-	free(C->SP->zbuffer);
+	mlx_do_sync(C->mlx);
 	return (1);
 }
 
@@ -68,11 +68,16 @@ void	sj_creat_new_windows(t_cub *cub)
 	C->mlx = mlx_init();
 	sj_init_cast(cub);
 	if (C->help && C->bmp->reset)
+	{
 		sj_init_bpm(cub);
-	C->windows = mlx_new_window(C->mlx, C->res_x, C->res_y, "Cub3D");
+		sj_dda(cub);
+	}
+	else
+		C->windows = mlx_new_window(C->mlx, C->res_x, C->res_y, "Cub3D");
 	mlx_loop_hook(C->mlx, sj_dda, cub);
 	mlx_hook(C->windows, 2, 2, sj_key_press, cub);
 	mlx_hook(C->windows, 3, 2, sj_key_release, cub);
 	mlx_hook(C->windows, 17, 1, sj_close, cub);
+	mlx_hook(C->windows, 33, 1L << 17, sj_close, cub);
 	mlx_loop(C->mlx);
 }

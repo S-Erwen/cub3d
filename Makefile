@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/10 09:32:01 by esidelar          #+#    #+#              #
-#    Updated: 2020/06/30 20:24:23 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2020/07/22 15:05:15 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS =		main.c \
 			srcs/parsing_cub/sj_addchr_for_map.c \
 			srcs/parsing_cub/sj_line_to_str.c \
 			srcs/parsing_cub/sj_map_add_fnrm.c \
+			srcs/parsing_cub/sj_new_sjt.c \
 			srcs/sj_mlx/sj_windows.c \
 			srcs/sj_mlx/sj_move.c \
 			srcs/sj_mlx/sj_init_all_x_y.c \

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/07 21:17:55 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:06:21 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/22 15:25:10 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,29 +31,19 @@ int		sj_fck_new_sujet(t_cub *cub)
 {
 	size_t	len;
 	int		i;
-	int		y;
 	int		ret;
 
 	i = 0;
-	y = 0;
+	C->rut = 0;
 	C->kr_tab = ft_split(C->kr, '\n');
 	C->kr = sj_free(C->kr);
 	len = sj_count_new_sujet(cub);
 	sj_add_for_kr(cub, len);
-	while (C->tab_map[i])
-	{
-		if ((ret = sj_check_updown(ret, len, cub, i)) < 0)
-			return (ret);
+	while (C->kr_tab[i])
 		i++;
-	}
-	i = 0;
-	if ((i = sj_zero_itsok(i, y, cub)) < 0)
-		return (i);
-	while (i)
-		free(C->kr_tab[i--]);
-	C->kr_tab[i] = sj_free(C->kr_tab[i]);
-	free(C->kr_tab);
-	return (0);
+	if ((ret = sj_ckeck_first_end(cub, i - 1, len)) < 0)
+		return (ret);
+	return (sj_fck_new_sujet_check(cub, len));
 }
 
 int		sj_cmp_end(t_cub *cub, int *i, size_t len)

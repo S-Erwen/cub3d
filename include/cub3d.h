@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:08:27 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:30:17 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/22 15:17:08 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ typedef	struct		s_bmp
 
 typedef struct		s_cub
 {
+	int				rut;
 	int				up_c;
 	int				up_f;
 	int				xpm_x[4];
@@ -329,6 +330,9 @@ size_t				sj_count_new_sujet(t_cub *cub);
 int					sj_cmp_ud(t_cub *cub, int *i, size_t len, int bool);
 int					sj_cmp_end(t_cub *cub, int *i, size_t len);
 void				sj_newline(t_cub *cub);
+
+int					sj_fck_new_sujet_check(t_cub *cub, int len);
+int					sj_ckeck_first_end(t_cub *cub, int i, int len);
 
 int					sj_check_spcline(char *line, int i);
 char				*sj_line_to_str(char *line, t_cub *cub, char *str);

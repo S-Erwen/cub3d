@@ -78,6 +78,11 @@ void	sj_hit_dist(t_cub *cub)
 
 void	sj_time(t_cub *cub)
 {
-	C->CS->move_speed = 0.06f;
-	C->CS->rotation_speed = 0.06f;
+	double	move_clc;
+
+	move_clc = (((float)C->res_y / 720) * ((float)C->res_x / 1280));
+	if (C->res_y > 720 || C->res_x > 1280)
+		move_clc = 1;
+	C->CS->move_speed = 0.06f * move_clc;
+	C->CS->rotation_speed = 0.06f * move_clc;
 }

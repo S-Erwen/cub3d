@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:15:51 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:30:05 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/22 17:01:03 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*sj_parsing_linemap(char *line, t_cub *cub)
 	count = sj_count_map_line(line, 0, 0);
 	if (count == -12)
 		return (NULL);
-	if (!(str = malloc(sizeof(char) * (count + 1))))
+	if (!(str = malloc(sizeof(char) * (count + 2))))
 		return (0);
 	if (sj_check_spcline(line, C->in))
 	{

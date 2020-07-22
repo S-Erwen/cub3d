@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 17:08:20 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:22:45 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/22 16:59:47 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int			sj_suit_parse(t_cub *cub)
 	int i;
 
 	i = 0;
+	if (!C->line_map)
+		return (-12);
 	C->tab_map = ft_split(C->line_map, '\n');
 	if (sj_fck_new_sujet(cub))
 	{

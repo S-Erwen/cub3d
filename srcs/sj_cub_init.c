@@ -110,6 +110,7 @@ void	sj_cub_init_iv(t_cub *cub)
 	C->up_f = 0;
 	C->kr = NULL;
 	C->bmp->reset = 1;
+	C->xpm_adrs[0] = NULL;
 }
 
 t_cub	*sj_cub_init_stuct(t_cub *cub)

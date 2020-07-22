@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 06:42:46 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:23:09 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/10 13:59:25 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ void	ult_vii_to_xii(int ret, t_cub *cub)
 
 void	ult_xii_to_xvii(int ret, t_cub *cub)
 {
+	if (C->img_ptr)
+		mlx_destroy_image(C->mlx, C->img_ptr);
+	if (C->xpm_adrs[0])
+	{
+		mlx_destroy_image(C->mlx, C->xpm_adrs[0]);
+		mlx_destroy_image(C->mlx, C->xpm_adrs[1]);
+		mlx_destroy_image(C->mlx, C->xpm_adrs[2]);
+		mlx_destroy_image(C->mlx, C->xpm_adrs[3]);
+		mlx_destroy_image(C->mlx, C->SP->adrs_sp);
+	}
+	if (C->help)
+		free(C->mlx);
 	if (C->K)
 		free(C->K);
 	if (C->SP)
