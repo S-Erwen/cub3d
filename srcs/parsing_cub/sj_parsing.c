@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:07:43 by esidelar          #+#    #+#             */
-/*   Updated: 2020/07/13 14:51:50 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/23 13:59:21 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		sj_parse_all(t_cub *cub, char **gv)
 	char	*line;
 	int		retur;
 
-	if ((fd = open(gv[1], 0x0000)) < 0)
+	if ((fd = open(gv[C->arg], 0x0000)) < 0)
 		return (-13);
 	while (get_next_line(fd, &line))
 	{

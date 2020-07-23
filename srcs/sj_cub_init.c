@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 04:56:07 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:04:53 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/23 13:59:07 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	sj_cub_init_iv(t_cub *cub)
 	C->kr = NULL;
 	C->bmp->reset = 1;
 	C->xpm_adrs[0] = NULL;
+	C->arg = 0;
 }
 
 t_cub	*sj_cub_init_stuct(t_cub *cub)

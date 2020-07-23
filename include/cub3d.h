@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 04:08:27 by esidelar          #+#    #+#             */
-/*   Updated: 2020/07/22 15:17:08 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/23 14:02:42 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ typedef	struct		s_bmp
 
 typedef struct		s_cub
 {
+	int				arg;
 	int				rut;
 	int				up_c;
 	int				up_f;
@@ -278,6 +279,7 @@ void				sj_cub_init_iv(t_cub *cub);
 */
 
 int					sj_stderr_argcub(int ac, char **gv, t_cub *cub);
+int					sj_argcub(int ac, char **gv);
 void				sj_stderr_parsing(int nb);
 void				sj_stderr_parsing_tho(int nb);
 char				*sj_free(char *str);

@@ -6,12 +6,12 @@
 #    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/10 09:32:01 by esidelar          #+#    #+#              #
-#    Updated: 2020/07/22 15:05:15 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2020/07/23 14:30:11 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAMELIB = 	libft.a
-NAME	= 	Cub3D
+NAME	= 	cub3D
 HEADERS	=	include/cub3d.h
 CC		=	clang-9
 CFLAGS 	= 	-Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 05:27:18 by esidelar          #+#    #+#             */
-/*   Updated: 2020/07/13 14:49:34 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/23 14:21:04 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 /*
 **	SI IL Y A PAS 2 ARGS OU 1 BAH PAS POSSIBLE DE PARSER
 */
-
-int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
+int		sj_argcub(int ac, char **gv)
 {
 	if (ac < 2 || ac > 3)
 	{
@@ -24,15 +23,34 @@ int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
 		ft_printf("Error\n__ERROR_ARG__\n");
 		return (0);
 	}
-	if (!ft_strnstr(gv[1], ".cub", ft_strlen(gv[1])))
-	{
-		ft_printf(RED);
-		ft_printf("Error\n__ERROR_CUB_NOFOUND__\n");
+	if (ac == 2)
+		if (!ft_strnstr(gv[1], ".cub", ft_strlen(gv[1])))
+		{
+			ft_printf(RED);
+			ft_printf("Error\n__ERROR_CUB_NOFOUND__\n");
+			return (0);
+		}
+	if (ac == 3)
+		if (!ft_strnstr(gv[2], ".cub", ft_strlen(gv[2]))
+			&& !ft_strnstr(gv[1], ".cub", ft_strlen(gv[1])))
+		{
+			ft_printf(RED);
+			ft_printf("Error\n__ERROR_CUB_NOFOUND__\n");
+			return (0);
+		}
+	return (1);
+}
+
+int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
+{
+	int		ret;
+
+	if ((ret = sj_argcub(ac, gv)) == 0)
 		return (0);
-	}
 	if (ac == 3)
 	{
-		if (ft_strnstr(gv[2], "--save", ft_strlen(gv[2])))
+		if (ft_strnstr(gv[2], "--save", ft_strlen(gv[2]))
+			|| ft_strnstr(gv[1], "--save", ft_strlen(gv[1])))
 			C->help++;
 		else
 		{
@@ -40,6 +58,10 @@ int		sj_stderr_argcub(int ac, char **gv, t_cub *cub)
 			return (0);
 		}
 	}
+	if (ft_strnstr(gv[1], ".cub", ft_strlen(gv[1])))
+		C->arg = 1;
+	else
+		C->arg = 2;
 	return (1);
 }
 
