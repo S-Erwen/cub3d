@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 05:27:18 by esidelar          #+#    #+#             */
-/*   Updated: 2020/07/23 14:21:04 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/23 14:32:57 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 **	SI IL Y A PAS 2 ARGS OU 1 BAH PAS POSSIBLE DE PARSER
 */
+
 int		sj_argcub(int ac, char **gv)
 {
 	if (ac < 2 || ac > 3)
