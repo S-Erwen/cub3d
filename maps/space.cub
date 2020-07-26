@@ -7,9 +7,9 @@ NO ./texture/space.xpm
 
             S ./texture/sp_nv.xpm
 
-C                                                                                                                                   35,43,76
+F                                                                                                                                   35,43,76
 
-      F                                                                        0,0,0
+      C                                                                        0,0,0
 
             R 1280 720                          
         1 1 1 1 1 1 1 1 1 1 1     1 1 1 1 1 1 1 1 1 1 1 1 1 1 1

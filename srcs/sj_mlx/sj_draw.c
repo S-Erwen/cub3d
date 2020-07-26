@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 04:39:10 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:05:41 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/26 23:18:38 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	sj_draw(t_cub *cub)
 	while (i < C->CS->drawstart)
 	{
 		C->img_data[i * C->res_x + (int)C->CS->x] =
-			sj_color(C->f_color_r, C->f_color_g, C->f_color_b);
+			sj_color(C->c_color_r, C->c_color_g, C->c_color_b);
 		i++;
 	}
 	sj_draw_texture(cub);
@@ -28,7 +28,7 @@ void	sj_draw(t_cub *cub)
 	while (i < C->res_y - 1)
 	{
 		C->img_data[i * C->res_x + (int)C->CS->x] =
-			sj_color(C->c_color_r, C->c_color_g, C->c_color_b);
+			sj_color(C->f_color_r, C->f_color_g, C->f_color_b);
 		i++;
 	}
 }
