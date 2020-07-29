@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/07 14:37:49 by esidelar          #+#    #+#              #
-#    Updated: 2020/06/30 20:06:34 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2020/07/29 05:44:03 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRCS	= 	ft_printf.c \
 			get_next_line.c \
 			get_next_line_utils.c \
 			ft_ispace.c \
+			ft_atol.c \
 
 BONUS	=	ft_lstnew_bonus.c \
 			ft_lstadd_front_bonus.c \

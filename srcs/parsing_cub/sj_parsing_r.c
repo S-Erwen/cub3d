@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:10:54 by esidelar          #+#    #+#             */
-/*   Updated: 2020/06/13 04:06:43 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/29 06:25:03 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ int		sj_res(char *line, t_cub *cub, int i)
 	i++;
 	while (line[i] && line[i] == ' ')
 		i++;
-	C->res_x = ft_atoi(line + i);
+	C->res_x = ft_atol(line + i);
 	i++;
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i] && line[i] == ' ')
 		i++;
-	C->res_y = ft_atoi(line + i);
+	C->res_y = ft_atol(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i])
@@ -43,5 +43,9 @@ int		sj_res(char *line, t_cub *cub, int i)
 			return (-1);
 	if (C->res_x <= 0 || C->res_y <= 0)
 		return (-1);
+	if (C->res_x >= INT_MAX)
+		C->res_x = 1920;
+	if (C->res_y >= INT_MAX)
+		C->res_y = 1080;
 	return (1);
 }

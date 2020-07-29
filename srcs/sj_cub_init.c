@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/09 04:56:07 by esidelar          #+#    #+#             */
-/*   Updated: 2020/07/23 13:59:07 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/29 05:56:33 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	sj_cub_init(t_cub *cub)
 	C->res_y = 0;
 	C->init_pos_x = 0;
 	C->init_pos_y = 0;
-	C->f_color_r = 0;
-	C->f_color_g = 0;
-	C->f_color_b = 0;
-	C->c_color_r = 0;
-	C->c_color_g = 0;
-	C->c_color_b = 0;
+	C->f_color_r = 256;
+	C->f_color_g = 256;
+	C->f_color_b = 256;
+	C->c_color_r = 256;
+	C->c_color_g = 256;
+	C->c_color_b = 256;
 	C->help = 0;
 	sj_cub_init_ii(cub);
 }

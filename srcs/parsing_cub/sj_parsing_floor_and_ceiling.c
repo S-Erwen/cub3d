@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/16 07:13:44 by esidelar          #+#    #+#             */
-/*   Updated: 2020/07/26 23:17:34 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2020/07/29 05:48:40 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int		sj_parse_f2(char *line, t_cub *cub)
 	i += 2;
 	while (line[i] && line[i] == ' ')
 		i++;
-	C->f_color_r = ft_atoi(line + i);
+	C->f_color_r = ft_atol(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i] && (line[i] == ' ' || line[i] == ','))
 		i++;
-	C->f_color_g = ft_atoi(line + i);
+	C->f_color_g = ft_atol(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i] && (line[i] == ' ' || line[i] == ','))
 		i++;
-	C->f_color_b = ft_atoi(line + i);
+	C->f_color_b = ft_atol(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i])
@@ -93,17 +93,17 @@ int		sj_parse_c2(char *line, t_cub *cub)
 	i += 2;
 	while (line[i] && line[i] == ' ')
 		i++;
-	C->c_color_r = ft_atoi(line + i);
+	C->c_color_r = ft_atol(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i] && (line[i] == ' ' || line[i] == ','))
 		i++;
-	C->c_color_g = ft_atoi(line + i);
+	C->c_color_g = ft_atol(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i] && (line[i] == ' ' || line[i] == ','))
 		i++;
-	C->c_color_b = ft_atoi(line + i);
+	C->c_color_b = ft_atol(line + i);
 	while (line[i] && ft_isdigit(line[i]))
 		i++;
 	while (line[i])
